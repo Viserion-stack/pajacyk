@@ -26,7 +26,7 @@ class Application extends StatelessWidget {
     return MultiBlocProvider(
       providers: [
         BlocProvider(
-          create: (context) => injector<AuthBloc>(),
+          create: (context) => injector<AuthBloc>()..add(StartedEvent()),
         ),
       ],
       child: AdaptiveTheme(

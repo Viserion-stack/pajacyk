@@ -6,8 +6,10 @@ part 'auth_state.dart';
 
 class AuthBloc extends Bloc<AuthEvent, AuthState> {
   AuthBloc() : super(AuthState.initial()) {
-    on<AuthEvent>((event, emit) {
-      // TODO: implement event handler
-    });
+    on<StartedEvent>(_onStarted);
+  }
+
+  Future<void> _onStarted(StartedEvent event, Emitter<AuthState> emit) async {
+    emit(state.copyWith(isAuthenticated: true));
   }
 }
