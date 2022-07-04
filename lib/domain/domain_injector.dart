@@ -2,6 +2,7 @@ import 'package:flutter_local_notifications/flutter_local_notifications.dart';
 import 'package:get_it/get_it.dart';
 import 'package:pajacyk/domain/notification_assistant/notification_assistant.dart';
 import 'package:pajacyk/domain/preference_assistant/preference_assistant.dart';
+import 'package:pajacyk/domain/usecase/click_pajacyk_usecase.dart';
 import 'package:rxdart/subjects.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
@@ -15,13 +16,17 @@ extension DomainInjector on GetIt {
     this
       .._registerUseCases()
       ..registerFactory<SharedPreferences>(() => sharedPreferences)
-      ..registerFactory<PreferenceAssistant>(
-          () => PreferenceAssistant(sharedPreferences: sharedPreferences))
-      ..registerFactory<FlutterLocalNotificationsPlugin>(
-          () => flutterNotificationPlugin)
+      ..registerFactory<PreferenceAssistant>(() => PreferenceAssistant(sharedPreferences: sharedPreferences))
+      ..registerFactory<FlutterLocalNotificationsPlugin>(() => flutterNotificationPlugin)
       ..registerFactory<BehaviorSubject>(() => onNotification)
       ..registerFactory<NotificationApi>(() => NotificationApi());
   }
 
-  void _registerUseCases() {}
+  void _registerUseCases() {
+    registerFactory<ClickPajacykUsecase>(
+      () => ClickPajacykUsecase(
+        clickPajacykRemoteSourceAction: get(),
+      ),
+    );
+  }
 }
