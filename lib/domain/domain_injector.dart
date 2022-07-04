@@ -7,16 +7,18 @@ import 'package:shared_preferences/shared_preferences.dart';
 
 extension DomainInjector on GetIt {
   Future<void> registerDomain() async {
-    //NotificationApi.init();
-    // listenNotifications();
+    NotificationApi.init();
+    listenNotifications();
     final sharedPreferences = await SharedPreferences.getInstance();
     final flutterNotificationPlugin = FlutterLocalNotificationsPlugin();
     final onNotification = BehaviorSubject();
     this
       .._registerUseCases()
       ..registerFactory<SharedPreferences>(() => sharedPreferences)
-      ..registerFactory<PreferenceAssistant>(() => PreferenceAssistant(sharedPreferences: sharedPreferences))
-      ..registerFactory<FlutterLocalNotificationsPlugin>(() => flutterNotificationPlugin)
+      ..registerFactory<PreferenceAssistant>(
+          () => PreferenceAssistant(sharedPreferences: sharedPreferences))
+      ..registerFactory<FlutterLocalNotificationsPlugin>(
+          () => flutterNotificationPlugin)
       ..registerFactory<BehaviorSubject>(() => onNotification)
       ..registerFactory<NotificationApi>(() => NotificationApi());
   }

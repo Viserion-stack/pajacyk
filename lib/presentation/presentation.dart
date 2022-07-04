@@ -1,7 +1,6 @@
 import 'dart:async';
 
 import 'package:flutter/material.dart';
-import 'package:pajacyk/domain/usecase/notification.dart';
 import 'package:pajacyk/presentation/main_injector.dart' as di;
 import 'package:pajacyk/presentation/application/application.dart';
 import 'package:pajacyk/presentation/application/theme.dart';
@@ -22,7 +21,9 @@ Future<void> runApplication() async {
       );
     },
     (error, stackTrace) {
-      print('runZonedGuarded');
+      debugPrint('runZonedGuarded');
+      debugPrint(error.toString());
+      debugPrint(stackTrace.toString());
     },
   );
 }

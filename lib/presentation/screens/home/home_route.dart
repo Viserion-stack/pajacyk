@@ -12,7 +12,7 @@ Route<dynamic> homeRoute(RouteSettings settings) {
       providers: [
         BlocProvider<HomeBloc>(
           create: (context) => injector<HomeBloc>(
-            param1: settings.arguments ?? HomeArgument(),
+            param1: settings.arguments ?? const HomeArgument(),
           ),
         ),
       ],

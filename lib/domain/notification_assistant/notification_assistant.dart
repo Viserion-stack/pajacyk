@@ -1,11 +1,13 @@
+import 'package:flutter/material.dart';
 import 'package:flutter_local_notifications/flutter_local_notifications.dart';
 import 'package:timezone/timezone.dart' as tz;
 import 'package:timezone/data/latest.dart' as tz;
 import 'package:rxdart/rxdart.dart';
 
-void listenNotifications() => NotificationApi.onNotifications.stream.listen(onClickedNotification);
+void listenNotifications() =>
+    NotificationApi.onNotifications.stream.listen(onClickedNotification);
 void onClickedNotification(String? payload) {
-  print('onClickedNotification');
+  debugPrint('onClickedNotification');
   //f2f.openAppPage('Screen/Ventilator/Status');
   //f2f.openAppPage('Popup/Emergency');
 }
@@ -14,29 +16,32 @@ class NotificationApi {
   static final _notifications = FlutterLocalNotificationsPlugin();
   static final onNotifications = BehaviorSubject<String?>();
   static Future _notificationsDetails() async {
-    // final styleInformation = const BigPictureStyleInformation(
-    //   DrawableResourceAndroidBitmap("logo"),
-    //   largeIcon: DrawableResourceAndroidBitmap("logo"),
-    //   contentTitle: 'Demo notification ',
-    // );
+    const styleInformation = BigPictureStyleInformation(
+      DrawableResourceAndroidBitmap("logo"),
+      largeIcon: DrawableResourceAndroidBitmap("logo"),
+      contentTitle: 'Demo notification ',
+    );
     return const NotificationDetails(
       android: AndroidNotificationDetails(
         'channel id', 'channel name',
         //channelDescription: 'channel description',
+        //playSound: false,
         importance: Importance.max,
-        //styleInformation: styleInformation,
+        styleInformation: styleInformation,
         //icon: 'logo',
         largeIcon: DrawableResourceAndroidBitmap("logo"),
       ),
-      iOS: IOSNotificationDetails(),
+      iOS: IOSNotificationDetails(
+          //presentSound: false,
+          ),
     );
   }
 
   static Future init({bool initScheduled = false}) async {
     tz.initializeTimeZones();
-    final android = AndroidInitializationSettings('logo');
-    final ios = IOSInitializationSettings();
-    final settings = InitializationSettings(android: android, iOS: ios);
+    const android = AndroidInitializationSettings('logo');
+    const ios = IOSInitializationSettings();
+    const settings = InitializationSettings(android: android, iOS: ios);
     await _notifications.initialize(
       settings,
       onSelectNotification: (payload) async {
@@ -69,10 +74,12 @@ class NotificationApi {
         id,
         title,
         body,
-        tz.TZDateTime.from(DateTime.now().add(Duration(seconds: seconds!)), tz.local),
+        tz.TZDateTime.from(
+            DateTime.now().add(Duration(seconds: seconds!)), tz.local),
         await _notificationsDetails(),
         payload: payload,
         androidAllowWhileIdle: true,
-        uiLocalNotificationDateInterpretation: UILocalNotificationDateInterpretation.absoluteTime,
+        uiLocalNotificationDateInterpretation:
+            UILocalNotificationDateInterpretation.absoluteTime,
       );
 }
