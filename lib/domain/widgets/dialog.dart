@@ -27,12 +27,19 @@ void myPopUp(BuildContext context, String message) {
       barrierDismissible: true,
       builder: (context) {
         return AlertDialog(
+          elevation: 1,
+          backgroundColor: Colors.green[300],
           title: const Text('Dziękujemy'),
           content: Text(message),
           actions: [
-            TextButton(
-              onPressed: () => Navigator.pop(context),
-              child: const Text('OK'),
+            Center(
+              child: TextButton(
+                onPressed: () => Navigator.pop(context),
+                child: const Text(
+                  'OK',
+                  style: TextStyle(color: Colors.black),
+                ),
+              ),
             ),
           ],
         );

@@ -177,7 +177,10 @@ class AppTheme {
           systemNavigationBarIconBrightness: palette.brightness,
         ),
         toolbarTextStyle: TextStyle(color: palette.primaryColor),
-        titleTextStyle: TextStyle(color: palette.textOnPrimaryColor, fontWeight: FontWeight.w600, fontSize: 14),
+        titleTextStyle: TextStyle(
+            color: palette.textOnPrimaryColor,
+            fontWeight: FontWeight.w600,
+            fontSize: 14),
         color: palette.appBarBackgroundColor,
         iconTheme: IconThemeData(color: palette.textOnPrimaryColor),
         actionsIconTheme: IconThemeData(color: palette.textOnPrimaryColor),
@@ -202,69 +205,70 @@ class AppTheme {
   }
 
   TextTheme get _textThemeHandset => TextTheme(
-        headline1: GoogleFonts.poppins(
+        headline1: GoogleFonts.jost(
           fontSize: 36,
           fontWeight: FontWeight.w400,
           letterSpacing: 0.48,
         ),
-        headline2: GoogleFonts.poppins(
+        headline2: GoogleFonts.jost(
           fontSize: 28,
           fontWeight: FontWeight.w400,
           letterSpacing: 0.48,
         ),
-        headline3: GoogleFonts.poppins(
+        headline3: GoogleFonts.jost(
           fontSize: 22,
           fontWeight: FontWeight.w400,
           letterSpacing: 0.48,
         ),
-        headline5: GoogleFonts.poppins(
+        headline5: GoogleFonts.jost(
           fontSize: 16,
           fontWeight: FontWeight.w600,
           letterSpacing: -0.408,
         ),
-        headline6: GoogleFonts.poppins(
+        headline6: GoogleFonts.jost(
           fontSize: 14,
           fontWeight: FontWeight.w400,
           letterSpacing: -0.078,
         ),
-        subtitle1: GoogleFonts.poppins(
+        subtitle1: GoogleFonts.jost(
           fontSize: 16,
           fontWeight: FontWeight.bold,
           letterSpacing: 0.19,
         ),
-        subtitle2: GoogleFonts.poppins(
+        subtitle2: GoogleFonts.jost(
           fontSize: 16,
           fontWeight: FontWeight.w700,
           letterSpacing: 0.64,
         ),
-        bodyText1: GoogleFonts.poppins(
+        bodyText1: GoogleFonts.jost(
           fontSize: 16,
           fontWeight: FontWeight.w500,
           letterSpacing: 0.32,
         ),
-        bodyText2: GoogleFonts.poppins(
+        bodyText2: GoogleFonts.jost(
           fontSize: 14,
           fontWeight: FontWeight.w400,
           letterSpacing: 0.32,
         ),
-        button: GoogleFonts.poppins(
+        button: GoogleFonts.jost(
           fontSize: 14,
           fontWeight: FontWeight.w600,
           letterSpacing: 0.32,
         ),
-        caption: GoogleFonts.poppins(
+        caption: GoogleFonts.jost(
           fontSize: 18,
           fontWeight: FontWeight.w400,
           letterSpacing: 0.32,
         ),
-        overline: GoogleFonts.poppins(
+        overline: GoogleFonts.jost(
           fontSize: 12,
           fontWeight: FontWeight.w300,
           letterSpacing: 0.64,
         ),
       );
 
-  MaterialColor generateMaterialColor(Color color) => MaterialColor(color.value, {
+  MaterialColor generateMaterialColor(Color color) =>
+      MaterialColor(color.value, {
         50: tintColor(color, 0.9),
         100: tintColor(color, 0.8),
         200: tintColor(color, 0.6),

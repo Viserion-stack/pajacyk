@@ -23,12 +23,15 @@ class NotificationApi {
     );
     return const NotificationDetails(
       android: AndroidNotificationDetails(
+        colorized: true,
+
         'channel id', 'channel name',
         //channelDescription: 'channel description',
         //playSound: false,
-        importance: Importance.max,
-        styleInformation: styleInformation,
-        //icon: 'logo',
+        importance: Importance.defaultImportance,
+        //styleInformation: styleInformation,
+
+        icon: 'logoo',
         largeIcon: DrawableResourceAndroidBitmap("logo"),
       ),
       iOS: IOSNotificationDetails(
@@ -39,7 +42,7 @@ class NotificationApi {
 
   static Future init({bool initScheduled = false}) async {
     tz.initializeTimeZones();
-    const android = AndroidInitializationSettings('logo');
+    const android = AndroidInitializationSettings('logoo');
     const ios = IOSInitializationSettings();
     const settings = InitializationSettings(android: android, iOS: ios);
     await _notifications.initialize(

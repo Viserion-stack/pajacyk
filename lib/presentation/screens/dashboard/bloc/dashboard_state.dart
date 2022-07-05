@@ -20,7 +20,7 @@ class DashboardState extends Equatable {
   }
 
   @override
-  List<Object> get props => [];
+  List<Object> get props => [isProcessing, argument, currentTab];
 
   DashboardState copyWith({
     bool? isProcessing,
@@ -35,7 +35,16 @@ class DashboardState extends Equatable {
   }
 
   @override
-  String toString() => 'DashboardState(isProcessing: $isProcessing, argument: $argument, currentTab: $currentTab)';
+  String toString() =>
+      'DashboardState(isProcessing: $isProcessing, argument: $argument, currentTab: $currentTab)';
 }
 
-enum DashboardTab { home, pajacyk, contact }
+enum DashboardTab {
+  home,
+  pajacyk,
+  wesprzyj,
+  nabor,
+  inneAkcje,
+  partnerzy,
+  kontak,
+}
