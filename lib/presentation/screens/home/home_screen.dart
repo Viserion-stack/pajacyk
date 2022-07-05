@@ -22,7 +22,8 @@ class HomeScreen extends StatelessWidget {
                   color: Colors.green,
                 ),
                 onPressed: () {
-                  context.read<HomeBloc>().add(RunScheduleNotificationEvent());
+                  context.read<HomeBloc>().add(RunScheduleNotificationEvent(
+                      context: context, clicks: 123123));
                 },
               );
             },

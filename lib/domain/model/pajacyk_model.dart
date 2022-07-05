@@ -1,5 +1,4 @@
 import 'package:equatable/equatable.dart';
-import 'package:fpdart/fpdart.dart';
 
 class PajacykModel extends Equatable {
   const PajacykModel({

@@ -3,7 +3,8 @@ import 'package:pajacyk/domain/data_source_action/press_pajacyk_remote_source_ac
 import 'package:pajacyk/domain/model/pajacyk_model.dart';
 import 'package:pajacyk/domain/model/error_detail.dart';
 
-class ClickPajacykRemoteSourceActionImpl implements ClickPajacykRemoteSourceAction {
+class ClickPajacykRemoteSourceActionImpl
+    implements ClickPajacykRemoteSourceAction {
   const ClickPajacykRemoteSourceActionImpl();
 
   @override
