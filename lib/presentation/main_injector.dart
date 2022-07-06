@@ -9,7 +9,10 @@ import 'package:pajacyk/presentation/screens/home/bloc/home_bloc.dart';
 import 'package:pajacyk/presentation/screens/home/home_argument.dart';
 import 'package:pajacyk/presentation/screens/pajacyk/bloc/pajacyk_bloc.dart';
 import 'package:pajacyk/presentation/screens/pajacyk/pajacyk_argument.dart';
+import 'package:pajacyk/presentation/screens/wesprzyj/bloc/wesprzyj_bloc.dart';
 import 'package:pajacyk/remote/remote_injector.dart';
+
+import 'screens/wesprzyj/wesprzyj_argument.dart';
 
 final injector = GetIt.instance;
 
@@ -28,6 +31,10 @@ Future<void> init() async {
         notificationApi: injector.get(),
       ),
     )
-    ..registerFactoryParam<ContactBloc, ContactArgument, void>((argument, _) => ContactBloc(argument: argument))
-    ..registerFactoryParam<PajacykBloc, PajacykArgument, void>((argument, _) => PajacykBloc(argument: argument));
+    ..registerFactoryParam<ContactBloc, ContactArgument, void>(
+        (argument, _) => ContactBloc(argument: argument))
+    ..registerFactoryParam<WesprzyjBloc, WesprzyjArgument, void>(
+        (argument, _) => WesprzyjBloc(argument: argument))
+    ..registerFactoryParam<PajacykBloc, PajacykArgument, void>(
+        (argument, _) => PajacykBloc(argument: argument));
 }

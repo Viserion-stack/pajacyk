@@ -11,6 +11,9 @@ import 'package:pajacyk/presentation/screens/home/home_argument.dart';
 import 'package:pajacyk/presentation/screens/pajacyk/bloc/pajacyk_bloc.dart';
 import 'package:pajacyk/presentation/screens/pajacyk/pajacyk_argument.dart';
 
+import '../wesprzyj/bloc/wesprzyj_bloc.dart';
+import '../wesprzyj/wesprzyj_argument.dart';
+
 Route<dynamic> dashboardRoute(RouteSettings settings) {
   final nestedNavigatorKeys = DashboardTab.values.asMap().map(
         (key, value) => MapEntry(
@@ -35,6 +38,11 @@ Route<dynamic> dashboardRoute(RouteSettings settings) {
         BlocProvider<ContactBloc>(
           create: (context) => injector<ContactBloc>(
             param1: settings.arguments ?? const ContactArgument(),
+          ),
+        ),
+        BlocProvider<WesprzyjBloc>(
+          create: (context) => injector<WesprzyjBloc>(
+            param1: settings.arguments ?? const WesprzyjArgument(),
           ),
         ),
         BlocProvider<PajacykBloc>(

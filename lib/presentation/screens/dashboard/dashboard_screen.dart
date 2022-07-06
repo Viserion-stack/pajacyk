@@ -7,6 +7,8 @@ import 'package:pajacyk/presentation/router/home_route_factory.dart';
 import 'package:pajacyk/presentation/router/pajacyk_route_factory.dart';
 import 'package:pajacyk/presentation/screens/dashboard/bloc/dashboard_bloc.dart';
 
+import '../../router/wesprzyj_route_factory.dart';
+
 class DashboardScreen extends StatefulWidget {
   const DashboardScreen({
     required Map<DashboardTab, GlobalKey<NavigatorState>> navigatorKeys,
@@ -110,6 +112,11 @@ class _DashboardContent extends StatelessWidget {
             OffstageNavigator(
               navigatorKey: navigatorKeys[DashboardTab.wesprzyj],
               isCurrent: state.currentTab == DashboardTab.wesprzyj,
+              appRoute: const WesprzyjRouteFactory(),
+            ),
+            OffstageNavigator(
+              navigatorKey: navigatorKeys[DashboardTab.kontak],
+              isCurrent: state.currentTab == DashboardTab.kontak,
               appRoute: const ContactRouteFactory(),
             ),
           ],
