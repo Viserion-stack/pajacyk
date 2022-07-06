@@ -29,10 +29,10 @@ class ErrorConverter {
     }
   }
 
-  // ErrorDetail handleRemoteError(Object error, StackTrace stackTrace) {
-  //   if (error is DioError && error.type == DioErrorType.response) {
-  //     return convert(error) ?? ErrorDetail.fatal();
-  //   }
-  //   return ErrorDetail.fatal(throwable: error, stackTrace: stackTrace);
-  // }
+  ErrorDetail handleRemoteError(Object error, StackTrace stackTrace) {
+    if (error is DioError && error.type == DioErrorType.response) {
+      return convert(error) ?? ErrorDetail.fatal();
+    }
+    return ErrorDetail.errorCode();
+  }
 }

@@ -29,12 +29,10 @@ Future<void> init() async {
       (argument, _) => HomeBloc(
         argument: argument,
         notificationApi: injector.get(),
+        clickPajacykUsecase: injector.get(),
       ),
     )
-    ..registerFactoryParam<ContactBloc, ContactArgument, void>(
-        (argument, _) => ContactBloc(argument: argument))
-    ..registerFactoryParam<WesprzyjBloc, WesprzyjArgument, void>(
-        (argument, _) => WesprzyjBloc(argument: argument))
-    ..registerFactoryParam<PajacykBloc, PajacykArgument, void>(
-        (argument, _) => PajacykBloc(argument: argument));
+    ..registerFactoryParam<ContactBloc, ContactArgument, void>((argument, _) => ContactBloc(argument: argument))
+    ..registerFactoryParam<WesprzyjBloc, WesprzyjArgument, void>((argument, _) => WesprzyjBloc(argument: argument))
+    ..registerFactoryParam<PajacykBloc, PajacykArgument, void>((argument, _) => PajacykBloc(argument: argument));
 }

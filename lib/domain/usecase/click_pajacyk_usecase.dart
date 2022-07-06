@@ -6,8 +6,9 @@ import 'package:pajacyk/domain/usecase/usecase.dart';
 enum ClickPajacykFailure { fatal }
 
 class ClickPajacykUsecase implements UseCase<ClickPajacykFailure, PajacykModel> {
-  const ClickPajacykUsecase({required ClickPajacykRemoteSourceAction clickPajacykRemoteSourceAction})
-      : _clickPajacykRemoteSourceAction = clickPajacykRemoteSourceAction;
+  const ClickPajacykUsecase({
+    required ClickPajacykRemoteSourceAction clickPajacykRemoteSourceAction,
+  }) : _clickPajacykRemoteSourceAction = clickPajacykRemoteSourceAction;
 
   final ClickPajacykRemoteSourceAction _clickPajacykRemoteSourceAction;
 
