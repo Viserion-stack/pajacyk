@@ -4,8 +4,7 @@ import 'package:timezone/timezone.dart' as tz;
 import 'package:timezone/data/latest.dart' as tz;
 import 'package:rxdart/rxdart.dart';
 
-void listenNotifications() =>
-    NotificationApi.onNotifications.stream.listen(onClickedNotification);
+void listenNotifications() => NotificationApi.onNotifications.stream.listen(onClickedNotification);
 void onClickedNotification(String? payload) {
   debugPrint('onClickedNotification');
   //f2f.openAppPage('Screen/Ventilator/Status');
@@ -17,8 +16,8 @@ class NotificationApi {
   static final onNotifications = BehaviorSubject<String?>();
   static Future _notificationsDetails() async {
     const styleInformation = BigPictureStyleInformation(
-      DrawableResourceAndroidBitmap("logo"),
-      largeIcon: DrawableResourceAndroidBitmap("logo"),
+      DrawableResourceAndroidBitmap("ic_launcher"),
+      largeIcon: DrawableResourceAndroidBitmap("ic_launcher"),
       contentTitle: 'Demo notification ',
     );
     return const NotificationDetails(
@@ -77,12 +76,10 @@ class NotificationApi {
         id,
         title,
         body,
-        tz.TZDateTime.from(
-            DateTime.now().add(Duration(seconds: seconds!)), tz.local),
+        tz.TZDateTime.from(DateTime.now().add(Duration(seconds: seconds!)), tz.local),
         await _notificationsDetails(),
         payload: payload,
         androidAllowWhileIdle: true,
-        uiLocalNotificationDateInterpretation:
-            UILocalNotificationDateInterpretation.absoluteTime,
+        uiLocalNotificationDateInterpretation: UILocalNotificationDateInterpretation.absoluteTime,
       );
 }

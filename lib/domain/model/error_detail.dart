@@ -23,6 +23,13 @@ class ErrorDetail extends Equatable {
     );
   }
 
+  factory ErrorDetail.fatal() {
+    return const ErrorDetail(
+      throwable: Object(),
+      stackTrace: StackTrace.empty,
+    );
+  }
+
   @override
   List<Object?> get props => [
         errorCode,

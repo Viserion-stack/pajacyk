@@ -6,8 +6,7 @@ part 'dashboard_event.dart';
 part 'dashboard_state.dart';
 
 class DashboardBloc extends Bloc<DashboardEvent, DashboardState> {
-  DashboardBloc({required this.argument})
-      : super(DashboardState.initial(argument: argument)) {
+  DashboardBloc({required this.argument}) : super(DashboardState.initial(argument: argument)) {
     on<DashboardEvent>((event, emit) {
       // TODO: implement event handler
     });
@@ -20,12 +19,15 @@ class DashboardBloc extends Bloc<DashboardEvent, DashboardState> {
     emit(state.copyWith(currentTab: DashboardTab.home));
   }
 
-  Future<void> updateTab(
-      UpdateDashboardTab event, Emitter<DashboardState> emit) async {
+  Future<void> updateTab(UpdateDashboardTab event, Emitter<DashboardState> emit) async {
     emit(state.copyWith(currentTab: event.tabIndex));
 
     print('Event tab index:' + event.tabIndex.toString());
   }
 
   final DashboardArgument argument;
+
+  Future<void> changeTab(UpdateDashboardTab event, Emitter<DashboardState> emit) async {
+    emit(state.copyWith(currentTab: event.tabIndex));
+  }
 }
