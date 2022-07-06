@@ -19,9 +19,11 @@ class NavigationController extends ChangeNotifier {
   String routeName = '/';
   int pageIndex = 0;
 
+  TabController tabController = TabController(length: 7, vsync: this);
+
   void changeScreen(int index) {
     pageIndex = index;
-    print('INDEX form provider tabBar =  + ${index}');
+    //print('INDEX form provider tabBar =  + ${index}');
     notifyListeners();
   }
 
@@ -72,8 +74,8 @@ class NavigationController extends ChangeNotifier {
         pageList.add(const MaterialPage(child: ContactScreen()));
         break;
     }
-    print('AAA');
-    print(pageList.length);
+    //print(pageList.length);
+    //notifyListeners();
     return pageList;
   }
 }

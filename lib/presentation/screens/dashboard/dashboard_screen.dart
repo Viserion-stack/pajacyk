@@ -21,15 +21,22 @@ class _DashboardScreenState extends State<DashboardScreen>
   void initState() {
     controller = TabController(length: 7, vsync: this);
     controller.addListener(() {
-      setState(() {});
+      print('lsitener tab contoller');
+
+      //controller.animateTo(curretIndex1);
     });
     super.initState();
   }
 
   @override
+  void dispose() {
+    controller.dispose();
+    super.dispose();
+  }
+
+  @override
   Widget build(BuildContext context) {
-    final navigation =
-        Provider.of<NavigationController>(context, listen: false);
+    final navigation = Provider.of<NavigationController>(context, listen: true);
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Colors.green[500],
@@ -53,6 +60,7 @@ class _DashboardScreenState extends State<DashboardScreen>
       body: Navigator(
         pages: navigation.getPages(),
         onPopPage: (route, results) {
+          print('zmiana strony');
           if (!route.didPop(results)) return false;
           return true;
         },

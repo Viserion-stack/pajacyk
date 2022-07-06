@@ -8,12 +8,12 @@ class PajacykScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Container(
-        color: Colors.white,
-        child: const Center(
-          child: Text('Pajacyk Screen'),
+      body: SingleChildScrollView(
+          child: Container(
+        child: Column(
+          children: [],
         ),
-      ),
+      )),
     );
   }
 }
