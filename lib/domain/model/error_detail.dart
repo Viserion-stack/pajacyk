@@ -1,6 +1,4 @@
-import 'package:equatable/equatable.dart';
-
-class ErrorDetail extends Equatable {
+class ErrorDetail {
   const ErrorDetail({
     this.errorCode,
     this.message,
@@ -30,7 +28,6 @@ class ErrorDetail extends Equatable {
     );
   }
 
-  @override
   List<Object?> get props => [
         errorCode,
         message,

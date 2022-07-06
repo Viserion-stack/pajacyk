@@ -6,7 +6,8 @@ import 'package:pajacyk/domain/model/error_detail.dart';
 import 'package:pajacyk/domain/model/pajacyk_model.dart';
 import 'package:pajacyk/domain/usecase/click_pajacyk_usecase.dart';
 
-class MockClickPajacykRemoteSourceAction extends Mock implements ClickPajacykRemoteSourceAction {}
+class MockClickPajacykRemoteSourceAction extends Mock
+    implements ClickPajacykRemoteSourceAction {}
 
 void main() {
   late MockClickPajacykRemoteSourceAction mockClickPajacykRemoteSourceAction;
@@ -15,7 +16,8 @@ void main() {
   setUp(
     () {
       mockClickPajacykRemoteSourceAction = MockClickPajacykRemoteSourceAction();
-      clickPajacykUsecase = ClickPajacykUsecase(clickPajacykRemoteSourceAction: mockClickPajacykRemoteSourceAction);
+      clickPajacykUsecase = ClickPajacykUsecase(
+          clickPajacykRemoteSourceAction: mockClickPajacykRemoteSourceAction);
     },
   );
 
@@ -32,7 +34,8 @@ void main() {
         () async {
           when(
             () => mockClickPajacykRemoteSourceAction.execute(),
-          ).thenReturn(TaskEither<ErrorDetail, PajacykModel>.right(pajacykResponse));
+          ).thenReturn(
+              TaskEither<ErrorDetail, PajacykModel>.right(pajacykResponse));
 
           final result = await clickPajacykUsecase.execute().run();
 
@@ -48,7 +51,8 @@ void main() {
         () async {
           when(
             () => mockClickPajacykRemoteSourceAction.execute(),
-          ).thenReturn(TaskEither<ErrorDetail, PajacykModel>.left(ErrorDetail.errorCode()));
+          ).thenReturn(TaskEither<ErrorDetail, PajacykModel>.left(
+              ErrorDetail.errorCode()));
 
           final result = await clickPajacykUsecase.execute().run();
 

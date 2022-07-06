@@ -1,6 +1,4 @@
-import 'package:equatable/equatable.dart';
-
-class PajacykModel extends Equatable {
+class PajacykModel {
   const PajacykModel({
     required this.count,
     required this.done,
@@ -8,6 +6,5 @@ class PajacykModel extends Equatable {
   final String count;
   final bool done;
 
-  @override
   List<Object> get props => [count, done];
 }
