@@ -1,5 +1,4 @@
 import 'dart:convert';
-import 'package:dio/dio.dart';
 import 'package:pajacyk/domain/model/error_detail.dart';
 import 'package:pajacyk/remote/model/error/error_object.dart';
 
@@ -16,7 +15,8 @@ class ErrorConverter {
     }
 
     try {
-      final errorObject = ErrorObject.fromJson(jsonDecode(error) as Map<String, dynamic>);
+      final errorObject =
+          ErrorObject.fromJson(jsonDecode(error) as Map<String, dynamic>);
       return ErrorDetail(
         traceId: errorObject.traceId,
         errorCode: errorObject.error,

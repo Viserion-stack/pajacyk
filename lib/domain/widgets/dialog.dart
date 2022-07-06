@@ -3,14 +3,14 @@ import 'dart:io';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
-void myPopUp(BuildContext context, String message) {
+void myPopUp(BuildContext context, String header, String message) {
   if (Platform.isIOS) {
     showCupertinoDialog(
       context: context,
       barrierDismissible: true,
       builder: (context) {
         return CupertinoAlertDialog(
-          title: const Text('Dziękujemy'),
+          title: Text(header),
           content: Text(message),
           actions: [
             CupertinoDialogAction(
@@ -29,7 +29,7 @@ void myPopUp(BuildContext context, String message) {
         return AlertDialog(
           elevation: 1,
           backgroundColor: Colors.green[300],
-          title: const Text('Dziękujemy'),
+          title: Text(header),
           content: Text(message),
           actions: [
             Center(

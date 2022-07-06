@@ -6,5 +6,10 @@ class PajacykModel {
   final String count;
   final bool done;
 
-  List<Object> get props => [count, done];
+  factory PajacykModel.fromJson(Map<String, dynamic> json) {
+    return PajacykModel(
+      count: json['count'] ?? '',
+      done: json['done'] ?? '',
+    );
+  }
 }
