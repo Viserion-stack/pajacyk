@@ -45,8 +45,8 @@ class _WesprzyjWebviewState extends State<WesprzyjWebview> {
   Widget build(BuildContext context) {
     return Stack(children: [
       WebView(
-        //initialUrl: 'https://www.pajacyk.pl/wesprzyj',
-        initialUrl: 'https://www.wikipedia.org',
+        initialUrl: 'https://www.pajacyk.pl/wesprzyj',
+        //initialUrl: 'https://www.wikipedia.org',
         javascriptMode: JavascriptMode.unrestricted,
         onProgress: (int progress) {},
         onPageStarted: (String url) {},
@@ -67,7 +67,8 @@ class _WesprzyjWebviewState extends State<WesprzyjWebview> {
       ),
       isLoading
           ? Center(
-              child: CircularProgressIndicator.adaptive(),
+              child: CircularProgressIndicator.adaptive(
+                  valueColor: AlwaysStoppedAnimation<Color>(Colors.green)),
             )
           : SizedBox(),
     ]);

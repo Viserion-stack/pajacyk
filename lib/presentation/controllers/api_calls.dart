@@ -43,7 +43,7 @@ class PostDataProvider with ChangeNotifier {
   PajacykModel pajacyk = PajacykModel(count: '', done: false);
   bool loading = false;
 
-  getPostData(context) async {
+  Future<void> getPostData(context) async {
     loading = true;
     pajacyk = await getSinglePostData(context);
     loading = false;
@@ -63,6 +63,7 @@ class PostDataProvider with ChangeNotifier {
     //       (value) => print('NOTIFI'),
     //     );
     print(pajacyk.count);
-    myPopUp(context, 'Dziękujemy', 'Dziś kliknęlo juz ${pajacyk.count} osób');
+    myPopUp(
+        context, 'Dziękujemy :)', 'Dziś kliknęlo juz ${pajacyk.count} osób');
   }
 }

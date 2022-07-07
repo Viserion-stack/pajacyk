@@ -6,11 +6,43 @@ import 'package:url_launcher/url_launcher.dart';
 
 import '../../controllers/api_calls.dart';
 
-class SplashScreen extends StatelessWidget {
+class SplashScreen extends StatefulWidget {
   const SplashScreen({Key? key}) : super(key: key);
 
   @override
+  State<SplashScreen> createState() => _SplashScreenState();
+}
+
+class _SplashScreenState extends State<SplashScreen>
+    with SingleTickerProviderStateMixin {
+  late AnimationController animationController;
+  late Animation<double> _animation;
+
+  @override
+  void initState() {
+    animationController = AnimationController(
+      duration: Duration(seconds: 1),
+      vsync: this,
+    );
+    _animation = Tween(begin: 0.0, end: 1.0).animate(CurvedAnimation(
+      parent: animationController,
+      curve: Curves.easeIn,
+    ));
+    animationController.forward();
+
+    super.initState();
+  }
+
+  @override
+  void dispose() {
+    animationController.dispose();
+    super.dispose();
+  }
+
+  bool isPajactkPressed = false;
+  @override
   Widget build(BuildContext context) {
+    print('rebuild');
     return Scaffold(
       backgroundColor: Colors.green[500],
       body: SingleChildScrollView(
@@ -18,15 +50,64 @@ class SplashScreen extends StatelessWidget {
           child: Center(
             child: Column(
               children: [
-                IconButton(
-                  onPressed: () async {
-                    await Provider.of<PostDataProvider>(context, listen: false)
-                        .getPostData(context);
-                    Provider.of<PostDataProvider>(context, listen: false)
-                        .showPopUp(context);
-                  },
-                  icon: Icon(Icons.notification_add),
+                Text(
+                  'Witaj w krainie Pajacyka!',
+                  style: TextStyle(color: Colors.white, fontSize: 22),
                 ),
+                Text(
+                  '\nPajacyk od wielu lat wspiera prawidłowy rozwój dzieci. Pamiętaj, że kliknięcie w brzuszek,to pierwszy krok, by pomóc.',
+                  textAlign: TextAlign.center,
+                  style: TextStyle(color: Colors.white, fontSize: 15),
+                ),
+                Stack(alignment: AlignmentDirectional.bottomCenter, children: [
+                  Image.asset(
+                    'assets/podest.png',
+                    scale: 1,
+                    //fit: BoxFit.fitWidth,
+                  ),
+                  GestureDetector(
+                    onTap: () async {
+                      // await Provider.of<PostDataProvider>(context,
+                      //         listen: false)
+                      //     .getPostData(context);
+                      setState(() {
+                        print('setState');
+                        isPajactkPressed = true;
+
+                        Provider.of<PostDataProvider>(context, listen: false)
+                            .showPopUp(context);
+                      });
+
+                      Future.delayed(const Duration(seconds: 3), () {
+                        print('FutureDelyed');
+                        setState(() {
+                          isPajactkPressed = false;
+                        });
+                      });
+                    },
+                    child: SizedBox(
+                        width: 400,
+                        height: 400,
+                        child: FadeTransition(
+                          opacity: _animation,
+                          child: Image.asset(
+                            isPajactkPressed
+                                ? 'assets/pajacykOn.png'
+                                : 'assets/pajacykOff.png',
+                            fit: BoxFit.cover,
+                          ),
+                        )),
+                  ),
+                ]),
+
+                // IconButton(
+                //   onPressed: () async {
+                //     await Provider.of<PostDataProvider>(context, listen: false)
+                //         .getPostData(context);
+
+                //   },
+                //   icon: Icon(Icons.notification_add),
+                // ),
                 Column(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
@@ -258,6 +339,7 @@ class MyCarousel extends StatelessWidget {
                   height: 150,
                   //aspectRatio: 16 / 9,
                   viewportFraction: 0.67,
+
                   initialPage: 0,
                   enableInfiniteScroll: true,
                   reverse: false,

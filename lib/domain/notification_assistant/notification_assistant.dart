@@ -31,8 +31,8 @@ class NotificationApi {
         importance: Importance.defaultImportance,
         styleInformation: styleInformation,
 
-        icon: 'logoo',
-        largeIcon: DrawableResourceAndroidBitmap("logo"),
+        icon: 'ic_launcher',
+        largeIcon: DrawableResourceAndroidBitmap("ic_launcher"),
       ),
       iOS: IOSNotificationDetails(
           //presentSound: false,
@@ -42,7 +42,7 @@ class NotificationApi {
 
   static Future init({bool initScheduled = false}) async {
     tz.initializeTimeZones();
-    const android = AndroidInitializationSettings('logoo');
+    const android = AndroidInitializationSettings('ic_launcher');
     const ios = IOSInitializationSettings();
     const settings = InitializationSettings(android: android, iOS: ios);
     await _notifications.initialize(

@@ -186,7 +186,7 @@ class StrategiczniPartnerzy extends StatelessWidget {
     return Container(
       padding: EdgeInsets.only(bottom: 16),
       width: size.width * 0.9,
-      height: size.height * 1.83,
+      height: size.height * 1.85,
       child: Card(
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(15.0),
@@ -241,7 +241,7 @@ class StrategiczniPartnerzy extends StatelessWidget {
               ),
             ),
             Padding(
-              padding: const EdgeInsets.all(8.0),
+              padding: const EdgeInsets.all(16),
               child: GridView.builder(
                   primary: false,
                   shrinkWrap: true,
@@ -249,17 +249,14 @@ class StrategiczniPartnerzy extends StatelessWidget {
                   gridDelegate: const SliverGridDelegateWithMaxCrossAxisExtent(
                       maxCrossAxisExtent: 200,
                       childAspectRatio: 3 / 2,
-                      crossAxisSpacing: 20,
-                      mainAxisSpacing: 20),
+                      crossAxisSpacing: 10,
+                      mainAxisSpacing: 10),
                   itemCount: partnerWspierajacyList.length,
                   itemBuilder: (context, index) {
-                    return SizedBox(
-                        width: 20,
-                        height: 20,
-                        child: Image.asset(
-                          partnerWspierajacyList[index],
-                          fit: BoxFit.contain,
-                        ));
+                    return Image.asset(
+                      partnerWspierajacyList[index],
+                      fit: BoxFit.contain,
+                    );
                   }),
             ),
           ],
