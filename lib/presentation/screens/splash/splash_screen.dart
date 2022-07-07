@@ -124,6 +124,9 @@ class MyCard extends StatelessWidget {
       width: size.width * 0.9,
       height: size.height * 0.35,
       child: Card(
+        shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.circular(15.0),
+        ),
         color: cardColor ?? Colors.white,
         child: Column(
           mainAxisAlignment: MainAxisAlignment.spaceAround,
@@ -195,6 +198,7 @@ class MyCarousel extends StatelessWidget {
   List<String> partnerList = [
     'assets/partners/payBack.png',
     'assets/partners/dhl.png',
+    'assets/partners/santander.png',
     'assets/partners/ncab.png',
     'assets/partners/internationalPaper.png',
     'assets/partners/sodexo.png',
@@ -214,6 +218,9 @@ class MyCarousel extends StatelessWidget {
   Widget build(BuildContext context) {
     final size = MediaQuery.of(context).size;
     return Card(
+      shape: RoundedRectangleBorder(
+        borderRadius: BorderRadius.circular(15.0),
+      ),
       color: Colors.white,
       child: Container(
         width: size.width * 0.9,
@@ -250,7 +257,7 @@ class MyCarousel extends StatelessWidget {
                 options: CarouselOptions(
                   height: 150,
                   //aspectRatio: 16 / 9,
-                  viewportFraction: 0.7,
+                  viewportFraction: 0.67,
                   initialPage: 0,
                   enableInfiniteScroll: true,
                   reverse: false,

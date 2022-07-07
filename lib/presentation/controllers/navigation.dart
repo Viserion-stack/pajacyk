@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:pajacyk/presentation/screens/contact/contact_screen.dart';
+import 'package:pajacyk/presentation/screens/partnerzy/partnerzy_screen.dart';
 import 'package:pajacyk/presentation/screens/wesprzyj/wesprzyj_screen.dart';
 
 import '../screens/pajacyk/pajacyk_screen.dart';
@@ -31,7 +32,7 @@ class NavigationController extends ChangeNotifier {
     MaterialPage(child: WesprzyjScreen()),
     MaterialPage(child: ContactScreen()),
     MaterialPage(child: ContactScreen()),
-    MaterialPage(child: ContactScreen()),
+    MaterialPage(child: PartnerzyScreen()),
     MaterialPage(child: PajacykScreen()),
   ];
 
@@ -66,7 +67,7 @@ class NavigationController extends ChangeNotifier {
         pageList.add(const MaterialPage(child: SplashScreen()));
         break;
       case 5:
-        pageList.add(const MaterialPage(child: PajacykScreen()));
+        pageList.add(const MaterialPage(child: PartnerzyScreen()));
         break;
       case 6:
         pageList.add(const MaterialPage(child: ContactScreen()));
