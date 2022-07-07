@@ -1,3 +1,4 @@
+import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
 import 'package:pajacyk/presentation/controllers/navigation.dart';
 import 'package:provider/provider.dart';
@@ -50,6 +51,7 @@ class SplashScreen extends StatelessWidget {
                       headerColor: Colors.orange[500],
                     ),
                     MyCard(
+                      imageIndex: 1,
                       url: 'https://www.pajacyk.pl/swiateczny-stol-pajacyka/',
                       headerText: 'Świąteczny Stół Pajacyka',
                       bodyText:
@@ -60,6 +62,7 @@ class SplashScreen extends StatelessWidget {
                       cardColor: Colors.yellow,
                     ),
                     MyCard(
+                      imageIndex: 2,
                       url: 'https://www.pajacyk.pl/pajacyk-bez-przerwy',
                       headerText: '#PajacykBezPrzerwy!',
                       bodyText:
@@ -69,6 +72,10 @@ class SplashScreen extends StatelessWidget {
                       //buttonTextColor: Colors.white,
                       cardColor: Colors.yellow,
                     ),
+                    MyCarousel(),
+                    SizedBox(
+                      height: 20,
+                    )
                   ],
                 )
               ],
@@ -94,6 +101,7 @@ class MyCard extends StatelessWidget {
   final Color? cardColor;
   final Color? headerColor;
   final Color? buttonTextColor;
+  final int? imageIndex;
 
   const MyCard({
     Key? key,
@@ -105,6 +113,7 @@ class MyCard extends StatelessWidget {
     this.cardColor,
     this.headerColor,
     this.buttonTextColor,
+    this.imageIndex,
   }) : super(key: key);
 
   @override
@@ -113,20 +122,34 @@ class MyCard extends StatelessWidget {
     return Container(
       padding: EdgeInsets.only(bottom: 16),
       width: size.width * 0.9,
-      height: size.height * 0.32,
+      height: size.height * 0.35,
       child: Card(
         color: cardColor ?? Colors.white,
         child: Column(
           mainAxisAlignment: MainAxisAlignment.spaceAround,
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
-            Text(
-              headerText,
-              textAlign: TextAlign.center,
-              style: TextStyle(
-                  color: headerColor ?? Colors.black,
-                  fontSize: 22,
-                  fontWeight: FontWeight.bold),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                imageIndex == null
+                    ? SizedBox()
+                    : SizedBox(
+                        width: size.width * 0.15,
+                        height: size.height * 0.15,
+                        child: Padding(
+                          padding: const EdgeInsets.only(right: 8.0),
+                          child: Image.asset('assets/$imageIndex.png'),
+                        )),
+                Text(
+                  headerText,
+                  textAlign: TextAlign.center,
+                  style: TextStyle(
+                      color: headerColor ?? Colors.black,
+                      fontSize: 22,
+                      fontWeight: FontWeight.bold),
+                ),
+              ],
             ),
             Text(
               bodyText,
@@ -155,6 +178,108 @@ class MyCard extends StatelessWidget {
                   //   //style: BorderStyle.solid,
                   // ),
                   primary: buttonColor ?? Colors.white,
+
+                  //fixedSize: const Size(300, 100),
+                  shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(15))),
+            ),
+          ],
+        ),
+      ),
+    );
+  }
+}
+
+class MyCarousel extends StatelessWidget {
+  MyCarousel({Key? key}) : super(key: key);
+  List<String> partnerList = [
+    'assets/partners/payBack.png',
+    'assets/partners/dhl.png',
+    'assets/partners/ncab.png',
+    'assets/partners/internationalPaper.png',
+    'assets/partners/sodexo.png',
+    'assets/partners/languageSoulutions.png',
+    'assets/partners/fris.png',
+    'assets/partners/kaufland.png',
+    'assets/partners/bp.png',
+    'assets/partners/alternberg.png',
+    'assets/partners/amosFiorello.png',
+    'assets/partners/auchan.png',
+    'assets/partners/panTabletka.png',
+    'assets/partners/electrolux.png',
+    'assets/partners/independentTrader.png',
+  ];
+
+  @override
+  Widget build(BuildContext context) {
+    final size = MediaQuery.of(context).size;
+    return Card(
+      color: Colors.white,
+      child: Container(
+        width: size.width * 0.9,
+        height: size.height * 0.35,
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            Padding(
+              padding: const EdgeInsets.only(bottom: 10.0),
+              child: Text(
+                'Partnerzy Programu',
+                textAlign: TextAlign.center,
+                style: TextStyle(fontSize: 22, fontWeight: FontWeight.bold),
+              ),
+            ),
+            CarouselSlider.builder(
+                itemCount: partnerList.length,
+                itemBuilder:
+                    (BuildContext context, int itemIndex, int pageViewIndex) {
+                  //print(itemIndex);
+                  return Container(
+                    child: Center(
+                      child: SizedBox(
+                        width: 200,
+                        height: 170,
+                        child: Image.asset(
+                          '${partnerList[itemIndex]}',
+                          fit: BoxFit.contain,
+                        ),
+                      ),
+                    ),
+                  );
+                },
+                options: CarouselOptions(
+                  height: 150,
+                  //aspectRatio: 16 / 9,
+                  viewportFraction: 0.7,
+                  initialPage: 0,
+                  enableInfiniteScroll: true,
+                  reverse: false,
+                  autoPlay: true,
+                  autoPlayInterval: Duration(seconds: 3),
+                  autoPlayAnimationDuration: Duration(milliseconds: 800),
+                  autoPlayCurve: Curves.fastOutSlowIn,
+                  enlargeCenterPage: false,
+                  //onPageChanged: callbackFunction,
+                  scrollDirection: Axis.horizontal,
+                )),
+            ElevatedButton(
+              onPressed: () {
+                Provider.of<NavigationController>(context, listen: false)
+                    .changeScreen(5);
+              },
+              child: Text(
+                'ZOBACZ WIĘCEJ',
+                style: TextStyle(
+                  color: Colors.white,
+                ),
+              ),
+              style: ElevatedButton.styleFrom(
+                  // side: BorderSide(
+                  //   width: 1,
+                  //   color: Colors.black,
+                  //   //style: BorderStyle.solid,
+                  // ),
+                  primary: Colors.green,
 
                   //fixedSize: const Size(300, 100),
                   shape: RoundedRectangleBorder(

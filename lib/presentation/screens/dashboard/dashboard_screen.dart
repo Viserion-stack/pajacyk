@@ -3,6 +3,7 @@ import 'package:pajacyk/presentation/controllers/navigation.dart';
 import 'package:provider/provider.dart';
 
 import '../../components/circle_tab_indicator.dart';
+import '../../controllers/navigation.dart';
 
 class DashboardScreen extends StatefulWidget {
   const DashboardScreen({Key? key}) : super(key: key);
@@ -16,12 +17,13 @@ class DashboardScreen extends StatefulWidget {
 class _DashboardScreenState extends State<DashboardScreen>
     with SingleTickerProviderStateMixin {
   late TabController controller;
+  final GlobalKey<ScaffoldState> _scaffoldkey = new GlobalKey<ScaffoldState>();
 
   @override
   void initState() {
     controller = TabController(length: 7, vsync: this);
     controller.addListener(() {
-      print('lsitener tab contoller');
+      ///print('lsitener tab contoller');
 
       //controller.animateTo(curretIndex1);
     });
@@ -39,22 +41,29 @@ class _DashboardScreenState extends State<DashboardScreen>
     final navigation = Provider.of<NavigationController>(context, listen: true);
     return Scaffold(
       appBar: AppBar(
+        key: _scaffoldkey,
         backgroundColor: Colors.green[500],
-        title: TabBar(
-          controller: controller,
-          tabs: navigation.tabs,
-          onTap: (currentIndex) {
-            navigation.changeScreen(currentIndex);
+        title: Consumer<NavigationController>(
+          builder: (context, val, _) {
+            controller.animateTo(val.pageIndex,
+                duration: Duration(milliseconds: 300), curve: Curves.easeIn);
+            return TabBar(
+              controller: controller,
+              tabs: val.tabs,
+              onTap: (currentIndex) {
+                navigation.changeScreen(currentIndex);
+              },
+              splashFactory: NoSplash.splashFactory,
+              splashBorderRadius: BorderRadius.circular(40),
+              labelPadding: const EdgeInsets.only(left: 5, right: 5),
+              unselectedLabelStyle: const TextStyle(fontSize: 11),
+              isScrollable: true,
+              labelStyle: const TextStyle(fontSize: 15),
+              unselectedLabelColor: Colors.white,
+              labelColor: Colors.black54,
+              indicator: CircleTabIndicator(color: Colors.black54, radius: 4),
+            );
           },
-          splashFactory: NoSplash.splashFactory,
-          splashBorderRadius: BorderRadius.circular(40),
-          labelPadding: const EdgeInsets.only(left: 5, right: 5),
-          unselectedLabelStyle: const TextStyle(fontSize: 11),
-          isScrollable: true,
-          labelStyle: const TextStyle(fontSize: 15),
-          unselectedLabelColor: Colors.white,
-          labelColor: Colors.black54,
-          indicator: CircleTabIndicator(color: Colors.black54, radius: 4),
         ),
       ),
       body: Navigator(
