@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:pajacyk/presentation/screens/contact/contact_screen.dart';
 import 'package:pajacyk/presentation/screens/partnerzy/partnerzy_screen.dart';
+import 'package:pajacyk/presentation/screens/settings/settings_screen.dart';
 import 'package:pajacyk/presentation/screens/wesprzyj/wesprzyj_screen.dart';
 
 import '../screens/pajacyk/pajacyk_screen.dart';
@@ -44,6 +45,7 @@ class NavigationController extends ChangeNotifier {
     Tab(text: 'Inne akcje'),
     Tab(text: 'Partnerzy'),
     Tab(text: 'Kontakt'),
+    Tab(text: 'Ustawienia'),
   ];
   List<Page> getPages() {
     List<Page> pageList = [];
@@ -71,6 +73,9 @@ class NavigationController extends ChangeNotifier {
         break;
       case 6:
         pageList.add(const MaterialPage(child: ContactScreen()));
+        break;
+      case 7:
+        pageList.add(const MaterialPage(child: SettingsScreen()));
         break;
     }
     //print(pageList.length);

@@ -8,7 +8,6 @@ import '../../domain/notification_assistant/notification_assistant.dart';
 import '../../domain/widgets/dialog.dart';
 
 Future<PajacykModel> getSinglePostData(context) async {
-  NotificationApi notificationApi = NotificationApi();
   PajacykModel result = PajacykModel(count: '0', done: false);
   try {
     Response response = await Dio().post('https://www.pajacyk.pl/api/clicks');
@@ -22,19 +21,7 @@ Future<PajacykModel> getSinglePostData(context) async {
     }
   } catch (e) {
     print(e.toString());
-  } finally {
-    notificationApi
-        .showScheduledNotofication(
-          title: 'Cześć!',
-          body: 'Kliknij w brzuszek, aby pomóc dzieciom.',
-          payload: 'PAYLOAD TEXT!!!',
-          seconds: 3,
-        )
-        .then(
-          (value) => print('NOTIFI'),
-        );
-    //myPopUp(context, 'Dziś kliknęlo juz $count osób');
-  }
+  } finally {}
 
   return result;
 }
@@ -52,18 +39,21 @@ class PostDataProvider with ChangeNotifier {
   }
 
   void showPopUp(context) async {
-    // notificationApi
-    //     .showScheduledNotofication(
-    //       title: 'Cześć!',
-    //       body: 'Kliknij w brzuszek, aby pomóc dzieciom.',
-    //       payload: 'PAYLOAD TEXT!!!',
-    //       seconds: 3,
-    //     )
-    //     .then(
-    //       (value) => print('NOTIFI'),
-    //     );
-    print(pajacyk.count);
     myPopUp(
         context, 'Dziękujemy :)', 'Dziś kliknęlo juz ${pajacyk.count} osób');
+  }
+
+  void setNextNotification(context) async {
+    NotificationApi notificationApi = NotificationApi();
+    notificationApi
+        .showScheduledNotofication(
+          title: 'Cześć!',
+          body: 'Kliknij w brzuszek, aby pomóc dzieciom.',
+          payload: 'PAYLOAD TEXT!!!',
+          seconds: 3,
+        )
+        .then(
+          (value) => print('NOTIFI'),
+        );
   }
 }

@@ -21,7 +21,7 @@ class _DashboardScreenState extends State<DashboardScreen>
 
   @override
   void initState() {
-    controller = TabController(length: 7, vsync: this);
+    controller = TabController(length: 8, vsync: this);
     controller.addListener(() {
       ///print('lsitener tab contoller');
 
@@ -39,6 +39,7 @@ class _DashboardScreenState extends State<DashboardScreen>
   @override
   Widget build(BuildContext context) {
     final navigation = Provider.of<NavigationController>(context, listen: true);
+
     return Scaffold(
       appBar: AppBar(
         key: _scaffoldkey,
@@ -69,7 +70,7 @@ class _DashboardScreenState extends State<DashboardScreen>
       body: Navigator(
         pages: navigation.getPages(),
         onPopPage: (route, results) {
-          print('zmiana strony');
+          //print('zmiana strony');
           if (!route.didPop(results)) return false;
           return true;
         },

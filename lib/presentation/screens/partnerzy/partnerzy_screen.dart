@@ -3,7 +3,6 @@ import 'package:provider/provider.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 import '../../controllers/navigation.dart';
-import '../splash/splash_screen.dart';
 
 class PartnerzyScreen extends StatelessWidget {
   const PartnerzyScreen({Key? key}) : super(key: key);
@@ -151,10 +150,11 @@ class MyCard extends StatelessWidget {
   }
 }
 
+// ignore: must_be_immutable
 class StrategiczniPartnerzy extends StatelessWidget {
   StrategiczniPartnerzy({Key? key}) : super(key: key);
 
-  List<String> partnerList = [
+  final List<String> partnerList = [
     'assets/partners/santander.png',
     'assets/partners/alternberg.png',
     'assets/partners/electrolux.png',

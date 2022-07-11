@@ -4,6 +4,7 @@ import 'package:pajacyk/presentation/controllers/navigation.dart';
 import 'package:provider/provider.dart';
 import 'package:url_launcher/url_launcher.dart';
 
+import '../../../domain/preference_assistant/preference_assistant.dart';
 import '../../controllers/api_calls.dart';
 
 class SplashScreen extends StatefulWidget {
@@ -42,7 +43,8 @@ class _SplashScreenState extends State<SplashScreen>
   bool isPajactkPressed = false;
   @override
   Widget build(BuildContext context) {
-    print('rebuild');
+    final notification =
+        Provider.of<NotificationNotifier>(context, listen: true).isNotifi;
     return Scaffold(
       backgroundColor: Colors.green[500],
       body: SingleChildScrollView(
@@ -67,9 +69,10 @@ class _SplashScreenState extends State<SplashScreen>
                   ),
                   GestureDetector(
                     onTap: () async {
-                      // await Provider.of<PostDataProvider>(context,
-                      //         listen: false)
-                      //     .getPostData(context);
+                      await Provider.of<PostDataProvider>(context,
+                              listen: false)
+                          .getPostData(context);
+
                       setState(() {
                         print('setState');
                         isPajactkPressed = true;
@@ -83,6 +86,10 @@ class _SplashScreenState extends State<SplashScreen>
                         setState(() {
                           isPajactkPressed = false;
                         });
+                        if (notification) {
+                          Provider.of<PostDataProvider>(context, listen: false)
+                              .setNextNotification(context);
+                        }
                       });
                     },
                     child: SizedBox(
@@ -276,7 +283,7 @@ class MyCard extends StatelessWidget {
 
 class MyCarousel extends StatelessWidget {
   MyCarousel({Key? key}) : super(key: key);
-  List<String> partnerList = [
+  final List<String> partnerList = [
     'assets/partners/payBack.png',
     'assets/partners/dhl.png',
     'assets/partners/santander.png',
