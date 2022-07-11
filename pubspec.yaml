@@ -33,6 +33,7 @@ dependencies:
   retrofit: 3.0.1+1
   json_annotation: 4.4.0
   json_serializable: 6.1.5
+  
 
 
 
@@ -52,8 +53,7 @@ dev_dependencies:
 
 
 
-assets:
-    - assets/logo.png
+
 
 flutter_icons:
   android: true
@@ -62,6 +62,11 @@ flutter_icons:
 
 
 flutter:
+  assets:
+    - assets/logo.png
+    - assets/pah.png
+    - assets/image/
+    - assets/
 
 
   uses-material-design: true

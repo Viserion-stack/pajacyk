@@ -44,7 +44,7 @@ class LightPalette extends Palette {
   @override
   final Color cardColor = const Color(0xffffffff);
   @override
-  final Color primaryColor = const Color(0xffF2EB2F);
+  final Color primaryColor = Colors.green;
   @override
   final Color primaryDarkColor = const Color(0xff112C4B);
   @override
@@ -68,7 +68,7 @@ class LightPalette extends Palette {
   @override
   final Color appBarBackgroundColor = const Color(0xff231F20);
   @override
-  final Color badgeColor1 = const Color(0xff1FA0B0);
+  final Color badgeColor1 = const Color(0xff3070B6);
   @override
   final Color badgeColor2 = const Color(0xff0022AA);
   @override
@@ -177,10 +177,7 @@ class AppTheme {
           systemNavigationBarIconBrightness: palette.brightness,
         ),
         toolbarTextStyle: TextStyle(color: palette.primaryColor),
-        titleTextStyle: TextStyle(
-            color: palette.textOnPrimaryColor,
-            fontWeight: FontWeight.w600,
-            fontSize: 14),
+        titleTextStyle: TextStyle(color: palette.textOnPrimaryColor, fontWeight: FontWeight.w600, fontSize: 14),
         color: palette.appBarBackgroundColor,
         iconTheme: IconThemeData(color: palette.textOnPrimaryColor),
         actionsIconTheme: IconThemeData(color: palette.textOnPrimaryColor),
@@ -267,8 +264,7 @@ class AppTheme {
         ),
       );
 
-  MaterialColor generateMaterialColor(Color color) =>
-      MaterialColor(color.value, {
+  MaterialColor generateMaterialColor(Color color) => MaterialColor(color.value, {
         50: tintColor(color, 0.9),
         100: tintColor(color, 0.8),
         200: tintColor(color, 0.6),
