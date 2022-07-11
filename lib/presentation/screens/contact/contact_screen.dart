@@ -41,14 +41,14 @@ class KontaktCard extends StatelessWidget {
     return Container(
       padding: EdgeInsets.only(bottom: 16),
       width: size.width * 0.9,
-      height: size.height * 0.7,
+      height: size.height * 0.65,
       child: Card(
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(15.0),
         ),
         color: Colors.white,
         child: Column(
-          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+          mainAxisAlignment: MainAxisAlignment.spaceAround,
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
             Text(
@@ -197,7 +197,7 @@ class KontaktSzkolaCard extends StatelessWidget {
         ),
         color: Colors.white,
         child: Column(
-          mainAxisAlignment: MainAxisAlignment.spaceAround,
+          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
             Image.asset('assets/abc.png'),
@@ -253,6 +253,7 @@ class KontaktSzkolaCard extends StatelessWidget {
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 10.0),
               child: SizedBox(
+                height: 40,
                 width: double.infinity,
                 child: ElevatedButton(
                   onPressed: () {
@@ -267,7 +268,7 @@ class KontaktSzkolaCard extends StatelessWidget {
                   style: ElevatedButton.styleFrom(
                       primary: Colors.blue[700],
                       shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(15))),
+                          borderRadius: BorderRadius.circular(30))),
                 ),
               ),
             ),
@@ -292,14 +293,14 @@ class KontaktWspolpracaCard extends StatelessWidget {
     return Container(
       padding: EdgeInsets.only(bottom: 16),
       width: size.width * 0.9,
-      height: size.height * 0.55,
+      height: size.height * 0.57,
       child: Card(
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(15.0),
         ),
         color: Colors.white,
         child: Column(
-          mainAxisAlignment: MainAxisAlignment.spaceAround,
+          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
             Padding(
@@ -356,6 +357,7 @@ class KontaktWspolpracaCard extends StatelessWidget {
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 10.0),
               child: SizedBox(
+                height: 40,
                 width: double.infinity,
                 child: ElevatedButton(
                   onPressed: () {
@@ -370,7 +372,7 @@ class KontaktWspolpracaCard extends StatelessWidget {
                   style: ElevatedButton.styleFrom(
                       primary: Colors.blue[700],
                       shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(15))),
+                          borderRadius: BorderRadius.circular(30))),
                 ),
               ),
             ),

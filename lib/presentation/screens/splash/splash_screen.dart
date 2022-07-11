@@ -52,14 +52,23 @@ class _SplashScreenState extends State<SplashScreen>
           child: Center(
             child: Column(
               children: [
-                Text(
-                  'Witaj w krainie Pajacyka!',
-                  style: TextStyle(color: Colors.white, fontSize: 22),
+                Padding(
+                  padding: const EdgeInsets.only(top: 20.0),
+                  child: Text(
+                    'Witaj w krainie Pajacyka!',
+                    style: TextStyle(color: Colors.white, fontSize: 22),
+                  ),
                 ),
-                Text(
-                  '\nPajacyk od wielu lat wspiera prawidłowy rozwój dzieci. Pamiętaj, że kliknięcie w brzuszek,to pierwszy krok, by pomóc.',
-                  textAlign: TextAlign.center,
-                  style: TextStyle(color: Colors.white, fontSize: 15),
+                Padding(
+                  padding: EdgeInsets.symmetric(horizontal: 20),
+                  child: Padding(
+                    padding: const EdgeInsets.only(top: 5.0),
+                    child: Text(
+                      'Pajacyk od wielu lat wspiera prawidłowy rozwój dzieci. Pamiętaj, że kliknięcie w brzuszek,to pierwszy krok, by pomóc.',
+                      textAlign: TextAlign.center,
+                      style: TextStyle(color: Colors.white, fontSize: 15),
+                    ),
+                  ),
                 ),
                 Stack(alignment: AlignmentDirectional.bottomCenter, children: [
                   Image.asset(
@@ -210,71 +219,83 @@ class MyCard extends StatelessWidget {
     return Container(
       padding: EdgeInsets.only(bottom: 16),
       width: size.width * 0.9,
-      height: size.height * 0.35,
+      height: size.height * 0.38,
       child: Card(
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(15.0),
         ),
         color: cardColor ?? Colors.white,
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.spaceAround,
-          crossAxisAlignment: CrossAxisAlignment.center,
-          children: [
-            Row(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                imageIndex == null
-                    ? SizedBox()
-                    : SizedBox(
-                        width: size.width * 0.15,
-                        height: size.height * 0.15,
-                        child: Padding(
-                          padding: const EdgeInsets.only(right: 8.0),
-                          child: Image.asset('assets/$imageIndex.png'),
-                        )),
-                Text(
-                  headerText,
+        child: Padding(
+          padding: const EdgeInsets.all(10.0),
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+            crossAxisAlignment: CrossAxisAlignment.center,
+            children: [
+              Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  imageIndex == null
+                      ? SizedBox()
+                      : SizedBox(
+                          width: size.width * 0.15,
+                          height: size.height * 0.1,
+                          child: Padding(
+                            padding: const EdgeInsets.only(right: 8.0),
+                            child: Image.asset(
+                              'assets/$imageIndex.png',
+                              fit: BoxFit.contain,
+                            ),
+                          )),
+                  Text(
+                    headerText,
+                    textAlign: TextAlign.center,
+                    style: TextStyle(
+                        color: headerColor ?? Colors.black,
+                        fontSize: 22,
+                        fontWeight: FontWeight.bold),
+                  ),
+                ],
+              ),
+              Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 12.0),
+                child: Text(
+                  bodyText,
                   textAlign: TextAlign.center,
-                  style: TextStyle(
-                      color: headerColor ?? Colors.black,
-                      fontSize: 22,
-                      fontWeight: FontWeight.bold),
-                ),
-              ],
-            ),
-            Text(
-              bodyText,
-              textAlign: TextAlign.center,
-              style: TextStyle(fontWeight: FontWeight.w600, fontSize: 14),
-            ),
-            ElevatedButton(
-              onPressed: () {
-                if (url == null) {
-                  Provider.of<NavigationController>(context, listen: false)
-                      .changeScreen(2);
-                } else {
-                  _launchURL(url!);
-                }
-              },
-              child: Text(
-                buttonText,
-                style: TextStyle(
-                  color: buttonTextColor ?? Colors.black,
+                  style: TextStyle(fontWeight: FontWeight.w600, fontSize: 14),
                 ),
               ),
-              style: ElevatedButton.styleFrom(
-                  // side: BorderSide(
-                  //   width: 1,
-                  //   color: Colors.black,
-                  //   //style: BorderStyle.solid,
-                  // ),
-                  primary: buttonColor ?? Colors.white,
+              SizedBox(
+                height: 40,
+                child: ElevatedButton(
+                  onPressed: () {
+                    if (url == null) {
+                      Provider.of<NavigationController>(context, listen: false)
+                          .changeScreen(2);
+                    } else {
+                      _launchURL(url!);
+                    }
+                  },
+                  child: Text(
+                    buttonText,
+                    style: TextStyle(
+                      color: buttonTextColor ?? Colors.black,
+                    ),
+                  ),
+                  style: ElevatedButton.styleFrom(
+                      // side: BorderSide(
+                      //   width: 1,
+                      //   color: Colors.black,
+                      //   //style: BorderStyle.solid,
+                      // ),
+                      primary: buttonColor ?? Colors.white,
 
-                  //fixedSize: const Size(300, 100),
-                  shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(15))),
-            ),
-          ],
+                      //fixedSize: const Size(300, 100),
+                      shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(30))),
+                ),
+              ),
+            ],
+          ),
         ),
       ),
     );

@@ -19,7 +19,7 @@ class PartnerzyScreen extends StatelessWidget {
               children: [
                 MyCard(
                   width: 0.9,
-                  height: 1.1,
+                  height: 1,
                   //url: 'https://www.pajacyk.pl/wesprzyj',
                   headerText: 'PARTNERZY',
                   bodyText:
@@ -80,7 +80,7 @@ class MyCard extends StatelessWidget {
         ),
         color: cardColor ?? Colors.white,
         child: Column(
-          mainAxisAlignment: MainAxisAlignment.spaceAround,
+          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
             Row(
@@ -106,7 +106,9 @@ class MyCard extends StatelessWidget {
               ],
             ),
             Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 10.0),
+              padding: const EdgeInsets.symmetric(
+                horizontal: 25.0,
+              ),
               child: Text(
                 bodyText,
                 textAlign: TextAlign.center,
@@ -114,8 +116,9 @@ class MyCard extends StatelessWidget {
               ),
             ),
             Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 10.0),
+              padding: const EdgeInsets.symmetric(horizontal: 20.0),
               child: SizedBox(
+                height: 40,
                 width: double.infinity,
                 child: ElevatedButton(
                   onPressed: () {
@@ -135,7 +138,7 @@ class MyCard extends StatelessWidget {
                   style: ElevatedButton.styleFrom(
                       primary: Colors.blue[700],
                       shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(15))),
+                          borderRadius: BorderRadius.circular(30))),
                 ),
               ),
             ),
@@ -186,7 +189,7 @@ class StrategiczniPartnerzy extends StatelessWidget {
     return Container(
       padding: EdgeInsets.only(bottom: 16),
       width: size.width * 0.9,
-      height: size.height * 1.85,
+      height: size.height * 1.75,
       child: Card(
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(15.0),
@@ -197,7 +200,7 @@ class StrategiczniPartnerzy extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
             Padding(
-              padding: const EdgeInsets.all(12.0),
+              padding: const EdgeInsets.only(top: 25.0),
               child: Text(
                 'PARTNERZY STRATEGICZNI',
                 textAlign: TextAlign.center,
@@ -208,7 +211,7 @@ class StrategiczniPartnerzy extends StatelessWidget {
               ),
             ),
             Padding(
-              padding: const EdgeInsets.all(8.0),
+              padding: const EdgeInsets.symmetric(horizontal: 14.0),
               child: GridView.builder(
                   primary: false,
                   shrinkWrap: true,
@@ -230,7 +233,7 @@ class StrategiczniPartnerzy extends StatelessWidget {
                   }),
             ),
             Padding(
-              padding: const EdgeInsets.all(12.0),
+              padding: const EdgeInsets.symmetric(horizontal: 12.0),
               child: Text(
                 'PARTNERZY WSPIERAJĄCY',
                 textAlign: TextAlign.center,
@@ -241,7 +244,7 @@ class StrategiczniPartnerzy extends StatelessWidget {
               ),
             ),
             Padding(
-              padding: const EdgeInsets.all(16),
+              padding: const EdgeInsets.symmetric(horizontal: 25.0),
               child: GridView.builder(
                   primary: false,
                   shrinkWrap: true,
@@ -287,7 +290,7 @@ class ZostanPartneremCard extends StatelessWidget {
         ),
         color: Colors.white,
         child: Column(
-          mainAxisAlignment: MainAxisAlignment.spaceAround,
+          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
             Image.asset('assets/receIcon.png'),
@@ -317,6 +320,7 @@ class ZostanPartneremCard extends StatelessWidget {
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 10.0),
               child: SizedBox(
+                height: 40,
                 width: double.infinity,
                 child: ElevatedButton(
                   onPressed: () {
@@ -331,7 +335,7 @@ class ZostanPartneremCard extends StatelessWidget {
                   style: ElevatedButton.styleFrom(
                       primary: Colors.blue[700],
                       shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(15))),
+                          borderRadius: BorderRadius.circular(30))),
                 ),
               ),
             ),
