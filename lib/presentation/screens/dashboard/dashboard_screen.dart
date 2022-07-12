@@ -21,7 +21,7 @@ class _DashboardScreenState extends State<DashboardScreen>
 
   @override
   void initState() {
-    controller = TabController(length: 8, vsync: this);
+    controller = TabController(length: 7, vsync: this);
     controller.addListener(() {
       ///print('lsitener tab contoller');
 

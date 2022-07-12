@@ -124,7 +124,7 @@ class MyCard extends StatelessWidget {
                   onPressed: () {
                     if (url == null) {
                       Provider.of<NavigationController>(context, listen: false)
-                          .changeScreen(6);
+                          .changeScreen(5);
                     } else {
                       _launchURL(url!);
                     }

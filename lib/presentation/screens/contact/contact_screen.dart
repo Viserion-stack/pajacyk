@@ -32,11 +32,6 @@ class KontaktCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    void _launchURL(String url) async {
-      final Uri _url = Uri.parse(url);
-      if (!await launchUrl(_url)) throw 'Could not launch $url';
-    }
-
     final size = MediaQuery.of(context).size;
     return Container(
       padding: EdgeInsets.only(bottom: 16),

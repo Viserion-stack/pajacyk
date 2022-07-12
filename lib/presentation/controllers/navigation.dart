@@ -42,7 +42,6 @@ class NavigationController extends ChangeNotifier {
     Tab(text: 'Pajacyk'),
     Tab(text: 'Wesprzyj'),
     Tab(text: 'Nabór'),
-    Tab(text: 'Inne akcje'),
     Tab(text: 'Partnerzy'),
     Tab(text: 'Kontakt'),
     Tab(text: 'Ustawienia'),
@@ -65,16 +64,14 @@ class NavigationController extends ChangeNotifier {
       case 3:
         pageList.add(const MaterialPage(child: WesprzyjScreen()));
         break;
+
       case 4:
-        pageList.add(const MaterialPage(child: SplashScreen()));
-        break;
-      case 5:
         pageList.add(const MaterialPage(child: PartnerzyScreen()));
         break;
-      case 6:
+      case 5:
         pageList.add(const MaterialPage(child: ContactScreen()));
         break;
-      case 7:
+      case 6:
         pageList.add(const MaterialPage(child: SettingsScreen()));
         break;
     }

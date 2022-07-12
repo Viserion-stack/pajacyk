@@ -44,7 +44,7 @@ class LightPalette extends Palette {
   @override
   final Color cardColor = const Color(0xffffffff);
   @override
-  final Color primaryColor = const Color(0xffF2EB2F);
+  final Color primaryColor = Colors.green;
   @override
   final Color primaryDarkColor = const Color(0xff112C4B);
   @override
@@ -68,7 +68,7 @@ class LightPalette extends Palette {
   @override
   final Color appBarBackgroundColor = const Color(0xff231F20);
   @override
-  final Color badgeColor1 = const Color(0xff1FA0B0);
+  final Color badgeColor1 = const Color(0xff3070B6);
   @override
   final Color badgeColor2 = const Color(0xff0022AA);
   @override
