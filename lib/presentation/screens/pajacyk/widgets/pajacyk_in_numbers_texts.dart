@@ -51,8 +51,10 @@ class PajacykChildrensDescription extends StatelessWidget {
     return Center(
       child: Text(
         AppTexts.numberOfChildrenDescription,
-        style: context.textTheme.caption!
-            .copyWith(color: context.palette.badgeColor1.withOpacity(_colorOpacity), fontWeight: FontWeight.w500),
+        style: context.textTheme.caption!.copyWith(
+          color: context.palette.badgeColor1.withOpacity(_colorOpacity),
+          fontWeight: FontWeight.w500,
+        ),
         textAlign: TextAlign.center,
       ),
     );

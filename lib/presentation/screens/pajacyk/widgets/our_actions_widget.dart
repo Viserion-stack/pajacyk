@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/src/foundation/key.dart';
-import 'package:flutter/src/widgets/framework.dart';
 import 'package:pajacyk/presentation/application/app_assets.dart';
 import 'package:pajacyk/presentation/application/insets.dart';
+import 'package:pajacyk/presentation/application/pdf_files_https.dart';
 import 'package:pajacyk/presentation/application/texts.dart';
 import 'package:pajacyk/presentation/application/theme.dart';
+import 'package:url_launcher/url_launcher_string.dart';
 
 class OurActionWidget extends StatelessWidget {
   const OurActionWidget({Key? key}) : super(key: key);
@@ -25,14 +25,20 @@ class OurActionWidget extends StatelessWidget {
         OurActionWidgetItem(
           title: AppTexts.ourActionsTutorial,
           description: AppTexts.ourActionsTutorialDescription,
-          onTap: () {},
+          onTap: () => launchUrlString(
+            PdfLauncher.tutorialPdf,
+            mode: LaunchMode.externalApplication,
+          ),
           imagePath: AppAssets.ourActionTutorial,
         ),
         SizedBox(height: Insets.large),
         OurActionWidgetItem(
           title: AppTexts.ourActionsResult,
           description: AppTexts.ourActionsResultDescription,
-          onTap: () {},
+          onTap: () => launchUrlString(
+            PdfLauncher.resultsPdf,
+            mode: LaunchMode.externalApplication,
+          ),
           imagePath: AppAssets.ourTutorialResult,
         ),
         SizedBox(height: Insets.large),
@@ -113,6 +119,7 @@ class PdfButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
+      onTap: onTap,
       child: Container(
         width: double.infinity,
         padding: EdgeInsets.symmetric(
