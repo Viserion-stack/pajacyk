@@ -1,3 +1,4 @@
+import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:url_launcher/url_launcher.dart';
 
@@ -29,6 +30,21 @@ class ContactScreen extends StatelessWidget {
 
 class KontaktCard extends StatelessWidget {
   const KontaktCard({Key? key}) : super(key: key);
+  Future<void> _makePhoneCall(String phoneNumber) async {
+    final Uri launchUri = Uri(
+      scheme: 'tel',
+      path: phoneNumber,
+    );
+    await launchUrl(launchUri);
+  }
+
+  Future<void> _sendAnEmail(String emailTo) async {
+    final Uri launchUri = Uri(
+      scheme: 'mailto',
+      path: emailTo,
+    );
+    await launchUrl(launchUri);
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -73,6 +89,10 @@ class KontaktCard extends StatelessWidget {
                   ),
                   TextSpan(
                     text: ' +48 22 828 88 82',
+                    recognizer: TapGestureRecognizer()
+                      ..onTap = () async {
+                        _makePhoneCall('+48 22 828 88 82');
+                      },
                   ),
                   TextSpan(
                     text: '\nE-mail:',
@@ -81,7 +101,12 @@ class KontaktCard extends StatelessWidget {
                     ),
                   ),
                   TextSpan(
-                    text: 'pah@pah.org.pl',
+                    text: ' pah@pah.org.pl',
+                    recognizer: TapGestureRecognizer()
+                      ..onTap = () async {
+                        print('tel');
+                        _sendAnEmail('pah@pah.org.pl');
+                      },
                   ),
                   TextSpan(
                     text: '\nNIP:',
@@ -181,6 +206,22 @@ class KontaktSzkolaCard extends StatelessWidget {
       if (!await launchUrl(_url)) throw 'Could not launch $url';
     }
 
+    Future<void> _makePhoneCall(String phoneNumber) async {
+      final Uri launchUri = Uri(
+        scheme: 'tel',
+        path: phoneNumber,
+      );
+      await launchUrl(launchUri);
+    }
+
+    Future<void> _sendAnEmail(String emailTo) async {
+      final Uri launchUri = Uri(
+        scheme: 'mailto',
+        path: emailTo,
+      );
+      await launchUrl(launchUri);
+    }
+
     final size = MediaQuery.of(context).size;
     return Container(
       padding: EdgeInsets.only(bottom: 16),
@@ -227,6 +268,11 @@ class KontaktSzkolaCard extends StatelessWidget {
                     ),
                     TextSpan(
                       text: ' +48 501 752 160',
+                      recognizer: TapGestureRecognizer()
+                        ..onTap = () async {
+                          print('tel');
+                          _makePhoneCall('+48 501 752 160');
+                        },
                     ),
                     TextSpan(
                       text: '\nE-mail: ',
@@ -236,6 +282,11 @@ class KontaktSzkolaCard extends StatelessWidget {
                     ),
                     TextSpan(
                       text: 'pajacyk@pah.org.pl',
+                      recognizer: TapGestureRecognizer()
+                        ..onTap = () async {
+                          print('tel');
+                          _sendAnEmail('pah@pah.org.pl');
+                        },
                     ),
                     TextSpan(
                       text: '\nul. Wita Stwosza 2, 87–100 Toruń',

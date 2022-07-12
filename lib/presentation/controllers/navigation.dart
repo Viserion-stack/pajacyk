@@ -4,6 +4,7 @@ import 'package:pajacyk/presentation/screens/partnerzy/partnerzy_screen.dart';
 import 'package:pajacyk/presentation/screens/settings/settings_screen.dart';
 import 'package:pajacyk/presentation/screens/wesprzyj/wesprzyj_screen.dart';
 
+import '../screens/nabor/nabor_screen.dart';
 import '../screens/pajacyk/pajacyk_screen.dart';
 import '../screens/splash/splash_screen.dart';
 
@@ -62,7 +63,7 @@ class NavigationController extends ChangeNotifier {
         pageList.add(const MaterialPage(child: WesprzyjScreen()));
         break;
       case 3:
-        pageList.add(const MaterialPage(child: WesprzyjScreen()));
+        pageList.add(const MaterialPage(child: NaborScree()));
         break;
 
       case 4:

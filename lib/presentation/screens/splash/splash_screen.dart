@@ -1,3 +1,5 @@
+import 'dart:io';
+
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
 import 'package:pajacyk/presentation/controllers/navigation.dart';
@@ -18,6 +20,35 @@ class _SplashScreenState extends State<SplashScreen>
     with SingleTickerProviderStateMixin {
   late AnimationController animationController;
   late Animation<double> _animation;
+  void _launchURL(String url) async {
+    final Uri _url = Uri.parse(url);
+    if (!await launchUrl(_url)) throw 'Could not launch $url';
+  }
+
+  Future<void> _openFacebook() async {
+    String fbProtocolUrl;
+    if (Platform.isIOS) {
+      fbProtocolUrl = 'fb://profile/10150100801814768';
+    } else {
+      fbProtocolUrl = 'fb://profile/10150100801814768';
+    }
+
+    String fallbackUrl = 'https://www.facebook.com/PajacykPL';
+
+    try {
+      Uri fbBundleUri = Uri.parse(fbProtocolUrl);
+      var canLaunchNatively = await canLaunchUrl(fbBundleUri);
+
+      if (canLaunchNatively) {
+        launchUrl(fbBundleUri);
+      } else {
+        await launchUrl(Uri.parse(fallbackUrl),
+            mode: LaunchMode.externalApplication);
+      }
+    } catch (e, st) {
+      // Handle this as you prefer
+    }
+  }
 
   @override
   void initState() {
@@ -170,6 +201,47 @@ class _SplashScreenState extends State<SplashScreen>
                       cardColor: Colors.yellow,
                     ),
                     MyCarousel(),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                      children: [
+                        Row(
+                          //mainAxisAlignment: MainAxisAlignment.spaceEve,
+                          crossAxisAlignment: CrossAxisAlignment.center,
+                          children: [
+                            IconButton(
+                              padding: EdgeInsets.zero,
+                              onPressed: () {
+                                _openFacebook();
+                              },
+                              icon: Icon(
+                                Icons.facebook_outlined,
+                                size: 55,
+                              ),
+                            ),
+                            SizedBox(
+                              width: 5,
+                            ),
+                            Text('Sprawdź nasz Facebook')
+                          ],
+                        ),
+                        GestureDetector(
+                          onTap: (() {
+                            _launchURL('https://www.pah.org.pl');
+                          }),
+                          child: SizedBox(
+                            width: 100,
+                            height: 70,
+                            child: Padding(
+                              padding: const EdgeInsets.only(top: 8.0),
+                              child: Image.asset(
+                                'assets/pahLogo.png',
+                                // fit: BoxFit.contain,
+                              ),
+                            ),
+                          ),
+                        ),
+                      ],
+                    ),
                     SizedBox(
                       height: 20,
                     )
