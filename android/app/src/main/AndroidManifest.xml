@@ -1,21 +1,9 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.pajacyk">
-   <queries>
-     <!-- If your app checks for SMS support -->
-     <intent>
-       <action android:name="android.intent.action.VIEW" />
-       <data android:scheme="sms" />
-     </intent>
-     <!-- If your app checks for call support -->
-     <intent>
-       <action android:name="android.intent.action.VIEW" />
-       <data android:scheme="tel" />ą
-     </intent>
-   </queries>
    <application
-        android:label="pajacyk"
+        android:label="Pajacyk"
         android:name="${applicationName}"
-        android:icon="@mipmap/ic_launcher">
+        android:icon="@mipmap/launcher_icon">
         <activity
             android:name=".MainActivity"
             android:exported="true"
