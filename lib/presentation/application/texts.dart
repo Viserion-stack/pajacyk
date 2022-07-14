@@ -31,4 +31,22 @@ class AppTexts {
   static const String ourActionsResult = 'Wyniki naboru 2020/2021';
   static const String ourActionsResultDescription = 'Zobacz wyniki naboru na rok szkolny 2020/2021';
   static const String ourActionsButtonText = 'Zobacz plik PDF';
+
+  //nabor
+  static const String cardTitle = 'NABÓR DO\nPROGRAMU';
+  static const String cardDescription =
+      'W Twojej szkole, świetlicy, placówce wsparcia dziennego są dzieci, które potrzebują pomocy? Zgłoś się do programu Pajacyk i uzyskaj dofinansowanie na wsparcie.';
+  static const String cardMore = 'WIĘCEJ';
+
+  //partnerzy
+  static const String headerText = 'PARTNERZY';
+  static const String partnerzyBodyText =
+      'Program Pajacyk działa w dużej mierze dzięki wsparciu polskich firm. Partnerstwo opiera się na długofalowej współpracy. Naszym wspólnym celem jest zapewnienie posiłków dzieciom w szkołach i placówkach środowiskowych. Nasze działania, oprócz dożywiania, obejmują wsparcie psychospołeczne dzieci i młodzieży, nastawione na rozwój kompetencji życiowych, społecznych oraz zainteresowań.\nPoznaj Partnerów Pajacyka i dołącz do ich grona!';
+  static const String contactText = 'KONTAKT';
+  static const String partnerzyStrategiczni = 'PARTNERZY STRATEGICZNI';
+  static const String partnerzyWspierajacy = 'PARTNERZY WSPIERAJĄCY';
+  static const String partnerzyCardTitle = 'Zostań naszym partnerem';
+  static const String partnerzyCardDescription =
+      '\nZobacz, jak Twoja firma może razem z nami zaangażować się we wspieranie najbardziej potrzebujących dzieci.';
+  static const String cardButtonText = 'ZOSTAŃ PARTNEREM';
 }

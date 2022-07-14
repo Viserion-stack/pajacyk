@@ -15,6 +15,9 @@ class AppAssets {
   static const String pajacykVacation = 'assets/pajacykVacation.png';
   static const String ourActionTutorial = 'assets/ourActionTutorial.png';
   static const String ourTutorialResult = 'assets/ourTutorialResult.png';
+  static const String naborCardImage = 'assets/nabor.png';
+  static const String pajacykKontakt = 'assets/pajacykKontakt.png';
+  static const String receIcon = 'assets/receIcon.png';
 
   //svg
   static const String pajacykBackground = '$_assetPath/pajacyk_background.svg';

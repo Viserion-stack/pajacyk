@@ -33,6 +33,7 @@ dependencies:
   retrofit: 3.0.1+1
   json_annotation: 4.4.0
   json_serializable: 6.1.5
+  carousel_slider: ^4.1.1
   
 
 
@@ -65,8 +66,8 @@ flutter:
   assets:
     - assets/logo.png
     - assets/pah.png
-    - assets/image/
     - assets/
+    - assets/partners/
 
 
   uses-material-design: true

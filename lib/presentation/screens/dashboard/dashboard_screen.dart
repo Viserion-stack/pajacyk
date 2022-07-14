@@ -4,8 +4,12 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:pajacyk/presentation/router/app_route.dart';
 import 'package:pajacyk/presentation/router/contact_route_factory.dart';
 import 'package:pajacyk/presentation/router/home_route_factory.dart';
+import 'package:pajacyk/presentation/router/nabor_route_factory.dart';
 import 'package:pajacyk/presentation/router/pajacyk_route_factory.dart';
+import 'package:pajacyk/presentation/router/partnerzy_route_factory.dart';
+import 'package:pajacyk/presentation/router/settings_route_factory.dart';
 import 'package:pajacyk/presentation/screens/dashboard/bloc/dashboard_bloc.dart';
+import 'package:pajacyk/presentation/screens/nabor/nabor_screen.dart';
 
 import '../../router/wesprzyj_route_factory.dart';
 
@@ -22,8 +26,7 @@ class DashboardScreen extends StatefulWidget {
   State<DashboardScreen> createState() => _DashboardScreenState();
 }
 
-class _DashboardScreenState extends State<DashboardScreen>
-    with SingleTickerProviderStateMixin {
+class _DashboardScreenState extends State<DashboardScreen> with SingleTickerProviderStateMixin {
   late TabController controller;
 
   @override
@@ -50,14 +53,13 @@ class _DashboardScreenState extends State<DashboardScreen>
             Tab(text: 'Pajacyk'),
             Tab(text: 'Wesprzyj'),
             Tab(text: 'Nabór'),
-            Tab(text: 'Inne akcje'),
             Tab(text: 'Partnerzy'),
             Tab(text: 'Kontakt'),
+            Tab(text: 'Ustawienia'),
           ],
           onTap: (currentIndex) {
             //print(currentIndex);
-            context.read<DashboardBloc>().add(UpdateDashboardTab(
-                tabIndex: DashboardTab.values[currentIndex]));
+            context.read<DashboardBloc>().add(UpdateDashboardTab(tabIndex: DashboardTab.values[currentIndex]));
 
             print('form tabBar');
             print(context.read<DashboardBloc>().state.currentTab);
@@ -90,13 +92,11 @@ class _DashboardContent extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return BlocBuilder<DashboardBloc, DashboardState>(
-        builder: (context, state) {
+    return BlocBuilder<DashboardBloc, DashboardState>(builder: (context, state) {
       print('from Build');
       print(context.read<DashboardBloc>().state.currentTab);
       return WillPopScope(
-        onWillPop: () async =>
-            !await navigatorKeys[state.currentTab]!.currentState!.maybePop(),
+        onWillPop: () async => !await navigatorKeys[state.currentTab]!.currentState!.maybePop(),
         child: Stack(
           children: [
             OffstageNavigator(
@@ -115,9 +115,24 @@ class _DashboardContent extends StatelessWidget {
               appRoute: const WesprzyjRouteFactory(),
             ),
             OffstageNavigator(
+              navigatorKey: navigatorKeys[DashboardTab.nabor],
+              isCurrent: state.currentTab == DashboardTab.nabor,
+              appRoute: const NaborRouteFactory(),
+            ),
+            OffstageNavigator(
+              navigatorKey: navigatorKeys[DashboardTab.partnerzy],
+              isCurrent: state.currentTab == DashboardTab.partnerzy,
+              appRoute: const PartnerzyRouteFactory(),
+            ),
+            OffstageNavigator(
               navigatorKey: navigatorKeys[DashboardTab.kontak],
               isCurrent: state.currentTab == DashboardTab.kontak,
               appRoute: const ContactRouteFactory(),
+            ),
+            OffstageNavigator(
+              navigatorKey: navigatorKeys[DashboardTab.ustawienia],
+              isCurrent: state.currentTab == DashboardTab.ustawienia,
+              appRoute: const SettingsRouteFactory(),
             ),
           ],
         ),
@@ -171,8 +186,7 @@ class _CirclePainter extends BoxPainter {
     late Paint _paint;
     _paint = Paint()..color = color;
     _paint = _paint..isAntiAlias = true;
-    final Offset circleOffset =
-        offset + Offset(cfg.size!.width / 2, cfg.size!.height - radius);
+    final Offset circleOffset = offset + Offset(cfg.size!.width / 2, cfg.size!.height - radius);
     canvas.drawCircle(circleOffset, radius, _paint);
   }
 }

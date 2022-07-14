@@ -35,8 +35,7 @@ class DashboardState extends Equatable {
   }
 
   @override
-  String toString() =>
-      'DashboardState(isProcessing: $isProcessing, argument: $argument, currentTab: $currentTab)';
+  String toString() => 'DashboardState(isProcessing: $isProcessing, argument: $argument, currentTab: $currentTab)';
 }
 
 enum DashboardTab {
@@ -44,7 +43,7 @@ enum DashboardTab {
   pajacyk,
   wesprzyj,
   nabor,
-  inneAkcje,
   partnerzy,
   kontak,
+  ustawienia,
 }
