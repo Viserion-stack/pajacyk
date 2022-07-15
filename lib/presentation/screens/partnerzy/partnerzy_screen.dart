@@ -1,4 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:pajacyk/presentation/application/app_assets.dart';
+import 'package:pajacyk/presentation/application/insets.dart';
+import 'package:pajacyk/presentation/application/pdf_files_https.dart';
+import 'package:pajacyk/presentation/application/texts.dart';
 import 'package:provider/provider.dart';
 import 'package:url_launcher/url_launcher.dart';
 
@@ -6,6 +10,10 @@ import '../../controllers/navigation.dart';
 
 class PartnerzyScreen extends StatelessWidget {
   const PartnerzyScreen({Key? key}) : super(key: key);
+
+  static const String routeName = '/partnerzy';
+
+  static const double _bottomSpace = 20;
 
   @override
   Widget build(BuildContext context) {
@@ -18,19 +26,13 @@ class PartnerzyScreen extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 MyCard(
-                  width: 0.9,
-                  height: 1,
-                  //url: 'https://www.pajacyk.pl/wesprzyj',
-                  headerText: 'PARTNERZY',
-                  bodyText:
-                      'Program Pajacyk działa w dużej mierze dzięki wsparciu polskich firm. Partnerstwo opiera się na długofalowej współpracy. Naszym wspólnym celem jest zapewnienie posiłków dzieciom w szkołach i placówkach środowiskowych. Nasze działania, oprócz dożywiania, obejmują wsparcie psychospołeczne dzieci i młodzieży, nastawione na rozwój kompetencji życiowych, społecznych oraz zainteresowań.\nPoznaj Partnerów Pajacyka i dołącz do ich grona!',
-                  buttonText: 'KONTAKT',
+                  headerText: AppTexts.headerText,
+                  bodyText: AppTexts.partnerzyBodyText,
+                  buttonText: AppTexts.contactText,
                 ),
                 StrategiczniPartnerzy(),
                 ZostanPartneremCard(),
-                SizedBox(
-                  height: 20,
-                )
+                SizedBox(height: _bottomSpace),
               ],
             ),
           ),
@@ -52,8 +54,6 @@ class MyCard extends StatelessWidget {
   final String? url;
   final Color? cardColor;
   final int? imageIndex;
-  final double height;
-  final double width;
 
   const MyCard({
     Key? key,
@@ -63,90 +63,106 @@ class MyCard extends StatelessWidget {
     this.url,
     this.cardColor,
     this.imageIndex,
-    required this.height,
-    required this.width,
   }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     final size = MediaQuery.of(context).size;
-    return Container(
-      padding: EdgeInsets.only(bottom: 16),
-      width: size.width * width,
-      height: size.height * height,
-      child: Card(
-        shape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.circular(15.0),
-        ),
-        color: cardColor ?? Colors.white,
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-          crossAxisAlignment: CrossAxisAlignment.center,
-          children: [
-            Row(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                imageIndex == null
-                    ? SizedBox()
-                    : SizedBox(
-                        width: size.width * 0.15,
-                        height: size.height * 0.15,
-                        child: Padding(
-                          padding: const EdgeInsets.only(right: 8.0),
-                          child: Image.asset('assets/$imageIndex.png'),
-                        )),
-                Text(
-                  headerText,
-                  textAlign: TextAlign.center,
-                  style: TextStyle(
-                      color: Colors.blue[700],
-                      fontSize: 22,
-                      fontWeight: FontWeight.bold),
-                ),
-              ],
-            ),
-            Padding(
-              padding: const EdgeInsets.symmetric(
-                horizontal: 25.0,
-              ),
-              child: Text(
-                bodyText,
-                textAlign: TextAlign.center,
-                style: TextStyle(fontWeight: FontWeight.w600, fontSize: 14),
-              ),
-            ),
-            Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 20.0),
-              child: SizedBox(
-                height: 40,
-                width: double.infinity,
-                child: ElevatedButton(
-                  onPressed: () {
-                    if (url == null) {
-                      Provider.of<NavigationController>(context, listen: false)
-                          .changeScreen(5);
-                    } else {
-                      _launchURL(url!);
-                    }
-                  },
-                  child: Text(
-                    buttonText,
-                    style: TextStyle(
-                      color: Colors.white,
+    return Padding(
+      padding: const EdgeInsets.symmetric(horizontal: Insets.xLarge),
+      child: Container(
+        padding: EdgeInsets.only(bottom: Insets.xLarge),
+        child: Card(
+          shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.circular(15.0),
+          ),
+          color: cardColor ?? Colors.white,
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+            crossAxisAlignment: CrossAxisAlignment.center,
+            children: [
+              Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  imageIndex == null
+                      ? SizedBox.shrink()
+                      : SizedBox(
+                          width: size.width * 0.15,
+                          height: size.height * 0.15,
+                          child: Padding(
+                            padding: const EdgeInsets.only(right: 8.0),
+                            child: Image.asset('assets/$imageIndex.png'),
+                          ),
+                        ),
+                  Padding(
+                    padding: const EdgeInsets.symmetric(vertical: Insets.large),
+                    child: Text(
+                      headerText,
+                      textAlign: TextAlign.center,
+                      style: TextStyle(
+                        color: Colors.blue[700],
+                        fontSize: 22,
+                        fontWeight: FontWeight.bold,
+                      ),
                     ),
                   ),
-                  style: ElevatedButton.styleFrom(
-                      primary: Colors.blue[700],
-                      shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(30))),
+                ],
+              ),
+              Padding(
+                padding: const EdgeInsets.symmetric(
+                  horizontal: 25.0,
+                ),
+                child: Text(
+                  bodyText,
+                  textAlign: TextAlign.center,
+                  style: TextStyle(
+                    fontWeight: FontWeight.w600,
+                    fontSize: 14,
+                  ),
                 ),
               ),
-            ),
-            Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 10.0),
-              child: Image.asset('assets/pajacykKontakt.png'),
-            ),
-          ],
+              Padding(
+                padding: const EdgeInsets.symmetric(
+                  horizontal: Insets.large,
+                  vertical: Insets.large,
+                ),
+                child: SizedBox(
+                  height: 40,
+                  width: double.infinity,
+                  child: ElevatedButton(
+                    onPressed: () {
+                      if (url == null) {
+                        Provider.of<NavigationController>(context,
+                                listen: false)
+                            .changeScreen(5);
+                      } else {
+                        _launchURL(url!);
+                      }
+                    },
+                    child: Text(
+                      buttonText,
+                      style: TextStyle(
+                        color: Colors.white,
+                      ),
+                    ),
+                    style: ElevatedButton.styleFrom(
+                      primary: Colors.blue[700],
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(30),
+                      ),
+                    ),
+                  ),
+                ),
+              ),
+              Padding(
+                padding: const EdgeInsets.symmetric(
+                  horizontal: Insets.large,
+                  vertical: Insets.large,
+                ),
+                child: Image.asset(AppAssets.pajacykKontakt),
+              ),
+            ],
+          ),
         ),
       ),
     );
@@ -185,84 +201,94 @@ class StrategiczniPartnerzy extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final size = MediaQuery.of(context).size;
-    return Container(
-      padding: EdgeInsets.only(bottom: 16),
-      width: size.width * 0.9,
-      height: size.height * 1.75,
-      child: Card(
-        shape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.circular(15.0),
-        ),
-        color: Colors.white,
-        child: Column(
-          //: MainAxisAlignment.spaceAround,
-          crossAxisAlignment: CrossAxisAlignment.center,
-          children: [
-            Padding(
-              padding: const EdgeInsets.only(top: 25.0),
-              child: Text(
-                'PARTNERZY STRATEGICZNI',
-                textAlign: TextAlign.center,
-                style: TextStyle(
-                    color: Colors.blue[700],
-                    fontSize: 22,
-                    fontWeight: FontWeight.bold),
-              ),
-            ),
-            Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 14.0),
-              child: GridView.builder(
-                  primary: false,
-                  shrinkWrap: true,
-                  physics: NeverScrollableScrollPhysics(),
-                  gridDelegate: const SliverGridDelegateWithMaxCrossAxisExtent(
+    return Padding(
+      padding: const EdgeInsets.symmetric(horizontal: Insets.xLarge),
+      child: Container(
+        padding: EdgeInsets.only(bottom: Insets.large),
+        child: Card(
+          shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.circular(15.0),
+          ),
+          color: Colors.white,
+          child: Padding(
+            padding: const EdgeInsets.symmetric(horizontal: Insets.large),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.center,
+              children: [
+                Padding(
+                  padding: const EdgeInsets.only(top: 25.0),
+                  child: Text(
+                    AppTexts.partnerzyStrategiczni,
+                    textAlign: TextAlign.center,
+                    style: TextStyle(
+                      color: Colors.blue[700],
+                      fontSize: 22,
+                      fontWeight: FontWeight.bold,
+                    ),
+                  ),
+                ),
+                Padding(
+                  padding: const EdgeInsets.symmetric(horizontal: 14.0),
+                  child: GridView.builder(
+                    primary: false,
+                    shrinkWrap: true,
+                    physics: NeverScrollableScrollPhysics(),
+                    gridDelegate:
+                        const SliverGridDelegateWithMaxCrossAxisExtent(
                       maxCrossAxisExtent: 200,
                       childAspectRatio: 3 / 2,
                       crossAxisSpacing: 20,
-                      mainAxisSpacing: 20),
-                  itemCount: partnerList.length,
-                  itemBuilder: (context, index) {
-                    return SizedBox(
+                      mainAxisSpacing: 20,
+                    ),
+                    itemCount: partnerList.length,
+                    itemBuilder: (context, index) {
+                      return SizedBox(
                         width: 20,
                         height: 20,
                         child: Image.asset(
                           partnerList[index],
                           fit: BoxFit.contain,
-                        ));
-                  }),
-            ),
-            Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 12.0),
-              child: Text(
-                'PARTNERZY WSPIERAJĄCY',
-                textAlign: TextAlign.center,
-                style: TextStyle(
-                    color: Colors.blue[700],
-                    fontSize: 22,
-                    fontWeight: FontWeight.bold),
-              ),
-            ),
-            Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 25.0),
-              child: GridView.builder(
-                  primary: false,
-                  shrinkWrap: true,
-                  physics: NeverScrollableScrollPhysics(),
-                  gridDelegate: const SliverGridDelegateWithMaxCrossAxisExtent(
+                        ),
+                      );
+                    },
+                  ),
+                ),
+                Padding(
+                  padding: const EdgeInsets.symmetric(horizontal: 12.0),
+                  child: Text(
+                    AppTexts.partnerzyWspierajacy,
+                    textAlign: TextAlign.center,
+                    style: TextStyle(
+                        color: Colors.blue[700],
+                        fontSize: 22,
+                        fontWeight: FontWeight.bold),
+                  ),
+                ),
+                Padding(
+                  padding: const EdgeInsets.symmetric(horizontal: 25.0),
+                  child: GridView.builder(
+                    primary: false,
+                    shrinkWrap: true,
+                    physics: NeverScrollableScrollPhysics(),
+                    gridDelegate:
+                        const SliverGridDelegateWithMaxCrossAxisExtent(
                       maxCrossAxisExtent: 200,
                       childAspectRatio: 3 / 2,
                       crossAxisSpacing: 10,
-                      mainAxisSpacing: 10),
-                  itemCount: partnerWspierajacyList.length,
-                  itemBuilder: (context, index) {
-                    return Image.asset(
-                      partnerWspierajacyList[index],
-                      fit: BoxFit.contain,
-                    );
-                  }),
+                      mainAxisSpacing: 10,
+                    ),
+                    itemCount: partnerWspierajacyList.length,
+                    itemBuilder: (context, index) {
+                      return Image.asset(
+                        partnerWspierajacyList[index],
+                        fit: BoxFit.contain,
+                      );
+                    },
+                  ),
+                ),
+              ],
             ),
-          ],
+          ),
         ),
       ),
     );
@@ -279,67 +305,75 @@ class ZostanPartneremCard extends StatelessWidget {
       if (!await launchUrl(_url)) throw 'Could not launch $url';
     }
 
-    final size = MediaQuery.of(context).size;
-    return Container(
-      padding: EdgeInsets.only(bottom: 16),
-      width: size.width * 0.9,
-      height: size.height * 0.35,
-      child: Card(
-        shape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.circular(15.0),
-        ),
-        color: Colors.white,
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-          crossAxisAlignment: CrossAxisAlignment.center,
-          children: [
-            Image.asset('assets/receIcon.png'),
-            Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 10.0),
-              child: Text.rich(
-                TextSpan(
-                  style: TextStyle(
-                    //fontSize: 17,
-                    color: Colors.black,
-                  ),
-                  children: <TextSpan>[
+    return Padding(
+      padding: const EdgeInsets.symmetric(horizontal: Insets.xLarge),
+      child: Container(
+        padding: EdgeInsets.only(bottom: Insets.xLarge),
+        child: Card(
+          shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.circular(15.0),
+          ),
+          color: Colors.white,
+          child: Padding(
+            padding: const EdgeInsets.symmetric(
+              horizontal: Insets.xLarge,
+              vertical: Insets.large,
+            ),
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+              crossAxisAlignment: CrossAxisAlignment.center,
+              children: [
+                Image.asset(AppAssets.receIcon),
+                Padding(
+                  padding: const EdgeInsets.symmetric(horizontal: 10.0),
+                  child: Text.rich(
                     TextSpan(
-                      text: 'Zostań naszym partnerem',
                       style: TextStyle(
-                        fontWeight: FontWeight.bold,
+                        color: Colors.black,
+                      ),
+                      children: <TextSpan>[
+                        TextSpan(
+                          text: AppTexts.partnerzyCardTitle,
+                          style: TextStyle(
+                            fontWeight: FontWeight.bold,
+                          ),
+                        ),
+                        const TextSpan(text: AppTexts.partnerzyCardDescription),
+                      ],
+                    ),
+                    textAlign: TextAlign.center,
+                  ),
+                ),
+                Padding(
+                  padding: const EdgeInsets.only(
+                    top: Insets.large,
+                    bottom: Insets.small,
+                  ),
+                  child: SizedBox(
+                    height: 40,
+                    width: double.infinity,
+                    child: ElevatedButton(
+                      onPressed: () {
+                        _launchURL(PdfLauncher.partnerzy);
+                      },
+                      child: Text(
+                        AppTexts.cardButtonText,
+                        style: TextStyle(
+                          color: Colors.white,
+                        ),
+                      ),
+                      style: ElevatedButton.styleFrom(
+                        primary: Colors.blue[700],
+                        shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(30),
+                        ),
                       ),
                     ),
-                    const TextSpan(
-                        text:
-                            '\nZobacz, jak Twoja firma może razem z nami zaangażować się we wspieranie najbardziej potrzebujących dzieci.'),
-                  ],
-                ),
-                textAlign: TextAlign.center,
-              ),
-            ),
-            Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 10.0),
-              child: SizedBox(
-                height: 40,
-                width: double.infinity,
-                child: ElevatedButton(
-                  onPressed: () {
-                    _launchURL('https://www.pajacyk.pl/partnerzy/');
-                  },
-                  child: Text(
-                    'ZOSTAŃ PARTNEREM',
-                    style: TextStyle(
-                      color: Colors.white,
-                    ),
                   ),
-                  style: ElevatedButton.styleFrom(
-                      primary: Colors.blue[700],
-                      shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(30))),
                 ),
-              ),
+              ],
             ),
-          ],
+          ),
         ),
       ),
     );

@@ -1,14 +1,22 @@
 import 'package:flutter/material.dart';
+import 'package:pajacyk/presentation/application/app_assets.dart';
 import 'package:pajacyk/presentation/application/insets.dart';
+import 'package:pajacyk/presentation/application/pdf_files_https.dart';
+import 'package:pajacyk/presentation/application/texts.dart';
 import 'package:pajacyk/presentation/application/theme.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 class NaborScree extends StatelessWidget {
   const NaborScree({Key? key}) : super(key: key);
+
+  static const String routeName = '/nabor';
+
   void _launchURL(String url) async {
     final Uri _url = Uri.parse(url);
     if (!await launchUrl(_url)) throw 'Could not launch $url';
   }
+
+  static const double cardRadius = 15;
 
   @override
   Widget build(BuildContext context) {
@@ -20,7 +28,7 @@ class NaborScree extends StatelessWidget {
           children: [
             Card(
               shape: RoundedRectangleBorder(
-                borderRadius: BorderRadius.circular(15.0),
+                borderRadius: BorderRadius.circular(cardRadius),
               ),
               child: Padding(
                 padding: EdgeInsets.symmetric(horizontal: Insets.xLarge),
@@ -28,28 +36,31 @@ class NaborScree extends StatelessWidget {
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
                     Padding(
-                      padding: const EdgeInsets.symmetric(vertical: 16.0),
+                      padding:
+                          const EdgeInsets.symmetric(vertical: Insets.large),
                       child: Text(
-                        'NABÓR DO\nPROGRAMU',
+                        AppTexts.cardTitle,
                         style: TextStyle(
-                            color: Colors.amber[600], fontSize: Insets.xxLarge),
+                          color: Colors.amber[600],
+                          fontSize: Insets.xxLarge,
+                        ),
                       ),
                     ),
-                    Text(
-                      'W Twojej szkole, świetlicy, placówce wsparcia dziennego są dzieci, które potrzebują pomocy? Zgłoś się do programu Pajacyk i uzyskaj dofinansowanie na wsparcie.',
+                    Text(AppTexts.cardDescription),
+                    Padding(
+                      padding:
+                          const EdgeInsets.symmetric(vertical: Insets.large),
+                      child: Image.asset(AppAssets.naborCardImage),
                     ),
                     Padding(
-                      padding: const EdgeInsets.symmetric(vertical: 16.0),
-                      child: Image.asset('assets/nabor.png'),
-                    ),
-                    Padding(
-                      padding: const EdgeInsets.symmetric(vertical: 16.0),
+                      padding:
+                          const EdgeInsets.symmetric(vertical: Insets.large),
                       child: ElevatedButton(
                         onPressed: () {
-                          _launchURL('https://www.pajacyk.pl/nabor/');
+                          _launchURL(PdfLauncher.nabor);
                         },
                         child: Text(
-                          'WIĘCEJ',
+                          AppTexts.cardMore,
                           style: TextStyle(
                             color: Colors.white,
                           ),
