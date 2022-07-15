@@ -75,41 +75,58 @@ class _SplashScreenState extends State<SplashScreen>
                     scale: 1,
                     //fit: BoxFit.fitWidth,
                   ),
-                  GestureDetector(
-                    onTap: () async {
-                      await Provider.of<PostDataProvider>(context,
-                              listen: false)
-                          .getPostData(context);
+                  SizedBox(
+                      width: 400,
+                      height: 400,
+                      child: FadeTransition(
+                        opacity: _animation,
+                        child: Image.asset(
+                          isPajactkPressed
+                              ? 'assets/pajacykOn.png'
+                              : 'assets/pajacykOff.png',
+                          fit: BoxFit.cover,
+                        ),
+                      )),
+                  Positioned.fill(
+                    child: Align(
+                      alignment: Alignment.center,
+                      child: GestureDetector(
+                        onTap: () async {
+                          await Provider.of<PostDataProvider>(context,
+                                  listen: false)
+                              .getPostData(context);
 
-                      setState(() {
-                        isPajactkPressed = true;
+                          setState(
+                            () {
+                              isPajactkPressed = true;
 
-                        Provider.of<PostDataProvider>(context, listen: false)
-                            .showPopUp(context);
-                      });
+                              Provider.of<PostDataProvider>(context,
+                                      listen: false)
+                                  .showPopUp(context);
+                            },
+                          );
 
-                      Future.delayed(const Duration(seconds: 3), () {
-                        setState(() {
-                          isPajactkPressed = false;
-                        });
-                        if (notification) {
-                          Provider.of<PostDataProvider>(context, listen: false)
-                              .setNextNotification(context);
-                        }
-                      });
-                    },
-                    child: SizedBox(
-                        width: 400,
-                        height: 400,
-                        child: FadeTransition(
-                          opacity: _animation,
-                          child: Image.asset(
-                            isPajactkPressed
-                                ? 'assets/pajacykOn.png'
-                                : 'assets/pajacykOff.png',
-                            fit: BoxFit.cover,
-                          ),
-                        )),
+                          Future.delayed(
+                            const Duration(seconds: 3),
+                            () {
+                              setState(() {
+                                isPajactkPressed = false;
+                              });
+                              if (notification) {
+                                Provider.of<PostDataProvider>(context,
+                                        listen: false)
+                                    .setNextNotification(context);
+                              }
+                            },
+                          );
+                        },
+                        child: Container(
+                          color: Colors.transparent,
+                          width: 65,
+                          height: 65,
+                        ),
+                      ),
+                    ),
                   ),
                 ]),
 
