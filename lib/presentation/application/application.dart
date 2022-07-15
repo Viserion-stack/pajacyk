@@ -9,7 +9,7 @@ import '../controllers/navigation.dart';
 import '../screens/dashboard/dashboard_screen.dart';
 
 class Application extends StatelessWidget {
-  Application({
+  const Application({
     required this.appTheme,
     Key? key,
   }) : super(key: key);

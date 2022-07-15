@@ -29,23 +29,23 @@ class NavigationController extends ChangeNotifier {
   }
 
   List<Page> pages = [
-    MaterialPage(child: SplashScreen()),
-    MaterialPage(child: PajacykScreen()),
-    MaterialPage(child: WesprzyjScreen()),
-    MaterialPage(child: ContactScreen()),
-    MaterialPage(child: ContactScreen()),
-    MaterialPage(child: PartnerzyScreen()),
-    MaterialPage(child: PajacykScreen()),
+    const MaterialPage(child: SplashScreen()),
+    const MaterialPage(child: PajacykScreen()),
+    const MaterialPage(child: WesprzyjScreen()),
+    const MaterialPage(child: ContactScreen()),
+    const MaterialPage(child: ContactScreen()),
+    const MaterialPage(child: PartnerzyScreen()),
+    const MaterialPage(child: PajacykScreen()),
   ];
 
   List<Tab> tabs = [
-    Tab(text: 'Strona główna'),
-    Tab(text: 'Pajacyk'),
-    Tab(text: 'Wesprzyj'),
-    Tab(text: 'Nabór'),
-    Tab(text: 'Partnerzy'),
-    Tab(text: 'Kontakt'),
-    Tab(text: 'Ustawienia'),
+    const Tab(text: 'Strona główna'),
+    const Tab(text: 'Pajacyk'),
+    const Tab(text: 'Wesprzyj'),
+    const Tab(text: 'Nabór'),
+    const Tab(text: 'Partnerzy'),
+    const Tab(text: 'Kontakt'),
+    const Tab(text: 'Ustawienia'),
   ];
   List<Page> getPages() {
     List<Page> pageList = [];

@@ -11,6 +11,7 @@ class SettingsScreen extends StatelessWidget {
   const SettingsScreen({Key? key}) : super(key: key);
 
   void _launchURL(String url) async {
+    // ignore: no_leading_underscores_for_local_identifiers
     final Uri _url = Uri.parse(url);
     if (!await launchUrl(_url)) throw 'Could not launch $url';
   }
@@ -89,9 +90,9 @@ class SettingsScreen extends StatelessWidget {
               ),
             ),
           ),
-          Expanded(child: SizedBox()),
-          Text('App ver. 1.0'),
-          SizedBox(
+          const Expanded(child: SizedBox()),
+          const Text('App ver. 1.0'),
+          const SizedBox(
             height: Insets.large,
           )
         ],

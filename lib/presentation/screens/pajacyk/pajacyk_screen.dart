@@ -13,7 +13,7 @@ class PajacykScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
+    return const Scaffold(
       backgroundColor: Colors.green,
       body: PajacykScreenContent(),
     );
@@ -31,7 +31,7 @@ class PajacykScreenContent extends StatelessWidget {
         child: Padding(
           padding: const EdgeInsets.symmetric(horizontal: Insets.xLarge),
           child: Column(
-            children: [
+            children: const [
               PajacykCard(),
               SizedBox(height: Insets.large),
               WhatWeDoCard(),
@@ -80,7 +80,7 @@ class PajacykCard extends StatelessWidget {
                 color: Colors.white.withOpacity(textColorOpacity),
               ),
             ),
-            SizedBox(height: Insets.xLarge),
+            const SizedBox(height: Insets.xLarge),
             Text(
               AppTexts.pajacykDescription,
               style: context.textTheme.bodyText2!.copyWith(
@@ -88,7 +88,7 @@ class PajacykCard extends StatelessWidget {
                 fontSize: textdescriptionSize,
               ),
             ),
-            SizedBox(height: Insets.xLarge),
+            const SizedBox(height: Insets.xLarge),
             SizedBox(
               height: imageHeight,
               width: imageWidth,
@@ -134,12 +134,12 @@ class WhatWeDoCard extends StatelessWidget {
                 color: Colors.white.withOpacity(textColorOpacity),
               ),
             ),
-            SizedBox(height: Insets.xLarge),
-            PointerItem(descripttion: AppTexts.whatWeDoFirstPoint),
-            SizedBox(height: Insets.xLarge),
-            PointerItem(descripttion: AppTexts.whatWeDoSecondPoint),
-            SizedBox(height: Insets.xLarge),
-            PointerItem(descripttion: AppTexts.whatWeDoThirdPoint),
+            const SizedBox(height: Insets.xLarge),
+            const PointerItem(descripttion: AppTexts.whatWeDoFirstPoint),
+            const SizedBox(height: Insets.xLarge),
+            const PointerItem(descripttion: AppTexts.whatWeDoSecondPoint),
+            const SizedBox(height: Insets.xLarge),
+            const PointerItem(descripttion: AppTexts.whatWeDoThirdPoint),
           ],
         ),
       ),
@@ -176,7 +176,7 @@ class PointerItem extends StatelessWidget {
           fontSize: _textSize,
         ),
       ),
-      contentPadding: EdgeInsets.symmetric(horizontal: 0),
+      contentPadding: const EdgeInsets.symmetric(horizontal: 0),
     );
   }
 }
@@ -210,51 +210,51 @@ class PajacykInNumbers extends StatelessWidget {
                 color: context.palette.badgeColor1,
               ),
             ),
-            SizedBox(
+            const SizedBox(
               height: Insets.xLarge,
             ),
-            PajacykInNumbersItem(
+            const PajacykInNumbersItem(
               title: AppTexts.numberOfChildren,
               description: PajacykChildrensDescription(),
               imagePath: AppAssets.children,
             ),
-            CustomDivider(),
-            PajacykInNumbersItem(
+            const CustomDivider(),
+            const PajacykInNumbersItem(
               title: AppTexts.pajacykGeneral,
               description: PajacykGeneraly(),
               imagePath: AppAssets.pajacykGeneral,
             ),
-            CustomDivider(),
-            PajacykInNumbersItem(
+            const CustomDivider(),
+            const PajacykInNumbersItem(
               title: AppTexts.pajacykVacation,
               description: PajacykVacationDescription(),
               imagePath: AppAssets.pajacykVacation,
             ),
-            CustomDivider(),
-            PajacykInNumbersItem(
+            const CustomDivider(),
+            const PajacykInNumbersItem(
               title: AppTexts.pajacykPsychoHelp,
               description: PajacykPsychoHelpDescription(),
               imagePath: AppAssets.pajacykPsychoHelp,
             ),
-            CustomDivider(),
-            PajacykInNumbersItem(
+            const CustomDivider(),
+            const PajacykInNumbersItem(
               title: AppTexts.pajacykMeals,
               description: PajacykMealsDescription(),
               imagePath: AppAssets.pajacykMeals,
             ),
-            CustomDivider(),
-            PajacykInNumbersItem(
+            const CustomDivider(),
+            const PajacykInNumbersItem(
               title: AppTexts.pajacykHelpNetwork,
               description: PajacykHelpNetworkDescription(),
               imagePath: AppAssets.pajacykNetworkHelp,
             ),
-            CustomDivider(),
-            PajacykInNumbersItem(
+            const CustomDivider(),
+            const PajacykInNumbersItem(
               title: AppTexts.pajacykNoBreak,
               description: PajacykNoBreakDescription(),
               imagePath: AppAssets.pajacykNoBreak,
             ),
-            CustomDivider(),
+            const CustomDivider(),
           ],
         ),
       ),

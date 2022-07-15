@@ -1,3 +1,5 @@
+// ignore_for_file: prefer_const_constructors, no_leading_underscores_for_local_identifiers
+
 import 'package:flutter/material.dart';
 import 'package:pajacyk/presentation/application/app_assets.dart';
 import 'package:pajacyk/presentation/application/insets.dart';
@@ -20,19 +22,19 @@ class PartnerzyScreen extends StatelessWidget {
     return Scaffold(
       backgroundColor: Colors.green[500],
       body: SingleChildScrollView(
-        child: Container(
+        child: SizedBox(
           child: Center(
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                MyCard(
+                const MyCard(
                   headerText: AppTexts.headerText,
                   bodyText: AppTexts.partnerzyBodyText,
                   buttonText: AppTexts.contactText,
                 ),
                 StrategiczniPartnerzy(),
-                ZostanPartneremCard(),
-                SizedBox(height: _bottomSpace),
+                const ZostanPartneremCard(),
+                const SizedBox(height: _bottomSpace),
               ],
             ),
           ),
@@ -71,7 +73,7 @@ class MyCard extends StatelessWidget {
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: Insets.xLarge),
       child: Container(
-        padding: EdgeInsets.only(bottom: Insets.xLarge),
+        padding: const EdgeInsets.only(bottom: Insets.xLarge),
         child: Card(
           shape: RoundedRectangleBorder(
             borderRadius: BorderRadius.circular(15.0),
@@ -85,7 +87,7 @@ class MyCard extends StatelessWidget {
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   imageIndex == null
-                      ? SizedBox.shrink()
+                      ? const SizedBox.shrink()
                       : SizedBox(
                           width: size.width * 0.15,
                           height: size.height * 0.15,
@@ -115,7 +117,7 @@ class MyCard extends StatelessWidget {
                 child: Text(
                   bodyText,
                   textAlign: TextAlign.center,
-                  style: TextStyle(
+                  style: const TextStyle(
                     fontWeight: FontWeight.w600,
                     fontSize: 14,
                   ),
@@ -139,16 +141,16 @@ class MyCard extends StatelessWidget {
                         _launchURL(url!);
                       }
                     },
-                    child: Text(
-                      buttonText,
-                      style: TextStyle(
-                        color: Colors.white,
-                      ),
-                    ),
                     style: ElevatedButton.styleFrom(
                       primary: Colors.blue[700],
                       shape: RoundedRectangleBorder(
                         borderRadius: BorderRadius.circular(30),
+                      ),
+                    ),
+                    child: Text(
+                      buttonText,
+                      style: const TextStyle(
+                        color: Colors.white,
                       ),
                     ),
                   ),
@@ -204,7 +206,7 @@ class StrategiczniPartnerzy extends StatelessWidget {
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: Insets.xLarge),
       child: Container(
-        padding: EdgeInsets.only(bottom: Insets.large),
+        padding: const EdgeInsets.only(bottom: Insets.large),
         child: Card(
           shape: RoundedRectangleBorder(
             borderRadius: BorderRadius.circular(15.0),
@@ -232,7 +234,7 @@ class StrategiczniPartnerzy extends StatelessWidget {
                   child: GridView.builder(
                     primary: false,
                     shrinkWrap: true,
-                    physics: NeverScrollableScrollPhysics(),
+                    physics: const NeverScrollableScrollPhysics(),
                     gridDelegate:
                         const SliverGridDelegateWithMaxCrossAxisExtent(
                       maxCrossAxisExtent: 200,
@@ -269,7 +271,7 @@ class StrategiczniPartnerzy extends StatelessWidget {
                   child: GridView.builder(
                     primary: false,
                     shrinkWrap: true,
-                    physics: NeverScrollableScrollPhysics(),
+                    physics: const NeverScrollableScrollPhysics(),
                     gridDelegate:
                         const SliverGridDelegateWithMaxCrossAxisExtent(
                       maxCrossAxisExtent: 200,
@@ -308,7 +310,7 @@ class ZostanPartneremCard extends StatelessWidget {
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: Insets.xLarge),
       child: Container(
-        padding: EdgeInsets.only(bottom: Insets.xLarge),
+        padding: const EdgeInsets.only(bottom: Insets.xLarge),
         child: Card(
           shape: RoundedRectangleBorder(
             borderRadius: BorderRadius.circular(15.0),
@@ -327,7 +329,7 @@ class ZostanPartneremCard extends StatelessWidget {
                 Padding(
                   padding: const EdgeInsets.symmetric(horizontal: 10.0),
                   child: Text.rich(
-                    TextSpan(
+                    const TextSpan(
                       style: TextStyle(
                         color: Colors.black,
                       ),
@@ -338,7 +340,7 @@ class ZostanPartneremCard extends StatelessWidget {
                             fontWeight: FontWeight.bold,
                           ),
                         ),
-                        const TextSpan(text: AppTexts.partnerzyCardDescription),
+                        TextSpan(text: AppTexts.partnerzyCardDescription),
                       ],
                     ),
                     textAlign: TextAlign.center,
@@ -356,16 +358,16 @@ class ZostanPartneremCard extends StatelessWidget {
                       onPressed: () {
                         _launchURL(PdfLauncher.partnerzy);
                       },
-                      child: Text(
-                        AppTexts.cardButtonText,
-                        style: TextStyle(
-                          color: Colors.white,
-                        ),
-                      ),
                       style: ElevatedButton.styleFrom(
                         primary: Colors.blue[700],
                         shape: RoundedRectangleBorder(
                           borderRadius: BorderRadius.circular(30),
+                        ),
+                      ),
+                      child: const Text(
+                        AppTexts.cardButtonText,
+                        style: TextStyle(
+                          color: Colors.white,
                         ),
                       ),
                     ),

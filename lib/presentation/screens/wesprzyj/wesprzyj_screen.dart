@@ -58,19 +58,19 @@ class _WesprzyjWebviewState extends State<WesprzyjWebview> {
             isLoading = false;
           });
 
-          print('Page finished loading: $url');
+          debugPrint('Page finished loading: $url');
         },
         onWebResourceError: (WebResourceError e) {
-          print('WeResource error ${e.errorCode}');
+          debugPrint('WeResource error ${e.errorCode}');
           myPopUp(context, 'Bład ${e.errorCode}', ' ${e.domain}');
         },
       ),
       isLoading
-          ? Center(
+          ? const Center(
               child: CircularProgressIndicator.adaptive(
                   valueColor: AlwaysStoppedAnimation<Color>(Colors.green)),
             )
-          : SizedBox(),
+          : const SizedBox(),
     ]);
   }
 }

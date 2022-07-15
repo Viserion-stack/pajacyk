@@ -22,7 +22,7 @@ class OurActionWidget extends StatelessWidget {
             fontWeight: FontWeight.bold,
           ),
         ),
-        SizedBox(height: Insets.large),
+        const SizedBox(height: Insets.large),
         OurActionWidgetItem(
           title: AppTexts.ourActionsTutorial,
           description: AppTexts.ourActionsTutorialDescription,
@@ -32,7 +32,7 @@ class OurActionWidget extends StatelessWidget {
           ),
           imagePath: AppAssets.ourActionTutorial,
         ),
-        SizedBox(height: Insets.large),
+        const SizedBox(height: Insets.large),
         OurActionWidgetItem(
           title: AppTexts.ourActionsResult,
           description: AppTexts.ourActionsResultDescription,
@@ -42,7 +42,7 @@ class OurActionWidget extends StatelessWidget {
           ),
           imagePath: AppAssets.ourTutorialResult,
         ),
-        SizedBox(height: Insets.large),
+        const SizedBox(height: Insets.large),
       ],
     );
   }
@@ -65,7 +65,7 @@ class OurActionWidgetItem extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      padding: EdgeInsets.symmetric(
+      padding: const EdgeInsets.symmetric(
         horizontal: Insets.xLarge,
         vertical: Insets.xxLarge,
       ),
@@ -77,7 +77,7 @@ class OurActionWidgetItem extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           SizedBox(child: Image.asset(imagePath)),
-          SizedBox(height: Insets.large),
+          const SizedBox(height: Insets.large),
           Text(
             title,
             style: context.textTheme.caption!.copyWith(
@@ -86,7 +86,7 @@ class OurActionWidgetItem extends StatelessWidget {
               fontWeight: FontWeight.w600,
             ),
           ),
-          SizedBox(height: Insets.large),
+          const SizedBox(height: Insets.large),
           Text(
             description,
             style: context.textTheme.caption!.copyWith(
@@ -94,7 +94,7 @@ class OurActionWidgetItem extends StatelessWidget {
               fontSize: Insets.large,
             ),
           ),
-          SizedBox(height: Insets.large),
+          const SizedBox(height: Insets.large),
           PdfButton(
             title: AppTexts.ourActionsButtonText,
             onTap: onTap,
@@ -123,8 +123,12 @@ class PdfButton extends StatelessWidget {
       onTap: onTap,
       child: Container(
         width: double.infinity,
-        padding: EdgeInsets.symmetric(
+        padding: const EdgeInsets.symmetric(
           vertical: _verticalPadding,
+        ),
+        decoration: BoxDecoration(
+          color: Colors.green,
+          borderRadius: BorderRadius.circular(Insets.xLarge),
         ),
         child: Center(
           child: Text(
@@ -135,10 +139,6 @@ class PdfButton extends StatelessWidget {
               fontWeight: FontWeight.w600,
             ),
           ),
-        ),
-        decoration: BoxDecoration(
-          color: Colors.green,
-          borderRadius: BorderRadius.circular(Insets.xLarge),
         ),
       ),
     );

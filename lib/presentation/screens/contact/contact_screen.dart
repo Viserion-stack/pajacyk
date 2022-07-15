@@ -1,3 +1,5 @@
+// ignore_for_file: no_leading_underscores_for_local_identifiers
+
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:url_launcher/url_launcher.dart';
@@ -15,9 +17,9 @@ class ContactScreen extends StatelessWidget {
         alignment: Alignment.topCenter,
         //color: Colors.green,
         child: SingleChildScrollView(
-            child: Container(
+            child: SizedBox(
                 child: Column(
-          children: [
+          children: const [
             KontaktCard(),
             KontaktSzkolaCard(),
             KontaktWspolpracaCard(),
@@ -50,7 +52,7 @@ class KontaktCard extends StatelessWidget {
   Widget build(BuildContext context) {
     final size = MediaQuery.of(context).size;
     return Container(
-      padding: EdgeInsets.only(bottom: 16),
+      padding: const EdgeInsets.only(bottom: 16),
       width: size.width * 0.9,
       height: size.height * 0.65,
       child: Card(
@@ -72,16 +74,16 @@ class KontaktCard extends StatelessWidget {
             Text.rich(
               TextSpan(
                 children: <TextSpan>[
-                  TextSpan(
+                  const TextSpan(
                     text: 'POSLKA AKCJA HUMANITARNA:',
                     style: TextStyle(
                       fontWeight: FontWeight.bold,
                     ),
                   ),
-                  TextSpan(
+                  const TextSpan(
                     text: '\nal. Solidarności 78a, 00-145 Warszawa\n',
                   ),
-                  TextSpan(
+                  const TextSpan(
                     text: 'TELEFON:',
                     style: TextStyle(
                       fontWeight: FontWeight.bold,
@@ -94,7 +96,7 @@ class KontaktCard extends StatelessWidget {
                         _makePhoneCall('+48 22 828 88 82');
                       },
                   ),
-                  TextSpan(
+                  const TextSpan(
                     text: '\nE-mail:',
                     style: TextStyle(
                       fontWeight: FontWeight.bold,
@@ -104,26 +106,26 @@ class KontaktCard extends StatelessWidget {
                     text: ' pah@pah.org.pl',
                     recognizer: TapGestureRecognizer()
                       ..onTap = () async {
-                        print('tel');
+                        debugPrint('tel');
                         _sendAnEmail('pah@pah.org.pl');
                       },
                   ),
-                  TextSpan(
+                  const TextSpan(
                     text: '\nNIP:',
                     style: TextStyle(
                       fontWeight: FontWeight.bold,
                     ),
                   ),
-                  TextSpan(
+                  const TextSpan(
                     text: ' 525-14-41-253',
                   ),
-                  TextSpan(
+                  const TextSpan(
                     text: '\nKRS:',
                     style: TextStyle(
                       fontWeight: FontWeight.bold,
                     ),
                   ),
-                  TextSpan(
+                  const TextSpan(
                     text: ' 0000136833',
                   ),
                 ],
@@ -131,7 +133,7 @@ class KontaktCard extends StatelessWidget {
               textAlign: TextAlign.center,
             ),
             Image.asset('assets/pahLogo.png'),
-            Text.rich(
+            const Text.rich(
               TextSpan(
                 children: <TextSpan>[
                   TextSpan(
@@ -177,7 +179,7 @@ class KontaktCard extends StatelessWidget {
                     text: 'z dopiskiem ',
                   ),
                   TextSpan(
-                    text: '\„Pajacyk”',
+                    text: '„Pajacyk”',
                     style: TextStyle(
                       fontWeight: FontWeight.bold,
                     ),
@@ -224,7 +226,7 @@ class KontaktSzkolaCard extends StatelessWidget {
 
     final size = MediaQuery.of(context).size;
     return Container(
-      padding: EdgeInsets.only(bottom: 16),
+      padding: const EdgeInsets.only(bottom: 16),
       width: size.width * 0.9,
       height: size.height * 0.45,
       child: Card(
@@ -249,18 +251,18 @@ class KontaktSzkolaCard extends StatelessWidget {
               padding: const EdgeInsets.symmetric(horizontal: 10.0),
               child: Text.rich(
                 TextSpan(
-                  style: TextStyle(
+                  style: const TextStyle(
                     //fontSize: 17,
                     color: Colors.black,
                   ),
                   children: <TextSpan>[
-                    TextSpan(
+                    const TextSpan(
                       text: 'Magdalena Jaranowska',
                       style: TextStyle(
                         fontWeight: FontWeight.bold,
                       ),
                     ),
-                    TextSpan(
+                    const TextSpan(
                       text: '\nTELEFON:',
                       style: TextStyle(
                         fontWeight: FontWeight.bold,
@@ -270,11 +272,10 @@ class KontaktSzkolaCard extends StatelessWidget {
                       text: ' +48 501 752 160',
                       recognizer: TapGestureRecognizer()
                         ..onTap = () async {
-                          print('tel');
                           _makePhoneCall('+48 501 752 160');
                         },
                     ),
-                    TextSpan(
+                    const TextSpan(
                       text: '\nE-mail: ',
                       style: TextStyle(
                         fontWeight: FontWeight.bold,
@@ -284,11 +285,10 @@ class KontaktSzkolaCard extends StatelessWidget {
                       text: 'pajacyk@pah.org.pl',
                       recognizer: TapGestureRecognizer()
                         ..onTap = () async {
-                          print('tel');
                           _sendAnEmail('pah@pah.org.pl');
                         },
                     ),
-                    TextSpan(
+                    const TextSpan(
                       text: '\nul. Wita Stwosza 2, 87–100 Toruń',
                     ),
                   ],
@@ -305,16 +305,16 @@ class KontaktSzkolaCard extends StatelessWidget {
                   onPressed: () {
                     _launchURL('https://www.pajacyk.pl/kontakt/');
                   },
-                  child: Text(
+                  style: ElevatedButton.styleFrom(
+                      primary: Colors.blue[700],
+                      shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(30))),
+                  child: const Text(
                     'WIĘCEJ',
                     style: TextStyle(
                       color: Colors.white,
                     ),
                   ),
-                  style: ElevatedButton.styleFrom(
-                      primary: Colors.blue[700],
-                      shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(30))),
                 ),
               ),
             ),
@@ -337,7 +337,7 @@ class KontaktWspolpracaCard extends StatelessWidget {
 
     final size = MediaQuery.of(context).size;
     return Container(
-      padding: EdgeInsets.only(bottom: 16),
+      padding: const EdgeInsets.only(bottom: 16),
       width: size.width * 0.9,
       height: size.height * 0.57,
       child: Card(
@@ -361,8 +361,8 @@ class KontaktWspolpracaCard extends StatelessWidget {
                   fontSize: 22),
               textAlign: TextAlign.center,
             ),
-            Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 10.0),
+            const Padding(
+              padding: EdgeInsets.symmetric(horizontal: 10.0),
               child: Text.rich(
                 TextSpan(
                   style: TextStyle(
@@ -409,16 +409,16 @@ class KontaktWspolpracaCard extends StatelessWidget {
                   onPressed: () {
                     _launchURL('https://www.pajacyk.pl/partnerzy/');
                   },
-                  child: Text(
+                  style: ElevatedButton.styleFrom(
+                      primary: Colors.blue[700],
+                      shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(30))),
+                  child: const Text(
                     'WSPÓŁPRACA',
                     style: TextStyle(
                       color: Colors.white,
                     ),
                   ),
-                  style: ElevatedButton.styleFrom(
-                      primary: Colors.blue[700],
-                      shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(30))),
                 ),
               ),
             ),

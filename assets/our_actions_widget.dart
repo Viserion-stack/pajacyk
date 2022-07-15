@@ -1,3 +1,5 @@
+// ignore_for_file: prefer_const_constructors
+
 import 'package:flutter/material.dart';
 import 'package:pajacyk/presentation/application/app_assets.dart';
 import 'package:pajacyk/presentation/application/insets.dart';
@@ -116,6 +118,10 @@ class PdfButton extends StatelessWidget {
         padding: EdgeInsets.symmetric(
           vertical: _verticalPadding,
         ),
+        decoration: BoxDecoration(
+          color: Colors.green,
+          borderRadius: BorderRadius.circular(Insets.xLarge),
+        ),
         child: Center(
           child: Text(
             title.toUpperCase(),
@@ -125,10 +131,6 @@ class PdfButton extends StatelessWidget {
               fontWeight: FontWeight.w600,
             ),
           ),
-        ),
-        decoration: BoxDecoration(
-          color: Colors.green,
-          borderRadius: BorderRadius.circular(Insets.xLarge),
         ),
       ),
     );

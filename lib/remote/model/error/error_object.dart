@@ -1,3 +1,4 @@
+// ignore: depend_on_referenced_packages
 import 'package:collection/collection.dart';
 import 'package:flutter/foundation.dart';
 import 'package:json_annotation/json_annotation.dart';
@@ -23,7 +24,8 @@ class ErrorObject {
   @JsonKey(name: 'traceId')
   final String? traceId;
 
-  factory ErrorObject.fromJson(Map<String, dynamic> json) => _$ErrorObjectFromJson(json);
+  factory ErrorObject.fromJson(Map<String, dynamic> json) =>
+      _$ErrorObjectFromJson(json);
 
   Map<String, dynamic> toJson() => _$ErrorObjectToJson(this);
 
@@ -32,10 +34,15 @@ class ErrorObject {
     return identical(this, other) ||
         (other is ErrorObject &&
             (identical(other.timestamp, timestamp) ||
-                const DeepCollectionEquality().equals(other.timestamp, timestamp)) &&
-            (identical(other.error, error) || const DeepCollectionEquality().equals(other.error, error)) &&
-            (identical(other.message, message) || const DeepCollectionEquality().equals(other.message, message)) &&
-            (identical(other.traceId, traceId) || const DeepCollectionEquality().equals(other.traceId, traceId)));
+                const DeepCollectionEquality()
+                    .equals(other.timestamp, timestamp)) &&
+            (identical(other.error, error) ||
+                const DeepCollectionEquality().equals(other.error, error)) &&
+            (identical(other.message, message) ||
+                const DeepCollectionEquality()
+                    .equals(other.message, message)) &&
+            (identical(other.traceId, traceId) ||
+                const DeepCollectionEquality().equals(other.traceId, traceId)));
   }
 
   @override

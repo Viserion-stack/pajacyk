@@ -8,7 +8,7 @@ import '../../domain/notification_assistant/notification_assistant.dart';
 import '../../domain/widgets/dialog.dart';
 
 Future<PajacykModel> getSinglePostData(context) async {
-  PajacykModel result = PajacykModel(count: '0', done: false);
+  PajacykModel result = const PajacykModel(count: '0', done: false);
   try {
     Response response = await Dio().post('https://www.pajacyk.pl/api/clicks');
     if (response.statusCode == 200) {
@@ -20,14 +20,14 @@ Future<PajacykModel> getSinglePostData(context) async {
       //     duration: 2, backgroundColor: Colors.redAccent);
     }
   } catch (e) {
-    print(e.toString());
+    debugPrint(e.toString());
   } finally {}
 
   return result;
 }
 
 class PostDataProvider with ChangeNotifier {
-  PajacykModel pajacyk = PajacykModel(count: '', done: false);
+  PajacykModel pajacyk = const PajacykModel(count: '', done: false);
   bool loading = false;
 
   Future<void> getPostData(context) async {
@@ -53,7 +53,7 @@ class PostDataProvider with ChangeNotifier {
           seconds: 3,
         )
         .then(
-          (value) => print('NOTIFI'),
+          (value) => debugPrint('NOTIFI'),
         );
   }
 }

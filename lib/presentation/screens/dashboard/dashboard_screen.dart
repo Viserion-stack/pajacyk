@@ -17,7 +17,7 @@ class DashboardScreen extends StatefulWidget {
 class _DashboardScreenState extends State<DashboardScreen>
     with SingleTickerProviderStateMixin {
   late TabController controller;
-  final GlobalKey<ScaffoldState> _scaffoldkey = new GlobalKey<ScaffoldState>();
+  final GlobalKey<ScaffoldState> _scaffoldkey = GlobalKey<ScaffoldState>();
 
   @override
   void initState() {
@@ -47,7 +47,8 @@ class _DashboardScreenState extends State<DashboardScreen>
         title: Consumer<NavigationController>(
           builder: (context, val, _) {
             controller.animateTo(val.pageIndex,
-                duration: Duration(milliseconds: 300), curve: Curves.easeIn);
+                duration: const Duration(milliseconds: 300),
+                curve: Curves.easeIn);
             return TabBar(
               controller: controller,
               tabs: val.tabs,
@@ -62,7 +63,8 @@ class _DashboardScreenState extends State<DashboardScreen>
               labelStyle: const TextStyle(fontSize: 15),
               unselectedLabelColor: Colors.white,
               labelColor: Colors.black54,
-              indicator: CircleTabIndicator(color: Colors.black54, radius: 4),
+              indicator:
+                  const CircleTabIndicator(color: Colors.black54, radius: 4),
             );
           },
         ),

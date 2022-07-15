@@ -21,7 +21,7 @@ class PajacykInNumbersItem extends StatelessWidget {
       crossAxisAlignment: CrossAxisAlignment.center,
       children: [
         SizedBox(child: Image.asset(imagePath)),
-        SizedBox(height: Insets.large),
+        const SizedBox(height: Insets.large),
         Text(
           title,
           textAlign: TextAlign.center,
@@ -31,7 +31,7 @@ class PajacykInNumbersItem extends StatelessWidget {
             fontWeight: FontWeight.bold,
           ),
         ),
-        SizedBox(height: Insets.small),
+        const SizedBox(height: Insets.small),
         description,
       ],
     );
@@ -71,47 +71,47 @@ class PajacykGeneraly extends StatelessWidget {
         text: TextSpan(
           children: [
             TextSpan(
-              text: splittedText[0] + ' ',
+              text: '${splittedText[0]} ',
               style: context.textTheme.caption!.copyWith(
                 color: context.palette.badgeColor1.withOpacity(_colorOpacity),
                 fontWeight: FontWeight.w600,
               ),
             ),
             TextSpan(
-              text: splittedText[1] + ' ',
+              text: '${splittedText[1]} ',
               style: context.textTheme.caption!.copyWith(
                 color: context.palette.badgeColor1.withOpacity(_colorOpacity),
               ),
             ),
             TextSpan(
-              text: splittedText[2] + ' ',
-              style: context.textTheme.caption!.copyWith(
-                color: context.palette.badgeColor1.withOpacity(_colorOpacity),
-                fontWeight: FontWeight.w600,
-              ),
-            ),
-            TextSpan(
-              text: splittedText[3] + ' ',
-              style: context.textTheme.caption!.copyWith(
-                color: context.palette.badgeColor1.withOpacity(_colorOpacity),
-              ),
-            ),
-            TextSpan(
-              text: splittedText[4] + ' ',
+              text: '${splittedText[2]} ',
               style: context.textTheme.caption!.copyWith(
                 color: context.palette.badgeColor1.withOpacity(_colorOpacity),
                 fontWeight: FontWeight.w600,
               ),
             ),
             TextSpan(
-              text: splittedText[5] + ' ',
+              text: '${splittedText[3]} ',
+              style: context.textTheme.caption!.copyWith(
+                color: context.palette.badgeColor1.withOpacity(_colorOpacity),
+              ),
+            ),
+            TextSpan(
+              text: '${splittedText[4]} ',
               style: context.textTheme.caption!.copyWith(
                 color: context.palette.badgeColor1.withOpacity(_colorOpacity),
                 fontWeight: FontWeight.w600,
               ),
             ),
             TextSpan(
-              text: splittedText[6] + ' ',
+              text: '${splittedText[5]} ',
+              style: context.textTheme.caption!.copyWith(
+                color: context.palette.badgeColor1.withOpacity(_colorOpacity),
+                fontWeight: FontWeight.w600,
+              ),
+            ),
+            TextSpan(
+              text: '${splittedText[6]} ',
               style: context.textTheme.caption!.copyWith(
                 color: context.palette.badgeColor1.withOpacity(_colorOpacity),
               ),
@@ -137,47 +137,47 @@ class PajacykVacationDescription extends StatelessWidget {
         text: TextSpan(
           children: [
             TextSpan(
-              text: splittedText[0] + ' ',
+              text: '${splittedText[0]} ',
               style: context.textTheme.caption!.copyWith(
                 color: context.palette.badgeColor1.withOpacity(_colorOpacity),
                 fontWeight: FontWeight.w600,
               ),
             ),
             TextSpan(
-              text: splittedText[1] + ' ',
+              text: '${splittedText[1]} ',
               style: context.textTheme.caption!.copyWith(
                 color: context.palette.badgeColor1.withOpacity(_colorOpacity),
               ),
             ),
             TextSpan(
-              text: splittedText[2] + ' ',
-              style: context.textTheme.caption!.copyWith(
-                color: context.palette.badgeColor1.withOpacity(_colorOpacity),
-                fontWeight: FontWeight.w600,
-              ),
-            ),
-            TextSpan(
-              text: splittedText[3] + ' ',
-              style: context.textTheme.caption!.copyWith(
-                color: context.palette.badgeColor1.withOpacity(_colorOpacity),
-              ),
-            ),
-            TextSpan(
-              text: splittedText[4] + ' ',
+              text: '${splittedText[2]} ',
               style: context.textTheme.caption!.copyWith(
                 color: context.palette.badgeColor1.withOpacity(_colorOpacity),
                 fontWeight: FontWeight.w600,
               ),
             ),
             TextSpan(
-              text: splittedText[5] + ' ',
+              text: '${splittedText[3]} ',
+              style: context.textTheme.caption!.copyWith(
+                color: context.palette.badgeColor1.withOpacity(_colorOpacity),
+              ),
+            ),
+            TextSpan(
+              text: '${splittedText[4]} ',
               style: context.textTheme.caption!.copyWith(
                 color: context.palette.badgeColor1.withOpacity(_colorOpacity),
                 fontWeight: FontWeight.w600,
               ),
             ),
             TextSpan(
-              text: splittedText[6] + ' ',
+              text: '${splittedText[5]} ',
+              style: context.textTheme.caption!.copyWith(
+                color: context.palette.badgeColor1.withOpacity(_colorOpacity),
+                fontWeight: FontWeight.w600,
+              ),
+            ),
+            TextSpan(
+              text: '${splittedText[6]} ',
               style: context.textTheme.caption!.copyWith(
                 color: context.palette.badgeColor1.withOpacity(_colorOpacity),
               ),
@@ -203,76 +203,76 @@ class PajacykPsychoHelpDescription extends StatelessWidget {
         text: TextSpan(
           children: [
             TextSpan(
-              text: splittedText[0] + ' ',
+              text: '${splittedText[0]} ',
               style: context.textTheme.caption!.copyWith(
                 color: context.palette.badgeColor1.withOpacity(_colorOpacity),
                 fontWeight: FontWeight.w600,
               ),
             ),
             TextSpan(
-              text: splittedText[1] + ' ',
+              text: '${splittedText[1]} ',
               style: context.textTheme.caption!.copyWith(
                 color: context.palette.badgeColor1.withOpacity(_colorOpacity),
               ),
             ),
             TextSpan(
-              text: splittedText[2] + ' ',
-              style: context.textTheme.caption!.copyWith(
-                color: context.palette.badgeColor1.withOpacity(_colorOpacity),
-                fontWeight: FontWeight.w600,
-              ),
-            ),
-            TextSpan(
-              text: splittedText[3] + ' ',
-              style: context.textTheme.caption!.copyWith(
-                color: context.palette.badgeColor1.withOpacity(_colorOpacity),
-              ),
-            ),
-            TextSpan(
-              text: splittedText[4] + ' ',
-              style: context.textTheme.caption!.copyWith(
-                color: context.palette.badgeColor1.withOpacity(_colorOpacity),
-              ),
-            ),
-            TextSpan(
-              text: splittedText[5] + ' ',
-              style: context.textTheme.caption!.copyWith(
-                color: context.palette.badgeColor1.withOpacity(_colorOpacity),
-              ),
-            ),
-            TextSpan(
-              text: splittedText[6] + ' ',
+              text: '${splittedText[2]} ',
               style: context.textTheme.caption!.copyWith(
                 color: context.palette.badgeColor1.withOpacity(_colorOpacity),
                 fontWeight: FontWeight.w600,
               ),
             ),
             TextSpan(
-              text: splittedText[7] + ' ',
+              text: '${splittedText[3]} ',
               style: context.textTheme.caption!.copyWith(
                 color: context.palette.badgeColor1.withOpacity(_colorOpacity),
               ),
             ),
             TextSpan(
-              text: splittedText[8] + ' ',
+              text: '${splittedText[4]} ',
               style: context.textTheme.caption!.copyWith(
                 color: context.palette.badgeColor1.withOpacity(_colorOpacity),
               ),
             ),
             TextSpan(
-              text: splittedText[9] + ' ',
+              text: '${splittedText[5]} ',
               style: context.textTheme.caption!.copyWith(
                 color: context.palette.badgeColor1.withOpacity(_colorOpacity),
               ),
             ),
             TextSpan(
-              text: splittedText[10] + ' ',
+              text: '${splittedText[6]} ',
+              style: context.textTheme.caption!.copyWith(
+                color: context.palette.badgeColor1.withOpacity(_colorOpacity),
+                fontWeight: FontWeight.w600,
+              ),
+            ),
+            TextSpan(
+              text: '${splittedText[7]} ',
               style: context.textTheme.caption!.copyWith(
                 color: context.palette.badgeColor1.withOpacity(_colorOpacity),
               ),
             ),
             TextSpan(
-              text: splittedText[11] + ' ',
+              text: '${splittedText[8]} ',
+              style: context.textTheme.caption!.copyWith(
+                color: context.palette.badgeColor1.withOpacity(_colorOpacity),
+              ),
+            ),
+            TextSpan(
+              text: '${splittedText[9]} ',
+              style: context.textTheme.caption!.copyWith(
+                color: context.palette.badgeColor1.withOpacity(_colorOpacity),
+              ),
+            ),
+            TextSpan(
+              text: '${splittedText[10]} ',
+              style: context.textTheme.caption!.copyWith(
+                color: context.palette.badgeColor1.withOpacity(_colorOpacity),
+              ),
+            ),
+            TextSpan(
+              text: '${splittedText[11]} ',
               style: context.textTheme.caption!.copyWith(
                 color: context.palette.badgeColor1.withOpacity(_colorOpacity),
               ),
@@ -317,66 +317,66 @@ class PajacykHelpNetworkDescription extends StatelessWidget {
         text: TextSpan(
           children: [
             TextSpan(
-              text: splittedText[0] + ' ',
+              text: '${splittedText[0]} ',
               style: context.textTheme.caption!.copyWith(
                 color: context.palette.badgeColor1.withOpacity(_colorOpacity),
                 fontWeight: FontWeight.w600,
               ),
             ),
             TextSpan(
-              text: splittedText[1] + ' ',
+              text: '${splittedText[1]} ',
               style: context.textTheme.caption!.copyWith(
                 color: context.palette.badgeColor1.withOpacity(_colorOpacity),
               ),
             ),
             TextSpan(
-              text: splittedText[2] + ' ',
+              text: '${splittedText[2]} ',
               style: context.textTheme.caption!.copyWith(
                 color: context.palette.badgeColor1.withOpacity(_colorOpacity),
               ),
             ),
             TextSpan(
-              text: splittedText[3] + ' ',
-              style: context.textTheme.caption!.copyWith(
-                color: context.palette.badgeColor1.withOpacity(_colorOpacity),
-                fontWeight: FontWeight.w600,
-              ),
-            ),
-            TextSpan(
-              text: splittedText[4] + ' ',
-              style: context.textTheme.caption!.copyWith(
-                color: context.palette.badgeColor1.withOpacity(_colorOpacity),
-              ),
-            ),
-            TextSpan(
-              text: splittedText[5] + ' ',
+              text: '${splittedText[3]} ',
               style: context.textTheme.caption!.copyWith(
                 color: context.palette.badgeColor1.withOpacity(_colorOpacity),
                 fontWeight: FontWeight.w600,
               ),
             ),
             TextSpan(
-              text: splittedText[6] + ' ',
+              text: '${splittedText[4]} ',
               style: context.textTheme.caption!.copyWith(
                 color: context.palette.badgeColor1.withOpacity(_colorOpacity),
               ),
             ),
             TextSpan(
-              text: splittedText[7] + ' ',
-              style: context.textTheme.caption!.copyWith(
-                color: context.palette.badgeColor1.withOpacity(_colorOpacity),
-                fontWeight: FontWeight.w600,
-              ),
-            ),
-            TextSpan(
-              text: splittedText[8] + ' ',
+              text: '${splittedText[5]} ',
               style: context.textTheme.caption!.copyWith(
                 color: context.palette.badgeColor1.withOpacity(_colorOpacity),
                 fontWeight: FontWeight.w600,
               ),
             ),
             TextSpan(
-              text: splittedText[9] + ' ',
+              text: '${splittedText[6]} ',
+              style: context.textTheme.caption!.copyWith(
+                color: context.palette.badgeColor1.withOpacity(_colorOpacity),
+              ),
+            ),
+            TextSpan(
+              text: '${splittedText[7]} ',
+              style: context.textTheme.caption!.copyWith(
+                color: context.palette.badgeColor1.withOpacity(_colorOpacity),
+                fontWeight: FontWeight.w600,
+              ),
+            ),
+            TextSpan(
+              text: '${splittedText[8]} ',
+              style: context.textTheme.caption!.copyWith(
+                color: context.palette.badgeColor1.withOpacity(_colorOpacity),
+                fontWeight: FontWeight.w600,
+              ),
+            ),
+            TextSpan(
+              text: '${splittedText[9]} ',
               style: context.textTheme.caption!.copyWith(
                 color: context.palette.badgeColor1.withOpacity(_colorOpacity),
               ),
@@ -402,66 +402,66 @@ class PajacykNoBreakDescription extends StatelessWidget {
         text: TextSpan(
           children: [
             TextSpan(
-              text: splittedText[0] + ' ',
+              text: '${splittedText[0]} ',
               style: context.textTheme.caption!.copyWith(
                 color: context.palette.badgeColor1.withOpacity(_colorOpacity),
                 fontWeight: FontWeight.w600,
               ),
             ),
             TextSpan(
-              text: splittedText[1] + ' ',
+              text: '${splittedText[1]} ',
               style: context.textTheme.caption!.copyWith(
                 color: context.palette.badgeColor1.withOpacity(_colorOpacity),
                 fontWeight: FontWeight.w600,
               ),
             ),
             TextSpan(
-              text: splittedText[2] + ' ',
+              text: '${splittedText[2]} ',
               style: context.textTheme.caption!.copyWith(
                 color: context.palette.badgeColor1.withOpacity(_colorOpacity),
               ),
             ),
             TextSpan(
-              text: splittedText[3] + ' ',
+              text: '${splittedText[3]} ',
               style: context.textTheme.caption!.copyWith(
                 color: context.palette.badgeColor1.withOpacity(_colorOpacity),
               ),
             ),
             TextSpan(
-              text: splittedText[4] + ' ',
-              style: context.textTheme.caption!.copyWith(
-                color: context.palette.badgeColor1.withOpacity(_colorOpacity),
-                fontWeight: FontWeight.w600,
-              ),
-            ),
-            TextSpan(
-              text: splittedText[5] + ' ',
+              text: '${splittedText[4]} ',
               style: context.textTheme.caption!.copyWith(
                 color: context.palette.badgeColor1.withOpacity(_colorOpacity),
                 fontWeight: FontWeight.w600,
               ),
             ),
             TextSpan(
-              text: splittedText[6] + ' ',
-              style: context.textTheme.caption!.copyWith(
-                color: context.palette.badgeColor1.withOpacity(_colorOpacity),
-              ),
-            ),
-            TextSpan(
-              text: splittedText[7] + ' ',
+              text: '${splittedText[5]} ',
               style: context.textTheme.caption!.copyWith(
                 color: context.palette.badgeColor1.withOpacity(_colorOpacity),
                 fontWeight: FontWeight.w600,
               ),
             ),
             TextSpan(
-              text: splittedText[8] + ' ',
+              text: '${splittedText[6]} ',
               style: context.textTheme.caption!.copyWith(
                 color: context.palette.badgeColor1.withOpacity(_colorOpacity),
               ),
             ),
             TextSpan(
-              text: splittedText[9] + ' ',
+              text: '${splittedText[7]} ',
+              style: context.textTheme.caption!.copyWith(
+                color: context.palette.badgeColor1.withOpacity(_colorOpacity),
+                fontWeight: FontWeight.w600,
+              ),
+            ),
+            TextSpan(
+              text: '${splittedText[8]} ',
+              style: context.textTheme.caption!.copyWith(
+                color: context.palette.badgeColor1.withOpacity(_colorOpacity),
+              ),
+            ),
+            TextSpan(
+              text: '${splittedText[9]} ',
               style: context.textTheme.caption!.copyWith(
                 color: context.palette.badgeColor1.withOpacity(_colorOpacity),
               ),

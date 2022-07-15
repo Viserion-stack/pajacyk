@@ -1,3 +1,5 @@
+// ignore_for_file: no_leading_underscores_for_local_identifiers
+
 import 'dart:io';
 
 import 'package:carousel_slider/carousel_slider.dart';
@@ -46,14 +48,16 @@ class _SplashScreenState extends State<SplashScreen>
             mode: LaunchMode.externalApplication);
       }
     } catch (e, st) {
-      // Handle this as you prefer
+      // Handle this as you
+      debugPrint(e.toString());
+      debugPrint(st.toString());
     }
   }
 
   @override
   void initState() {
     animationController = AnimationController(
-      duration: Duration(seconds: 1),
+      duration: const Duration(seconds: 1),
       vsync: this,
     );
     _animation = Tween(begin: 0.0, end: 1.0).animate(CurvedAnimation(
@@ -79,21 +83,21 @@ class _SplashScreenState extends State<SplashScreen>
     return Scaffold(
       backgroundColor: Colors.green[500],
       body: SingleChildScrollView(
-        child: Container(
+        child: SizedBox(
           child: Center(
             child: Column(
               children: [
-                Padding(
-                  padding: const EdgeInsets.only(top: 20.0),
+                const Padding(
+                  padding: EdgeInsets.only(top: 20.0),
                   child: Text(
                     'Witaj w krainie Pajacyka!',
                     style: TextStyle(color: Colors.white, fontSize: 22),
                   ),
                 ),
-                Padding(
+                const Padding(
                   padding: EdgeInsets.symmetric(horizontal: 20),
                   child: Padding(
-                    padding: const EdgeInsets.only(top: 5.0),
+                    padding: EdgeInsets.only(top: 5.0),
                     child: Text(
                       'Pajacyk od wielu lat wspiera prawidłowy rozwój dzieci. Pamiętaj, że kliknięcie w brzuszek,to pierwszy krok, by pomóc.',
                       textAlign: TextAlign.center,
@@ -114,7 +118,6 @@ class _SplashScreenState extends State<SplashScreen>
                           .getPostData(context);
 
                       setState(() {
-                        print('setState');
                         isPajactkPressed = true;
 
                         Provider.of<PostDataProvider>(context, listen: false)
@@ -122,7 +125,6 @@ class _SplashScreenState extends State<SplashScreen>
                       });
 
                       Future.delayed(const Duration(seconds: 3), () {
-                        print('FutureDelyed');
                         setState(() {
                           isPajactkPressed = false;
                         });
@@ -178,7 +180,7 @@ class _SplashScreenState extends State<SplashScreen>
                       buttonTextColor: Colors.white,
                       headerColor: Colors.orange[500],
                     ),
-                    MyCard(
+                    const MyCard(
                       imageIndex: 1,
                       url: 'https://www.pajacyk.pl/swiateczny-stol-pajacyka/',
                       headerText: 'Świąteczny Stół Pajacyka',
@@ -189,7 +191,7 @@ class _SplashScreenState extends State<SplashScreen>
                       //buttonTextColor: Colors.white,
                       cardColor: Colors.yellow,
                     ),
-                    MyCard(
+                    const MyCard(
                       imageIndex: 2,
                       url: 'https://www.pajacyk.pl/pajacyk-bez-przerwy',
                       headerText: '#PajacykBezPrzerwy!',
@@ -213,15 +215,15 @@ class _SplashScreenState extends State<SplashScreen>
                               onPressed: () {
                                 _openFacebook();
                               },
-                              icon: Icon(
+                              icon: const Icon(
                                 Icons.facebook_outlined,
                                 size: 55,
                               ),
                             ),
-                            SizedBox(
+                            const SizedBox(
                               width: 5,
                             ),
-                            Text('Sprawdź nasz Facebook')
+                            const Text('Sprawdź nasz Facebook')
                           ],
                         ),
                         GestureDetector(
@@ -242,7 +244,7 @@ class _SplashScreenState extends State<SplashScreen>
                         ),
                       ],
                     ),
-                    SizedBox(
+                    const SizedBox(
                       height: 20,
                     )
                   ],
@@ -289,7 +291,7 @@ class MyCard extends StatelessWidget {
   Widget build(BuildContext context) {
     final size = MediaQuery.of(context).size;
     return Container(
-      padding: EdgeInsets.only(bottom: 16),
+      padding: const EdgeInsets.only(bottom: 16),
       width: size.width * 0.9,
       height: size.height * 0.38,
       child: Card(
@@ -307,7 +309,7 @@ class MyCard extends StatelessWidget {
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   imageIndex == null
-                      ? SizedBox()
+                      ? const SizedBox()
                       : SizedBox(
                           width: size.width * 0.15,
                           height: size.height * 0.1,
@@ -333,7 +335,8 @@ class MyCard extends StatelessWidget {
                 child: Text(
                   bodyText,
                   textAlign: TextAlign.center,
-                  style: TextStyle(fontWeight: FontWeight.w600, fontSize: 14),
+                  style: const TextStyle(
+                      fontWeight: FontWeight.w600, fontSize: 14),
                 ),
               ),
               SizedBox(
@@ -347,12 +350,6 @@ class MyCard extends StatelessWidget {
                       _launchURL(url!);
                     }
                   },
-                  child: Text(
-                    buttonText,
-                    style: TextStyle(
-                      color: buttonTextColor ?? Colors.black,
-                    ),
-                  ),
                   style: ElevatedButton.styleFrom(
                       // side: BorderSide(
                       //   width: 1,
@@ -364,6 +361,12 @@ class MyCard extends StatelessWidget {
                       //fixedSize: const Size(300, 100),
                       shape: RoundedRectangleBorder(
                           borderRadius: BorderRadius.circular(30))),
+                  child: Text(
+                    buttonText,
+                    style: TextStyle(
+                      color: buttonTextColor ?? Colors.black,
+                    ),
+                  ),
                 ),
               ),
             ],
@@ -403,14 +406,14 @@ class MyCarousel extends StatelessWidget {
         borderRadius: BorderRadius.circular(15.0),
       ),
       color: Colors.white,
-      child: Container(
+      child: SizedBox(
         width: size.width * 0.9,
         height: size.height * 0.35,
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            Padding(
-              padding: const EdgeInsets.only(bottom: 10.0),
+            const Padding(
+              padding: EdgeInsets.only(bottom: 10.0),
               child: Text(
                 'Partnerzy Programu',
                 textAlign: TextAlign.center,
@@ -422,13 +425,13 @@ class MyCarousel extends StatelessWidget {
                 itemBuilder:
                     (BuildContext context, int itemIndex, int pageViewIndex) {
                   //print(itemIndex);
-                  return Container(
+                  return SizedBox(
                     child: Center(
                       child: SizedBox(
                         width: 200,
                         height: 170,
                         child: Image.asset(
-                          '${partnerList[itemIndex]}',
+                          partnerList[itemIndex],
                           fit: BoxFit.contain,
                         ),
                       ),
@@ -444,8 +447,8 @@ class MyCarousel extends StatelessWidget {
                   enableInfiniteScroll: true,
                   reverse: false,
                   autoPlay: true,
-                  autoPlayInterval: Duration(seconds: 3),
-                  autoPlayAnimationDuration: Duration(milliseconds: 800),
+                  autoPlayInterval: const Duration(seconds: 3),
+                  autoPlayAnimationDuration: const Duration(milliseconds: 800),
                   autoPlayCurve: Curves.fastOutSlowIn,
                   enlargeCenterPage: false,
                   //onPageChanged: callbackFunction,
@@ -456,12 +459,6 @@ class MyCarousel extends StatelessWidget {
                 Provider.of<NavigationController>(context, listen: false)
                     .changeScreen(5);
               },
-              child: Text(
-                'ZOBACZ WIĘCEJ',
-                style: TextStyle(
-                  color: Colors.white,
-                ),
-              ),
               style: ElevatedButton.styleFrom(
                   // side: BorderSide(
                   //   width: 1,
@@ -473,6 +470,12 @@ class MyCarousel extends StatelessWidget {
                   //fixedSize: const Size(300, 100),
                   shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.circular(15))),
+              child: const Text(
+                'ZOBACZ WIĘCEJ',
+                style: TextStyle(
+                  color: Colors.white,
+                ),
+              ),
             ),
           ],
         ),

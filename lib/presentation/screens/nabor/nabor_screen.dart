@@ -12,6 +12,7 @@ class NaborScree extends StatelessWidget {
   static const String routeName = '/nabor';
 
   void _launchURL(String url) async {
+    // ignore: no_leading_underscores_for_local_identifiers
     final Uri _url = Uri.parse(url);
     if (!await launchUrl(_url)) throw 'Could not launch $url';
   }
@@ -23,7 +24,7 @@ class NaborScree extends StatelessWidget {
     return Scaffold(
       backgroundColor: context.palette.primaryColor,
       body: Padding(
-        padding: EdgeInsets.symmetric(horizontal: Insets.xLarge),
+        padding: const EdgeInsets.symmetric(horizontal: Insets.xLarge),
         child: Column(
           children: [
             Card(
@@ -31,7 +32,7 @@ class NaborScree extends StatelessWidget {
                 borderRadius: BorderRadius.circular(cardRadius),
               ),
               child: Padding(
-                padding: EdgeInsets.symmetric(horizontal: Insets.xLarge),
+                padding: const EdgeInsets.symmetric(horizontal: Insets.xLarge),
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
@@ -46,7 +47,7 @@ class NaborScree extends StatelessWidget {
                         ),
                       ),
                     ),
-                    Text(AppTexts.cardDescription),
+                    const Text(AppTexts.cardDescription),
                     Padding(
                       padding:
                           const EdgeInsets.symmetric(vertical: Insets.large),
@@ -59,16 +60,16 @@ class NaborScree extends StatelessWidget {
                         onPressed: () {
                           _launchURL(PdfLauncher.nabor);
                         },
-                        child: Text(
-                          AppTexts.cardMore,
-                          style: TextStyle(
-                            color: Colors.white,
-                          ),
-                        ),
                         style: ElevatedButton.styleFrom(
                           primary: Colors.amber[600],
                           shape: RoundedRectangleBorder(
                             borderRadius: BorderRadius.circular(30),
+                          ),
+                        ),
+                        child: const Text(
+                          AppTexts.cardMore,
+                          style: TextStyle(
+                            color: Colors.white,
                           ),
                         ),
                       ),
