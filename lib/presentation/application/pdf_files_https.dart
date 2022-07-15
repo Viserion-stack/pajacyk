@@ -9,4 +9,5 @@ abstract class PdfLauncher {
       'https://www.pajacyk.pl/content/uploads/2021/04/REGULAMIN-SERWISU-WWW_Pajacyk.pdf';
   static const String nabor = 'https://www.pajacyk.pl/nabor/';
   static const String partnerzy = 'https://www.pajacyk.pl/partnerzy/';
+  static const String kontakt = 'https://www.pajacyk.pl/kontakt/';
 }

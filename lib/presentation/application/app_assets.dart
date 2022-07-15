@@ -21,6 +21,34 @@ class AppAssets {
 
   //svg
   static const String pajacykBackground = '$_assetPath/pajacyk_background.svg';
+
+  //asets lists
+
+  static const List<String> partnerList = [
+    'assets/partners/santander.png',
+    'assets/partners/alternberg.png',
+    'assets/partners/electrolux.png',
+    'assets/partners/dhl.png',
+    'assets/partners/biedronka.png',
+    'assets/partners/bp.png',
+    'assets/partners/internationalPaper.png',
+    'assets/partners/payBack.png',
+    'assets/partners/independentTrader.png',
+    'assets/partners/auchan.png',
+    'assets/partners/sodexo.png',
+    'assets/partners/apart.png',
+    'assets/partners/panTabletka.png',
+    'assets/partners/ncab.png',
+    'assets/partners/amosFiorello.png',
+    'assets/partners/kaufland.png',
+  ];
+  static const List<String> partnerWspierajacyList = [
+    'assets/partners/lemoniq.png',
+    'assets/partners/pryzmat.png',
+    'assets/partners/deva.png',
+    'assets/partners/oktawave.png',
+    'assets/partners/upmore.png',
+  ];
 }
 
 extension Assets on BuildContext {

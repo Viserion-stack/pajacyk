@@ -1,8 +1,11 @@
-// ignore_for_file: no_leading_underscores_for_local_identifiers
+// ignore_for_file: no_leading_underscores_for_local_identifiers, prefer_const_constructors
 
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
-import 'package:url_launcher/url_launcher.dart';
+import 'package:pajacyk/presentation/application/pdf_files_https.dart';
+
+import '../../application/texts.dart';
+import '../../common/launcher_url.dart';
 
 class ContactScreen extends StatelessWidget {
   const ContactScreen({Key? key}) : super(key: key);
@@ -32,21 +35,6 @@ class ContactScreen extends StatelessWidget {
 
 class KontaktCard extends StatelessWidget {
   const KontaktCard({Key? key}) : super(key: key);
-  Future<void> _makePhoneCall(String phoneNumber) async {
-    final Uri launchUri = Uri(
-      scheme: 'tel',
-      path: phoneNumber,
-    );
-    await launchUrl(launchUri);
-  }
-
-  Future<void> _sendAnEmail(String emailTo) async {
-    final Uri launchUri = Uri(
-      scheme: 'mailto',
-      path: emailTo,
-    );
-    await launchUrl(launchUri);
-  }
 
   @override
   Widget build(BuildContext context) {
@@ -65,7 +53,7 @@ class KontaktCard extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
             Text(
-              'KONTAKT',
+              AppTexts.contactHeader1,
               style: TextStyle(
                   color: Colors.blue[700],
                   fontWeight: FontWeight.bold,
@@ -75,58 +63,58 @@ class KontaktCard extends StatelessWidget {
               TextSpan(
                 children: <TextSpan>[
                   const TextSpan(
-                    text: 'POSLKA AKCJA HUMANITARNA:',
+                    text: AppTexts.polAkcjaHumaniatarna,
                     style: TextStyle(
                       fontWeight: FontWeight.bold,
                     ),
                   ),
                   const TextSpan(
-                    text: '\nal. Solidarności 78a, 00-145 Warszawa\n',
+                    text: AppTexts.adresSolidarnosci,
                   ),
                   const TextSpan(
-                    text: 'TELEFON:',
-                    style: TextStyle(
-                      fontWeight: FontWeight.bold,
-                    ),
-                  ),
-                  TextSpan(
-                    text: ' +48 22 828 88 82',
-                    recognizer: TapGestureRecognizer()
-                      ..onTap = () async {
-                        _makePhoneCall('+48 22 828 88 82');
-                      },
-                  ),
-                  const TextSpan(
-                    text: '\nE-mail:',
+                    text: 'TELEFON: ',
                     style: TextStyle(
                       fontWeight: FontWeight.bold,
                     ),
                   ),
                   TextSpan(
-                    text: ' pah@pah.org.pl',
+                    text: AppTexts.telPajacyk,
                     recognizer: TapGestureRecognizer()
                       ..onTap = () async {
-                        debugPrint('tel');
-                        _sendAnEmail('pah@pah.org.pl');
+                        makePhoneCall(AppTexts.telPajacyk);
                       },
                   ),
                   const TextSpan(
-                    text: '\nNIP:',
+                    text: '\nE-mail: ',
+                    style: TextStyle(
+                      fontWeight: FontWeight.bold,
+                    ),
+                  ),
+                  TextSpan(
+                    text: AppTexts.emailPajacyk,
+                    recognizer: TapGestureRecognizer()
+                      ..onTap = () async {
+                        debugPrint('email');
+                        sendAnEmail(AppTexts.emailPajacyk);
+                      },
+                  ),
+                  const TextSpan(
+                    text: '\nNIP: ',
                     style: TextStyle(
                       fontWeight: FontWeight.bold,
                     ),
                   ),
                   const TextSpan(
-                    text: ' 525-14-41-253',
+                    text: AppTexts.nip,
                   ),
                   const TextSpan(
-                    text: '\nKRS:',
+                    text: '\nKRS: ',
                     style: TextStyle(
                       fontWeight: FontWeight.bold,
                     ),
                   ),
                   const TextSpan(
-                    text: ' 0000136833',
+                    text: AppTexts.krs,
                   ),
                 ],
               ),
@@ -149,31 +137,29 @@ class KontaktCard extends StatelessWidget {
                     ),
                   ),
                   TextSpan(
-                    text: 'Alior Bank:',
+                    text: 'Alior Bank: ',
+                    style: TextStyle(
+                      fontWeight: FontWeight.bold,
+                    ),
+                  ),
+                  TextSpan(text: AppTexts.bankaAccNumber),
+                  TextSpan(
+                    text: '\nIBAN: ',
                     style: TextStyle(
                       fontWeight: FontWeight.bold,
                     ),
                   ),
                   TextSpan(
-                    text: ' 02 2490 0005 0000 4600 8316 8772',
+                    text: AppTexts.iban,
                   ),
                   TextSpan(
-                    text: '\nIBAN:',
+                    text: '\nSWIFT: ',
                     style: TextStyle(
                       fontWeight: FontWeight.bold,
                     ),
                   ),
                   TextSpan(
-                    text: 'PL02 2490 0005 0000 4600 8316 8772',
-                  ),
-                  TextSpan(
-                    text: '\nSWIFT:',
-                    style: TextStyle(
-                      fontWeight: FontWeight.bold,
-                    ),
-                  ),
-                  TextSpan(
-                    text: ' ALBPPLPW\n',
+                    text: AppTexts.swift,
                   ),
                   TextSpan(
                     text: 'z dopiskiem ',
@@ -203,27 +189,6 @@ class KontaktSzkolaCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    void _launchURL(String url) async {
-      final Uri _url = Uri.parse(url);
-      if (!await launchUrl(_url)) throw 'Could not launch $url';
-    }
-
-    Future<void> _makePhoneCall(String phoneNumber) async {
-      final Uri launchUri = Uri(
-        scheme: 'tel',
-        path: phoneNumber,
-      );
-      await launchUrl(launchUri);
-    }
-
-    Future<void> _sendAnEmail(String emailTo) async {
-      final Uri launchUri = Uri(
-        scheme: 'mailto',
-        path: emailTo,
-      );
-      await launchUrl(launchUri);
-    }
-
     final size = MediaQuery.of(context).size;
     return Container(
       padding: const EdgeInsets.only(bottom: 16),
@@ -240,7 +205,7 @@ class KontaktSzkolaCard extends StatelessWidget {
           children: [
             Image.asset('assets/abc.png'),
             Text(
-              'KONTAKT DLA SZKÓŁ I ORGANIZACJI',
+              AppTexts.contactHeader2,
               style: TextStyle(
                   color: Colors.blue[700],
                   fontWeight: FontWeight.bold,
@@ -257,22 +222,22 @@ class KontaktSzkolaCard extends StatelessWidget {
                   ),
                   children: <TextSpan>[
                     const TextSpan(
-                      text: 'Magdalena Jaranowska',
+                      text: AppTexts.magdalenaJarnowska,
                       style: TextStyle(
                         fontWeight: FontWeight.bold,
                       ),
                     ),
                     const TextSpan(
-                      text: '\nTELEFON:',
+                      text: '\nTELEFON: ',
                       style: TextStyle(
                         fontWeight: FontWeight.bold,
                       ),
                     ),
                     TextSpan(
-                      text: ' +48 501 752 160',
+                      text: AppTexts.telMagdalenaPajacyk,
                       recognizer: TapGestureRecognizer()
                         ..onTap = () async {
-                          _makePhoneCall('+48 501 752 160');
+                          makePhoneCall(AppTexts.telMagdalenaPajacyk);
                         },
                     ),
                     const TextSpan(
@@ -282,14 +247,14 @@ class KontaktSzkolaCard extends StatelessWidget {
                       ),
                     ),
                     TextSpan(
-                      text: 'pajacyk@pah.org.pl',
+                      text: AppTexts.emailPajacyk,
                       recognizer: TapGestureRecognizer()
                         ..onTap = () async {
-                          _sendAnEmail('pah@pah.org.pl');
+                          sendAnEmail(AppTexts.emailPajacyk);
                         },
                     ),
                     const TextSpan(
-                      text: '\nul. Wita Stwosza 2, 87–100 Toruń',
+                      text: AppTexts.adresStwosza,
                     ),
                   ],
                 ),
@@ -303,14 +268,14 @@ class KontaktSzkolaCard extends StatelessWidget {
                 width: double.infinity,
                 child: ElevatedButton(
                   onPressed: () {
-                    _launchURL('https://www.pajacyk.pl/kontakt/');
+                    launchURL(PdfLauncher.kontakt);
                   },
                   style: ElevatedButton.styleFrom(
                       primary: Colors.blue[700],
                       shape: RoundedRectangleBorder(
                           borderRadius: BorderRadius.circular(30))),
                   child: const Text(
-                    'WIĘCEJ',
+                    AppTexts.cardMore,
                     style: TextStyle(
                       color: Colors.white,
                     ),
@@ -330,11 +295,6 @@ class KontaktWspolpracaCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    void _launchURL(String url) async {
-      final Uri _url = Uri.parse(url);
-      if (!await launchUrl(_url)) throw 'Could not launch $url';
-    }
-
     final size = MediaQuery.of(context).size;
     return Container(
       padding: const EdgeInsets.only(bottom: 16),
@@ -354,14 +314,14 @@ class KontaktWspolpracaCard extends StatelessWidget {
               child: Image.asset('assets/receIcon.png'),
             ),
             Text(
-              'KONTAKT DLA OSÓB ZAINTERESOWANYCH WSPÓŁPRACĄ',
+              AppTexts.contactHeader3,
               style: TextStyle(
                   color: Colors.blue[700],
                   fontWeight: FontWeight.bold,
                   fontSize: 22),
               textAlign: TextAlign.center,
             ),
-            const Padding(
+            Padding(
               padding: EdgeInsets.symmetric(horizontal: 10.0),
               child: Text.rich(
                 TextSpan(
@@ -376,19 +336,27 @@ class KontaktWspolpracaCard extends StatelessWidget {
                     TextSpan(text: 'Jest na to kilka sposobów:\n'),
                     TextSpan(text: 'Napisz maila na adres:\n'),
                     TextSpan(
-                      text: 'biznes@pah.org.pl\n',
+                      text: AppTexts.emailBiznes,
                       style: TextStyle(
                         fontWeight: FontWeight.bold,
                       ),
+                      recognizer: TapGestureRecognizer()
+                        ..onTap = () async {
+                          sendAnEmail(AppTexts.emailBiznes);
+                        },
                     ),
                     TextSpan(text: 'Zadzwoń pod numer:\n'),
                     TextSpan(
-                      text: '+48 501 104 397\n',
+                      text: AppTexts.telBiznes,
                       style: TextStyle(
                         fontWeight: FontWeight.bold,
                       ),
+                      recognizer: TapGestureRecognizer()
+                        ..onTap = () async {
+                          makePhoneCall(AppTexts.telBiznes);
+                        },
                     ),
-                    TextSpan(text: 'Wyślij wiadomość za pomocą '),
+                    TextSpan(text: '\nWyślij wiadomość za pomocą '),
                     TextSpan(
                       text: 'formularza',
                       style: TextStyle(
@@ -407,14 +375,14 @@ class KontaktWspolpracaCard extends StatelessWidget {
                 width: double.infinity,
                 child: ElevatedButton(
                   onPressed: () {
-                    _launchURL('https://www.pajacyk.pl/partnerzy/');
+                    launchURL(PdfLauncher.kontakt);
                   },
                   style: ElevatedButton.styleFrom(
                       primary: Colors.blue[700],
                       shape: RoundedRectangleBorder(
                           borderRadius: BorderRadius.circular(30))),
                   child: const Text(
-                    'WSPÓŁPRACA',
+                    AppTexts.wspolpracaButton,
                     style: TextStyle(
                       color: Colors.white,
                     ),

@@ -57,4 +57,26 @@ class AppTexts {
   static const String partnerzyCardDescription =
       '\nZobacz, jak Twoja firma może razem z nami zaangażować się we wspieranie najbardziej potrzebujących dzieci.';
   static const String cardButtonText = 'ZOSTAŃ PARTNEREM';
+  //kontakt
+  static const String wspolpracaButton = 'WSPÓŁPRACA';
+  static const String contactHeader1 = 'KONTAKT';
+  static const String contactHeader2 = 'KONTAKT DLA SZKÓŁ I ORGANIZACJI';
+  static const String contactHeader3 =
+      'KONTAKT DLA OSÓB ZAINTERESOWANYCH WSPÓŁPRACĄ';
+
+  static const String polAkcjaHumaniatarna = 'POSLKA AKCJA HUMANITARNA:';
+  static const String emailPajacyk = 'pajacyk@pah.org.pl';
+  static const String emailBiznes = 'biznes@pah.org.pl\n';
+  static const String telMagdalenaPajacyk = '+48 501 752 160';
+  static const String telPajacyk = '+48 22 828 88 82';
+  static const String telBiznes = '+48 501 104 397';
+  static const String nip = '525-14-41-253';
+  static const String krs = '0000136833';
+  static const String bankaAccNumber = '02 2490 0005 0000 4600 8316 8772';
+  static const String iban = 'PL02 2490 0005 0000 4600 8316 8772';
+  static const String swift = ' ALBPPLPW\n';
+  static const String magdalenaJarnowska = 'Magdalena Jaranowska';
+  static const String adresStwosza = '\nul. Wita Stwosza 2, 87–100 Toruń';
+  static const String adresSolidarnosci =
+      '\nal. Solidarności 78a, 00-145 Warszawa\n';
 }

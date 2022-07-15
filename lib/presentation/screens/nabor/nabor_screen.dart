@@ -4,18 +4,13 @@ import 'package:pajacyk/presentation/application/insets.dart';
 import 'package:pajacyk/presentation/application/pdf_files_https.dart';
 import 'package:pajacyk/presentation/application/texts.dart';
 import 'package:pajacyk/presentation/application/theme.dart';
-import 'package:url_launcher/url_launcher.dart';
+
+import '../../common/launcher_url.dart';
 
 class NaborScree extends StatelessWidget {
   const NaborScree({Key? key}) : super(key: key);
 
   static const String routeName = '/nabor';
-
-  void _launchURL(String url) async {
-    // ignore: no_leading_underscores_for_local_identifiers
-    final Uri _url = Uri.parse(url);
-    if (!await launchUrl(_url)) throw 'Could not launch $url';
-  }
 
   static const double cardRadius = 15;
 
@@ -58,7 +53,7 @@ class NaborScree extends StatelessWidget {
                           const EdgeInsets.symmetric(vertical: Insets.large),
                       child: ElevatedButton(
                         onPressed: () {
-                          _launchURL(PdfLauncher.nabor);
+                          launchURL(PdfLauncher.nabor);
                         },
                         style: ElevatedButton.styleFrom(
                           primary: Colors.amber[600],

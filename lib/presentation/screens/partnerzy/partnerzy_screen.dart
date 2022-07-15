@@ -6,8 +6,7 @@ import 'package:pajacyk/presentation/application/insets.dart';
 import 'package:pajacyk/presentation/application/pdf_files_https.dart';
 import 'package:pajacyk/presentation/application/texts.dart';
 import 'package:provider/provider.dart';
-import 'package:url_launcher/url_launcher.dart';
-
+import '../../common/launcher_url.dart';
 import '../../controllers/navigation.dart';
 
 class PartnerzyScreen extends StatelessWidget {
@@ -26,15 +25,15 @@ class PartnerzyScreen extends StatelessWidget {
           child: Center(
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                const MyCard(
+              children: const [
+                MyCard(
                   headerText: AppTexts.headerText,
                   bodyText: AppTexts.partnerzyBodyText,
                   buttonText: AppTexts.contactText,
                 ),
                 StrategiczniPartnerzy(),
-                const ZostanPartneremCard(),
-                const SizedBox(height: _bottomSpace),
+                ZostanPartneremCard(),
+                SizedBox(height: _bottomSpace),
               ],
             ),
           ),
@@ -45,11 +44,6 @@ class PartnerzyScreen extends StatelessWidget {
 }
 
 class MyCard extends StatelessWidget {
-  void _launchURL(String url) async {
-    final Uri _url = Uri.parse(url);
-    if (!await launchUrl(_url)) throw 'Could not launch $url';
-  }
-
   final String headerText;
   final String bodyText;
   final String buttonText;
@@ -138,7 +132,7 @@ class MyCard extends StatelessWidget {
                                 listen: false)
                             .changeScreen(5);
                       } else {
-                        _launchURL(url!);
+                        launchURL(url!);
                       }
                     },
                     style: ElevatedButton.styleFrom(
@@ -173,33 +167,7 @@ class MyCard extends StatelessWidget {
 
 // ignore: must_be_immutable
 class StrategiczniPartnerzy extends StatelessWidget {
-  StrategiczniPartnerzy({Key? key}) : super(key: key);
-
-  final List<String> partnerList = [
-    'assets/partners/santander.png',
-    'assets/partners/alternberg.png',
-    'assets/partners/electrolux.png',
-    'assets/partners/dhl.png',
-    'assets/partners/biedronka.png',
-    'assets/partners/bp.png',
-    'assets/partners/internationalPaper.png',
-    'assets/partners/payBack.png',
-    'assets/partners/independentTrader.png',
-    'assets/partners/auchan.png',
-    'assets/partners/sodexo.png',
-    'assets/partners/apart.png',
-    'assets/partners/panTabletka.png',
-    'assets/partners/ncab.png',
-    'assets/partners/amosFiorello.png',
-    'assets/partners/kaufland.png',
-  ];
-  List<String> partnerWspierajacyList = [
-    'assets/partners/lemoniq.png',
-    'assets/partners/pryzmat.png',
-    'assets/partners/deva.png',
-    'assets/partners/oktawave.png',
-    'assets/partners/upmore.png',
-  ];
+  const StrategiczniPartnerzy({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -242,13 +210,13 @@ class StrategiczniPartnerzy extends StatelessWidget {
                       crossAxisSpacing: 20,
                       mainAxisSpacing: 20,
                     ),
-                    itemCount: partnerList.length,
+                    itemCount: AppAssets.partnerList.length,
                     itemBuilder: (context, index) {
                       return SizedBox(
                         width: 20,
                         height: 20,
                         child: Image.asset(
-                          partnerList[index],
+                          AppAssets.partnerList[index],
                           fit: BoxFit.contain,
                         ),
                       );
@@ -279,10 +247,10 @@ class StrategiczniPartnerzy extends StatelessWidget {
                       crossAxisSpacing: 10,
                       mainAxisSpacing: 10,
                     ),
-                    itemCount: partnerWspierajacyList.length,
+                    itemCount: AppAssets.partnerWspierajacyList.length,
                     itemBuilder: (context, index) {
                       return Image.asset(
-                        partnerWspierajacyList[index],
+                        AppAssets.partnerWspierajacyList[index],
                         fit: BoxFit.contain,
                       );
                     },
@@ -302,11 +270,6 @@ class ZostanPartneremCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    void _launchURL(String url) async {
-      final Uri _url = Uri.parse(url);
-      if (!await launchUrl(_url)) throw 'Could not launch $url';
-    }
-
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: Insets.xLarge),
       child: Container(
@@ -356,7 +319,7 @@ class ZostanPartneremCard extends StatelessWidget {
                     width: double.infinity,
                     child: ElevatedButton(
                       onPressed: () {
-                        _launchURL(PdfLauncher.partnerzy);
+                        launchURL(PdfLauncher.partnerzy);
                       },
                       style: ElevatedButton.styleFrom(
                         primary: Colors.blue[700],

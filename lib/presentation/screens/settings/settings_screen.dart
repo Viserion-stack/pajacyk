@@ -1,21 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:pajacyk/presentation/application/theme.dart';
 import 'package:provider/provider.dart';
-import 'package:url_launcher/url_launcher.dart';
-
 import '../../../domain/preference_assistant/preference_assistant.dart';
 import '../../application/insets.dart';
 import '../../application/pdf_files_https.dart';
+import '../../common/launcher_url.dart';
 
 class SettingsScreen extends StatelessWidget {
   const SettingsScreen({Key? key}) : super(key: key);
-
-  void _launchURL(String url) async {
-    // ignore: no_leading_underscores_for_local_identifiers
-    final Uri _url = Uri.parse(url);
-    if (!await launchUrl(_url)) throw 'Could not launch $url';
-  }
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -67,7 +59,7 @@ class SettingsScreen extends StatelessWidget {
           ),
           TextButton(
               onPressed: () {
-                _launchURL(
+                launchURL(
                   PdfLauncher.politykaPrywatnosci,
                 );
               },
@@ -80,7 +72,7 @@ class SettingsScreen extends StatelessWidget {
               )),
           TextButton(
             onPressed: () {
-              _launchURL(PdfLauncher.regulamin);
+              launchURL(PdfLauncher.regulamin);
             },
             child: Text(
               'Regulamin',

@@ -1,14 +1,9 @@
-// ignore_for_file: no_leading_underscores_for_local_identifiers
-
-import 'dart:io';
-
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
 import 'package:pajacyk/presentation/controllers/navigation.dart';
 import 'package:provider/provider.dart';
-import 'package:url_launcher/url_launcher.dart';
-
 import '../../../domain/preference_assistant/preference_assistant.dart';
+import '../../common/launcher_url.dart';
 import '../../controllers/api_calls.dart';
 
 class SplashScreen extends StatefulWidget {
@@ -22,37 +17,6 @@ class _SplashScreenState extends State<SplashScreen>
     with SingleTickerProviderStateMixin {
   late AnimationController animationController;
   late Animation<double> _animation;
-  void _launchURL(String url) async {
-    final Uri _url = Uri.parse(url);
-    if (!await launchUrl(_url)) throw 'Could not launch $url';
-  }
-
-  Future<void> _openFacebook() async {
-    String fbProtocolUrl;
-    if (Platform.isIOS) {
-      fbProtocolUrl = 'fb://profile/10150100801814768';
-    } else {
-      fbProtocolUrl = 'fb://profile/10150100801814768';
-    }
-
-    String fallbackUrl = 'https://www.facebook.com/PajacykPL';
-
-    try {
-      Uri fbBundleUri = Uri.parse(fbProtocolUrl);
-      var canLaunchNatively = await canLaunchUrl(fbBundleUri);
-
-      if (canLaunchNatively) {
-        launchUrl(fbBundleUri);
-      } else {
-        await launchUrl(Uri.parse(fallbackUrl),
-            mode: LaunchMode.externalApplication);
-      }
-    } catch (e, st) {
-      // Handle this as you
-      debugPrint(e.toString());
-      debugPrint(st.toString());
-    }
-  }
 
   @override
   void initState() {
@@ -213,7 +177,7 @@ class _SplashScreenState extends State<SplashScreen>
                             IconButton(
                               padding: EdgeInsets.zero,
                               onPressed: () {
-                                _openFacebook();
+                                openFacebook();
                               },
                               icon: const Icon(
                                 Icons.facebook_outlined,
@@ -228,7 +192,7 @@ class _SplashScreenState extends State<SplashScreen>
                         ),
                         GestureDetector(
                           onTap: (() {
-                            _launchURL('https://www.pah.org.pl');
+                            launchURL('https://www.pah.org.pl');
                           }),
                           child: SizedBox(
                             width: 100,
@@ -259,11 +223,6 @@ class _SplashScreenState extends State<SplashScreen>
 }
 
 class MyCard extends StatelessWidget {
-  void _launchURL(String url) async {
-    final Uri _url = Uri.parse(url);
-    if (!await launchUrl(_url)) throw 'Could not launch $url';
-  }
-
   final String headerText;
   final String bodyText;
   final String buttonText;
@@ -347,7 +306,7 @@ class MyCard extends StatelessWidget {
                       Provider.of<NavigationController>(context, listen: false)
                           .changeScreen(2);
                     } else {
-                      _launchURL(url!);
+                      launchURL(url!);
                     }
                   },
                   style: ElevatedButton.styleFrom(
