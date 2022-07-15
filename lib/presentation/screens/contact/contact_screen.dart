@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
-
 import 'package:flutter/gestures.dart';
-import 'package:flutter/material.dart';
+import 'package:pajacyk/presentation/application/app_assets.dart';
+import 'package:pajacyk/presentation/application/insets.dart';
+import 'package:pajacyk/presentation/application/texts.dart';
+import 'package:pajacyk/presentation/common/laucher_url.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 class ContactScreen extends StatelessWidget {
@@ -15,7 +17,6 @@ class ContactScreen extends StatelessWidget {
       backgroundColor: Colors.green[500],
       body: Align(
         alignment: Alignment.topCenter,
-        //color: Colors.green,
         child: SingleChildScrollView(
             child: Container(
                 child: Column(
@@ -50,149 +51,126 @@ class KontaktCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final size = MediaQuery.of(context).size;
-    return Container(
-      padding: EdgeInsets.only(bottom: 16),
-      width: size.width * 0.9,
-      height: size.height * 0.65,
-      child: Card(
-        shape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.circular(15.0),
-        ),
-        color: Colors.white,
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.spaceAround,
-          crossAxisAlignment: CrossAxisAlignment.center,
-          children: [
-            Text(
-              'KONTAKT',
-              style: TextStyle(
-                color: Colors.blue[700],
-                fontWeight: FontWeight.bold,
-                fontSize: 22,
-              ),
+    return Padding(
+      padding: const EdgeInsets.symmetric(
+        horizontal: Insets.xLarge,
+        vertical: Insets.large,
+      ),
+      child: Container(
+        child: Card(
+          shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.circular(15.0),
+          ),
+          color: Colors.white,
+          child: Padding(
+            padding: const EdgeInsets.all(Insets.large),
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.spaceAround,
+              crossAxisAlignment: CrossAxisAlignment.center,
+              children: [
+                Text(
+                  AppTexts.contact,
+                  style: TextStyle(
+                    color: Colors.blue[700],
+                    fontWeight: FontWeight.bold,
+                    fontSize: 22,
+                  ),
+                ),
+                Padding(
+                  padding: const EdgeInsets.symmetric(vertical: Insets.large),
+                  child: Text.rich(
+                    TextSpan(
+                      children: <TextSpan>[
+                        TextSpan(
+                          text: AppTexts.pahText,
+                          style: TextStyle(
+                            fontWeight: FontWeight.bold,
+                          ),
+                        ),
+                        TextSpan(text: AppTexts.pahAddress),
+                        TextSpan(
+                          text: AppTexts.pahTel,
+                          style: TextStyle(
+                            fontWeight: FontWeight.bold,
+                          ),
+                        ),
+                        TextSpan(
+                          text: AppTexts.panNumber,
+                          recognizer: TapGestureRecognizer()
+                            ..onTap = () async {
+                              _makePhoneCall('+48 22 828 88 82');
+                            },
+                        ),
+                        TextSpan(
+                          text: AppTexts.emailPah,
+                          style: TextStyle(fontWeight: FontWeight.bold),
+                        ),
+                        TextSpan(
+                          text: AppTexts.pahEmailAddress,
+                          recognizer: TapGestureRecognizer()
+                            ..onTap = () async {
+                              print('tel');
+                              _sendAnEmail('pah@pah.org.pl');
+                            },
+                        ),
+                        TextSpan(
+                          text: AppTexts.nip,
+                          style: TextStyle(fontWeight: FontWeight.bold),
+                        ),
+                        TextSpan(text: AppTexts.pahNip),
+                        TextSpan(
+                          text: AppTexts.krs,
+                          style: TextStyle(fontWeight: FontWeight.bold),
+                        ),
+                        TextSpan(text: AppTexts.pahKrs),
+                      ],
+                    ),
+                    textAlign: TextAlign.center,
+                  ),
+                ),
+                Padding(
+                  padding: const EdgeInsets.symmetric(vertical: Insets.large),
+                  child: Image.asset('assets/pahLogo.png'),
+                ),
+                Text.rich(
+                  TextSpan(
+                    children: <TextSpan>[
+                      TextSpan(
+                        text: AppTexts.bankAccount,
+                        style: TextStyle(fontWeight: FontWeight.bold),
+                      ),
+                      TextSpan(
+                        text: AppTexts.bankAccountPajacyk,
+                        style: TextStyle(fontWeight: FontWeight.bold),
+                      ),
+                      TextSpan(
+                        text: AppTexts.aliorBank,
+                        style: TextStyle(fontWeight: FontWeight.bold),
+                      ),
+                      TextSpan(text: AppTexts.accountNumber),
+                      TextSpan(
+                        text: AppTexts.iban,
+                        style: TextStyle(fontWeight: FontWeight.bold),
+                      ),
+                      TextSpan(text: AppTexts.ibanPajacyk),
+                      TextSpan(
+                        text: AppTexts.swift,
+                        style: TextStyle(fontWeight: FontWeight.bold),
+                      ),
+                      TextSpan(text: AppTexts.albpplpw),
+                      TextSpan(text: AppTexts.zdopiskiem),
+                      TextSpan(
+                        text: AppTexts.pahPajacyk,
+                        style: TextStyle(fontWeight: FontWeight.bold),
+                      ),
+                      TextSpan(text: AppTexts.wTytule),
+                    ],
+                  ),
+                  textAlign: TextAlign.center,
+                ),
+              ],
             ),
-            Text.rich(
-              TextSpan(
-                children: <TextSpan>[
-                  TextSpan(
-                    text: 'POSLKA AKCJA HUMANITARNA:',
-                    style: TextStyle(
-                      fontWeight: FontWeight.bold,
-                    ),
-                  ),
-                  TextSpan(
-                    text: '\nal. Solidarności 78a, 00-145 Warszawa\n',
-                  ),
-                  TextSpan(
-                    text: 'TELEFON:',
-                    style: TextStyle(
-                      fontWeight: FontWeight.bold,
-                    ),
-                  ),
-                  TextSpan(
-                    text: ' +48 22 828 88 82',
-                    recognizer: TapGestureRecognizer()
-                      ..onTap = () async {
-                        _makePhoneCall('+48 22 828 88 82');
-                      },
-                  ),
-                  TextSpan(
-                    text: '\nE-mail:',
-                    style: TextStyle(
-                      fontWeight: FontWeight.bold,
-                    ),
-                  ),
-                  TextSpan(
-                    text: ' pah@pah.org.pl',
-                    recognizer: TapGestureRecognizer()
-                      ..onTap = () async {
-                        print('tel');
-                        _sendAnEmail('pah@pah.org.pl');
-                      },
-                  ),
-                  TextSpan(
-                    text: '\nNIP:',
-                    style: TextStyle(
-                      fontWeight: FontWeight.bold,
-                    ),
-                  ),
-                  TextSpan(
-                    text: ' 525-14-41-253',
-                  ),
-                  TextSpan(
-                    text: '\nKRS:',
-                    style: TextStyle(
-                      fontWeight: FontWeight.bold,
-                    ),
-                  ),
-                  TextSpan(
-                    text: ' 0000136833',
-                  ),
-                ],
-              ),
-              textAlign: TextAlign.center,
-            ),
-            Image.asset('assets/pahLogo.png'),
-            Text.rich(
-              TextSpan(
-                children: <TextSpan>[
-                  TextSpan(
-                    text: 'Konta bankowe:',
-                    style: TextStyle(
-                      fontWeight: FontWeight.bold,
-                    ),
-                  ),
-                  TextSpan(
-                    text: '\nNumer konta dedykowany programowi Pajacyk:\n',
-                    style: TextStyle(
-                      fontWeight: FontWeight.bold,
-                    ),
-                  ),
-                  TextSpan(
-                    text: 'Alior Bank:',
-                    style: TextStyle(
-                      fontWeight: FontWeight.bold,
-                    ),
-                  ),
-                  TextSpan(
-                    text: ' 02 2490 0005 0000 4600 8316 8772',
-                  ),
-                  TextSpan(
-                    text: '\nIBAN:',
-                    style: TextStyle(
-                      fontWeight: FontWeight.bold,
-                    ),
-                  ),
-                  TextSpan(
-                    text: 'PL02 2490 0005 0000 4600 8316 8772',
-                  ),
-                  TextSpan(
-                    text: '\nSWIFT:',
-                    style: TextStyle(
-                      fontWeight: FontWeight.bold,
-                    ),
-                  ),
-                  TextSpan(
-                    text: ' ALBPPLPW\n',
-                  ),
-                  TextSpan(
-                    text: 'z dopiskiem ',
-                  ),
-                  TextSpan(
-                    text: '\„Pajacyk”',
-                    style: TextStyle(
-                      fontWeight: FontWeight.bold,
-                    ),
-                  ),
-                  TextSpan(
-                    text: ' w tytyle przelewu.',
-                  ),
-                ],
-              ),
-              textAlign: TextAlign.center,
-            ),
-          ],
+          ),
         ),
       ),
     );
@@ -204,11 +182,6 @@ class KontaktSzkolaCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    void _launchURL(String url) async {
-      final Uri _url = Uri.parse(url);
-      if (!await launchUrl(_url)) throw 'Could not launch $url';
-    }
-
     Future<void> _makePhoneCall(String phoneNumber) async {
       final Uri launchUri = Uri(
         scheme: 'tel',
@@ -225,99 +198,100 @@ class KontaktSzkolaCard extends StatelessWidget {
       await launchUrl(launchUri);
     }
 
-    final size = MediaQuery.of(context).size;
-    return Container(
-      padding: EdgeInsets.only(bottom: 16),
-      width: size.width * 0.9,
-      height: size.height * 0.45,
-      child: Card(
-        shape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.circular(15.0),
-        ),
-        color: Colors.white,
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-          crossAxisAlignment: CrossAxisAlignment.center,
-          children: [
-            Image.asset('assets/abc.png'),
-            Text(
-              'KONTAKT DLA SZKÓŁ I ORGANIZACJI',
-              style: TextStyle(color: Colors.blue[700], fontWeight: FontWeight.bold, fontSize: 22),
-              textAlign: TextAlign.center,
-            ),
-            Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 10.0),
-              child: Text.rich(
-                TextSpan(
-                  style: TextStyle(
-                    //fontSize: 17,
-                    color: Colors.black,
-                  ),
-                  children: <TextSpan>[
-                    TextSpan(
-                      text: 'Magdalena Jaranowska',
-                      style: TextStyle(
-                        fontWeight: FontWeight.bold,
-                      ),
-                    ),
-                    TextSpan(
-                      text: '\nTELEFON:',
-                      style: TextStyle(
-                        fontWeight: FontWeight.bold,
-                      ),
-                    ),
-                    TextSpan(
-                      text: ' +48 501 752 160',
-                      recognizer: TapGestureRecognizer()
-                        ..onTap = () async {
-                          print('tel');
-                          _makePhoneCall('+48 501 752 160');
-                        },
-                    ),
-                    TextSpan(
-                      text: '\nE-mail: ',
-                      style: TextStyle(
-                        fontWeight: FontWeight.bold,
-                      ),
-                    ),
-                    TextSpan(
-                      text: 'pajacyk@pah.org.pl',
-                      recognizer: TapGestureRecognizer()
-                        ..onTap = () async {
-                          print('tel');
-                          _sendAnEmail('pah@pah.org.pl');
-                        },
-                    ),
-                    TextSpan(
-                      text: '\nul. Wita Stwosza 2, 87–100 Toruń',
-                    ),
-                  ],
-                ),
-                textAlign: TextAlign.center,
-              ),
-            ),
-            Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 10.0),
-              child: SizedBox(
-                height: 40,
-                width: double.infinity,
-                child: ElevatedButton(
-                  onPressed: () {
-                    _launchURL('https://www.pajacyk.pl/kontakt/');
-                  },
+    return Padding(
+      padding: const EdgeInsets.symmetric(horizontal: Insets.xLarge),
+      child: Container(
+        child: Card(
+          shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.circular(15.0),
+          ),
+          color: Colors.white,
+          child: Padding(
+            padding: const EdgeInsets.all(Insets.large),
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+              crossAxisAlignment: CrossAxisAlignment.center,
+              children: [
+                Image.asset(AppAssets.abc),
+                Padding(
+                  padding: const EdgeInsets.symmetric(vertical: Insets.large),
                   child: Text(
-                    'WIĘCEJ',
+                    AppTexts.contactToSchool,
                     style: TextStyle(
-                      color: Colors.white,
+                      color: Colors.blue[700],
+                      fontWeight: FontWeight.bold,
+                      fontSize: 22,
+                    ),
+                    textAlign: TextAlign.center,
+                  ),
+                ),
+                Padding(
+                  padding: const EdgeInsets.symmetric(vertical: Insets.large),
+                  child: Text.rich(
+                    TextSpan(
+                      style: TextStyle(
+                        color: Colors.black,
+                      ),
+                      children: <TextSpan>[
+                        TextSpan(
+                          text: AppTexts.magdalena,
+                          style: TextStyle(fontWeight: FontWeight.bold),
+                        ),
+                        TextSpan(
+                          text: AppTexts.telefon,
+                          style: TextStyle(fontWeight: FontWeight.bold),
+                        ),
+                        TextSpan(
+                          text: AppTexts.numberMagdalena,
+                          recognizer: TapGestureRecognizer()
+                            ..onTap = () async {
+                              print('tel');
+                              _makePhoneCall('+48 501 752 160');
+                            },
+                        ),
+                        TextSpan(
+                          text: AppTexts.email,
+                          style: TextStyle(fontWeight: FontWeight.bold),
+                        ),
+                        TextSpan(
+                          text: AppTexts.website,
+                          recognizer: TapGestureRecognizer()
+                            ..onTap = () async {
+                              print('tel');
+                              _sendAnEmail(AppTexts.website);
+                            },
+                        ),
+                        TextSpan(
+                          text: AppTexts.address,
+                        ),
+                      ],
+                    ),
+                    textAlign: TextAlign.center,
+                  ),
+                ),
+                Padding(
+                  padding: const EdgeInsets.symmetric(horizontal: 10.0),
+                  child: SizedBox(
+                    height: 40,
+                    width: double.infinity,
+                    child: ElevatedButton(
+                      onPressed: () {
+                        launchURL('https://www.pajacyk.pl/kontakt/');
+                      },
+                      child: Text(
+                        AppTexts.contactMore,
+                        style: TextStyle(color: Colors.white),
+                      ),
+                      style: ElevatedButton.styleFrom(
+                        primary: Colors.blue[700],
+                        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(30)),
+                      ),
                     ),
                   ),
-                  style: ElevatedButton.styleFrom(
-                      primary: Colors.blue[700],
-                      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(30))),
                 ),
-              ),
+              ],
             ),
-          ],
+          ),
         ),
       ),
     );
@@ -329,93 +303,88 @@ class KontaktWspolpracaCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    void _launchURL(String url) async {
-      final Uri _url = Uri.parse(url);
-      if (!await launchUrl(_url)) throw 'Could not launch $url';
-    }
-
-    final size = MediaQuery.of(context).size;
-    return Container(
-      padding: EdgeInsets.only(bottom: 16),
-      width: size.width * 0.9,
-      height: size.height * 0.57,
-      child: Card(
-        shape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.circular(15.0),
-        ),
-        color: Colors.white,
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-          crossAxisAlignment: CrossAxisAlignment.center,
-          children: [
-            Padding(
-              padding: const EdgeInsets.all(8.0),
-              child: Image.asset('assets/receIcon.png'),
-            ),
-            Text(
-              'KONTAKT DLA OSÓB ZAINTERESOWANYCH WSPÓŁPRACĄ',
-              style: TextStyle(color: Colors.blue[700], fontWeight: FontWeight.bold, fontSize: 22),
-              textAlign: TextAlign.center,
-            ),
-            Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 10.0),
-              child: Text.rich(
-                TextSpan(
-                  style: TextStyle(
-                    //fontSize: 17,
-                    color: Colors.black,
-                  ),
-                  children: <TextSpan>[
-                    TextSpan(text: 'Jesteś zainteresowany współpracą? Skontaktuj się z nami!\n'),
-                    TextSpan(text: 'Jest na to kilka sposobów:\n'),
-                    TextSpan(text: 'Napisz maila na adres:\n'),
-                    TextSpan(
-                      text: 'biznes@pah.org.pl\n',
-                      style: TextStyle(
-                        fontWeight: FontWeight.bold,
-                      ),
-                    ),
-                    TextSpan(text: 'Zadzwoń pod numer:\n'),
-                    TextSpan(
-                      text: '+48 501 104 397\n',
-                      style: TextStyle(
-                        fontWeight: FontWeight.bold,
-                      ),
-                    ),
-                    TextSpan(text: 'Wyślij wiadomość za pomocą '),
-                    TextSpan(
-                      text: 'formularza',
-                      style: TextStyle(
-                        fontWeight: FontWeight.bold,
-                      ),
-                    ),
-                  ],
+    return Padding(
+      padding: const EdgeInsets.symmetric(
+        horizontal: Insets.xLarge,
+        vertical: Insets.large,
+      ),
+      child: Container(
+        child: Card(
+          shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.circular(15.0),
+          ),
+          color: Colors.white,
+          child: Padding(
+            padding: const EdgeInsets.all(Insets.large),
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+              crossAxisAlignment: CrossAxisAlignment.center,
+              children: [
+                Padding(
+                  padding: const EdgeInsets.all(8.0),
+                  child: Image.asset('assets/receIcon.png'),
                 ),
-                textAlign: TextAlign.center,
-              ),
-            ),
-            Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 10.0),
-              child: SizedBox(
-                height: 40,
-                width: double.infinity,
-                child: ElevatedButton(
-                  onPressed: () {
-                    _launchURL('https://www.pajacyk.pl/partnerzy/');
-                  },
-                  child: Text(
-                    'WSPÓŁPRACA',
-                    style: TextStyle(
-                      color: Colors.white,
+                Text(
+                  AppTexts.contactInterestPeople,
+                  style: TextStyle(color: Colors.blue[700], fontWeight: FontWeight.bold, fontSize: 22),
+                  textAlign: TextAlign.center,
+                ),
+                Padding(
+                  padding: const EdgeInsets.symmetric(vertical: Insets.large),
+                  child: Text.rich(
+                    TextSpan(
+                      style: TextStyle(
+                        //fontSize: 17,
+                        color: Colors.black,
+                      ),
+                      children: <TextSpan>[
+                        TextSpan(text: AppTexts.contacttextOne),
+                        TextSpan(text: AppTexts.contacttextTwo),
+                        TextSpan(text: AppTexts.contacttextThree),
+                        TextSpan(
+                          text: AppTexts.biznes,
+                          style: TextStyle(fontWeight: FontWeight.bold),
+                        ),
+                        TextSpan(text: AppTexts.contactCall),
+                        TextSpan(
+                          text: AppTexts.biznesTel,
+                          style: TextStyle(fontWeight: FontWeight.bold),
+                        ),
+                        TextSpan(text: AppTexts.sendMessage),
+                        TextSpan(
+                          text: AppTexts.contactForm,
+                          style: TextStyle(fontWeight: FontWeight.bold),
+                        ),
+                      ],
+                    ),
+                    textAlign: TextAlign.center,
+                  ),
+                ),
+                Padding(
+                  padding: const EdgeInsets.symmetric(horizontal: 10.0),
+                  child: SizedBox(
+                    height: 40,
+                    width: double.infinity,
+                    child: ElevatedButton(
+                      onPressed: () {
+                        launchURL('https://www.pajacyk.pl/partnerzy/');
+                      },
+                      child: Text(
+                        AppTexts.cooperation,
+                        style: TextStyle(color: Colors.white),
+                      ),
+                      style: ElevatedButton.styleFrom(
+                        primary: Colors.blue[700],
+                        shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(30),
+                        ),
+                      ),
                     ),
                   ),
-                  style: ElevatedButton.styleFrom(
-                      primary: Colors.blue[700],
-                      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(30))),
                 ),
-              ),
+              ],
             ),
-          ],
+          ),
         ),
       ),
     );

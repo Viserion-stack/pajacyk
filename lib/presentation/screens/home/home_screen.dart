@@ -1,7 +1,12 @@
 import 'dart:io';
-
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
+import 'package:pajacyk/presentation/application/app_assets.dart';
+import 'package:pajacyk/presentation/application/insets.dart';
+import 'package:pajacyk/presentation/application/pdf_files_https.dart';
+import 'package:pajacyk/presentation/application/texts.dart';
+import 'package:pajacyk/presentation/application/theme.dart';
+import 'package:pajacyk/presentation/common/laucher_url.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 class HomeScreen extends StatefulWidget {
@@ -17,20 +22,15 @@ class _HomeScreenState extends State<HomeScreen> with SingleTickerProviderStateM
   late AnimationController animationController;
   late Animation<double> _animation;
 
-  void _launchURL(String url) async {
-    final Uri _url = Uri.parse(url);
-    if (!await launchUrl(_url)) throw 'Could not launch $url';
-  }
-
   Future<void> _openFacebook() async {
     String fbProtocolUrl;
     if (Platform.isIOS) {
-      fbProtocolUrl = 'fb://profile/10150100801814768';
+      fbProtocolUrl = PdfLauncher.profilePajacykId;
     } else {
-      fbProtocolUrl = 'fb://profile/10150100801814768';
+      fbProtocolUrl = PdfLauncher.profilePajacykId;
     }
 
-    String fallbackUrl = 'https://www.facebook.com/PajacykPL';
+    String fallbackUrl = PdfLauncher.profilePajacykFb;
 
     try {
       Uri fbBundleUri = Uri.parse(fbProtocolUrl);
@@ -39,7 +39,10 @@ class _HomeScreenState extends State<HomeScreen> with SingleTickerProviderStateM
       if (canLaunchNatively) {
         launchUrl(fbBundleUri);
       } else {
-        await launchUrl(Uri.parse(fallbackUrl), mode: LaunchMode.externalApplication);
+        await launchUrl(
+          Uri.parse(fallbackUrl),
+          mode: LaunchMode.externalApplication,
+        );
       }
     } catch (e, st) {
       // Handle this as you prefer
@@ -52,7 +55,10 @@ class _HomeScreenState extends State<HomeScreen> with SingleTickerProviderStateM
       duration: Duration(seconds: 1),
       vsync: this,
     );
-    _animation = Tween(begin: 0.0, end: 1.0).animate(CurvedAnimation(
+    _animation = Tween(
+      begin: 0.0,
+      end: 1.0,
+    ).animate(CurvedAnimation(
       parent: animationController,
       curve: Curves.easeIn,
     ));
@@ -80,8 +86,11 @@ class _HomeScreenState extends State<HomeScreen> with SingleTickerProviderStateM
                 Padding(
                   padding: const EdgeInsets.only(top: 20.0),
                   child: Text(
-                    'Witaj w krainie Pajacyka!',
-                    style: TextStyle(color: Colors.white, fontSize: 22),
+                    AppTexts.homeTitle,
+                    style: TextStyle(
+                      color: Colors.white,
+                      fontSize: 22,
+                    ),
                   ),
                 ),
                 Padding(
@@ -89,9 +98,12 @@ class _HomeScreenState extends State<HomeScreen> with SingleTickerProviderStateM
                   child: Padding(
                     padding: const EdgeInsets.only(top: 5.0),
                     child: Text(
-                      'Pajacyk od wielu lat wspiera prawidłowy rozwój dzieci. Pamiętaj, że kliknięcie w brzuszek,to pierwszy krok, by pomóc.',
+                      AppTexts.homeDescription,
                       textAlign: TextAlign.center,
-                      style: TextStyle(color: Colors.white, fontSize: 15),
+                      style: TextStyle(
+                        color: Colors.white,
+                        fontSize: 15,
+                      ),
                     ),
                   ),
                 ),
@@ -99,7 +111,7 @@ class _HomeScreenState extends State<HomeScreen> with SingleTickerProviderStateM
                   alignment: AlignmentDirectional.bottomCenter,
                   children: [
                     Image.asset(
-                      'assets/podest.png',
+                      AppAssets.podest,
                       scale: 1,
                     ),
                     GestureDetector(
@@ -128,7 +140,7 @@ class _HomeScreenState extends State<HomeScreen> with SingleTickerProviderStateM
                         child: FadeTransition(
                           opacity: _animation,
                           child: Image.asset(
-                            isPajactkPressed ? 'assets/pajacykOn.png' : 'assets/pajacykOff.png',
+                            isPajactkPressed ? AppAssets.pajacykOn : AppAssets.pajacykOff,
                             fit: BoxFit.cover,
                           ),
                         ),
@@ -140,39 +152,36 @@ class _HomeScreenState extends State<HomeScreen> with SingleTickerProviderStateM
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
                     HomeCard(
-                      headerText: 'WSPOMÓŻ \nPajacyka',
-                      bodyText: 'Pomóż potrzebującym dzieciom przekazując darowiznę. Razem możemy tak wiele!',
-                      buttonText: 'ZOBACZ JAK POMÓC',
+                      headerText: AppTexts.wspomozHeaderText,
+                      bodyText: AppTexts.wspomozBodyText,
+                      buttonText: AppTexts.wspomozButtonText,
                       buttonColor: Colors.pink[300],
                       buttonTextColor: Colors.white,
                       headerColor: Colors.pink[300],
                     ),
                     HomeCard(
-                      url: 'https://www.pajacyk.pl/nabor',
-                      headerText: 'NABÓR \ndo programu',
-                      bodyText:
-                          'PW Twojej szkole, świetlicy, placówce wsparcia \ndziennego są dzieci, które potrzebują pomocy?\nZgłoś się do programu Pajacyk.',
-                      buttonText: 'DOŁĄCZ DO PAJACYKA',
+                      url: PdfLauncher.nabor,
+                      headerText: AppTexts.naborHeadTitle,
+                      bodyText: AppTexts.naborBodyText,
+                      buttonText: AppTexts.naborButtonText,
                       buttonColor: Colors.orange[500],
                       buttonTextColor: Colors.white,
                       headerColor: Colors.orange[500],
                     ),
                     HomeCard(
                       imageIndex: 1,
-                      url: 'https://www.pajacyk.pl/swiateczny-stol-pajacyka/',
-                      headerText: 'Świąteczny Stół Pajacyka',
-                      bodyText:
-                          'Świąteczny Stół Pajacyka to ogólnopolska akcja charytatywna, podczas której właściciele lokali gastronomicznych przekazują 10% dziennego obrotu na posiłki dla potrzebujących dzieci.',
-                      buttonText: 'WIĘCEJ O AKCJI',
+                      url: PdfLauncher.stolPajacyka,
+                      headerText: AppTexts.stolPajacykaTitle,
+                      bodyText: AppTexts.stolPajacykaBodyText,
+                      buttonText: AppTexts.stolPajacykaButtonText,
                       cardColor: Colors.yellow,
                     ),
                     HomeCard(
                       imageIndex: 2,
-                      url: 'https://www.pajacyk.pl/pajacyk-bez-przerwy',
-                      headerText: '#PajacykBezPrzerwy!',
-                      bodyText:
-                          'To akcja, która powstała jako odpowiedź na pandemię COVID-19. Jesteśmy czujni na potrzeby dzieci i dostosowujemy program tak, by nieść pomoc nieprzerwanie bez względu na okoliczności!',
-                      buttonText: 'WIĘCEJ O AKCJI',
+                      url: PdfLauncher.pajacykBezPrzerwy,
+                      headerText: AppTexts.pajacykBezPrzerwyTitle,
+                      bodyText: AppTexts.pajacykBezPrzerwyBodyText,
+                      buttonText: AppTexts.stolPajacykaButtonText,
                       cardColor: Colors.yellow,
                     ),
                     MyCarousel(),
@@ -190,26 +199,29 @@ class _HomeScreenState extends State<HomeScreen> with SingleTickerProviderStateM
                               icon: Icon(
                                 Icons.facebook_outlined,
                                 size: 55,
+                                color: context.palette.cardColor,
                               ),
                             ),
-                            SizedBox(
-                              width: 5,
-                            ),
-                            Text('Sprawdź nasz Facebook')
+                            SizedBox(width: 10),
+                            Text(
+                              AppTexts.checkFb,
+                              style: context.textTheme.caption!.copyWith(
+                                color: context.palette.cardColor,
+                                fontSize: Insets.large,
+                              ),
+                            )
                           ],
                         ),
                         GestureDetector(
                           onTap: (() {
-                            _launchURL('https://www.pah.org.pl');
+                            launchURL(PdfLauncher.pah);
                           }),
                           child: SizedBox(
                             width: 100,
                             height: 70,
                             child: Padding(
-                              padding: const EdgeInsets.only(top: 8.0),
-                              child: Image.asset(
-                                'assets/pahLogo.png',
-                              ),
+                              padding: const EdgeInsets.only(top: Insets.small),
+                              child: Image.asset(AppAssets.pahLogo),
                             ),
                           ),
                         ),
@@ -228,11 +240,6 @@ class _HomeScreenState extends State<HomeScreen> with SingleTickerProviderStateM
 }
 
 class HomeCard extends StatelessWidget {
-  void _launchURL(String url) async {
-    final Uri _url = Uri.parse(url);
-    if (!await launchUrl(_url)) throw 'Could not launch $url';
-  }
-
   final String headerText;
   final String bodyText;
   final String buttonText;
@@ -258,83 +265,84 @@ class HomeCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final size = MediaQuery.of(context).size;
-    return Container(
-      padding: EdgeInsets.only(bottom: 16),
-      width: size.width * 0.9,
-      height: size.height * 0.38,
-      child: Card(
-        shape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.circular(15.0),
-        ),
-        color: cardColor ?? Colors.white,
-        child: Padding(
-          padding: const EdgeInsets.all(10.0),
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-            crossAxisAlignment: CrossAxisAlignment.center,
-            children: [
-              Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  imageIndex == null
-                      ? SizedBox()
-                      : SizedBox(
-                          width: size.width * 0.15,
-                          height: size.height * 0.1,
-                          child: Padding(
-                            padding: const EdgeInsets.only(right: 8.0),
-                            child: Image.asset(
-                              'assets/$imageIndex.png',
-                              fit: BoxFit.contain,
+    return Padding(
+      padding: const EdgeInsets.symmetric(horizontal: Insets.xLarge),
+      child: Container(
+        padding: EdgeInsets.only(bottom: Insets.large),
+        child: Card(
+          shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.circular(Insets.large),
+          ),
+          color: cardColor ?? Colors.white,
+          child: Padding(
+            padding: const EdgeInsets.all(16.0),
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+              crossAxisAlignment: CrossAxisAlignment.center,
+              children: [
+                Padding(
+                  padding: const EdgeInsets.only(bottom: Insets.large),
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      imageIndex == null
+                          ? SizedBox()
+                          : SizedBox(
+                              width: 55,
+                              height: 40,
+                              child: Padding(
+                                padding: const EdgeInsets.only(right: 10),
+                                child: Image.asset('assets/$imageIndex.png'),
+                              ),
                             ),
-                          )),
-                  Text(
-                    headerText,
+                      Text(
+                        headerText,
+                        textAlign: TextAlign.center,
+                        style: TextStyle(
+                          color: headerColor ?? Colors.black,
+                          fontSize: 22,
+                          fontWeight: FontWeight.bold,
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+                Padding(
+                  padding: const EdgeInsets.only(bottom: Insets.large),
+                  child: Text(
+                    bodyText,
                     textAlign: TextAlign.center,
                     style: TextStyle(
-                      color: headerColor ?? Colors.black,
-                      fontSize: 22,
-                      fontWeight: FontWeight.bold,
-                    ),
-                  ),
-                ],
-              ),
-              Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 12.0),
-                child: Text(
-                  bodyText,
-                  textAlign: TextAlign.center,
-                  style: TextStyle(
-                    fontWeight: FontWeight.w600,
-                    fontSize: 14,
-                  ),
-                ),
-              ),
-              SizedBox(
-                height: 40,
-                child: ElevatedButton(
-                  onPressed: () {
-                    if (url == null) {
-                    } else {
-                      _launchURL(url!);
-                    }
-                  },
-                  child: Text(
-                    buttonText,
-                    style: TextStyle(
-                      color: buttonTextColor ?? Colors.black,
-                    ),
-                  ),
-                  style: ElevatedButton.styleFrom(
-                    primary: buttonColor ?? Colors.white,
-                    shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(30),
+                      fontWeight: FontWeight.w600,
+                      fontSize: 14,
                     ),
                   ),
                 ),
-              ),
-            ],
+                SizedBox(
+                  height: 40,
+                  child: ElevatedButton(
+                    onPressed: () {
+                      if (url == null) {
+                      } else {
+                        launchURL(url!);
+                      }
+                    },
+                    child: Text(
+                      buttonText,
+                      style: TextStyle(
+                        color: buttonTextColor ?? Colors.black,
+                      ),
+                    ),
+                    style: ElevatedButton.styleFrom(
+                      primary: buttonColor ?? Colors.white,
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(30),
+                      ),
+                    ),
+                  ),
+                ),
+              ],
+            ),
           ),
         ),
       ),
@@ -344,99 +352,87 @@ class HomeCard extends StatelessWidget {
 
 class MyCarousel extends StatelessWidget {
   MyCarousel({Key? key}) : super(key: key);
-  final List<String> partnerList = [
-    'assets/partners/payBack.png',
-    'assets/partners/dhl.png',
-    'assets/partners/santander.png',
-    'assets/partners/ncab.png',
-    'assets/partners/internationalPaper.png',
-    'assets/partners/sodexo.png',
-    'assets/partners/languageSoulutions.png',
-    'assets/partners/fris.png',
-    'assets/partners/kaufland.png',
-    'assets/partners/bp.png',
-    'assets/partners/alternberg.png',
-    'assets/partners/amosFiorello.png',
-    'assets/partners/auchan.png',
-    'assets/partners/panTabletka.png',
-    'assets/partners/electrolux.png',
-    'assets/partners/independentTrader.png',
-  ];
 
   @override
   Widget build(BuildContext context) {
-    final size = MediaQuery.of(context).size;
-    return Card(
-      shape: RoundedRectangleBorder(
-        borderRadius: BorderRadius.circular(15.0),
-      ),
-      color: Colors.white,
-      child: Container(
-        width: size.width * 0.9,
-        height: size.height * 0.35,
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            Padding(
-              padding: const EdgeInsets.only(bottom: 10.0),
-              child: Text(
-                'Partnerzy Programu',
-                textAlign: TextAlign.center,
-                style: TextStyle(
-                  fontSize: 22,
-                  fontWeight: FontWeight.bold,
+    return Padding(
+      padding: const EdgeInsets.symmetric(horizontal: Insets.xLarge),
+      child: Card(
+        shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.circular(Insets.large),
+        ),
+        color: Colors.white,
+        child: Container(
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              Padding(
+                padding: const EdgeInsets.only(
+                  bottom: 10.0,
+                  top: Insets.large,
+                ),
+                child: Text(
+                  AppTexts.partnerzyProgramu,
+                  textAlign: TextAlign.center,
+                  style: TextStyle(
+                    fontSize: 22,
+                    fontWeight: FontWeight.bold,
+                  ),
                 ),
               ),
-            ),
-            CarouselSlider.builder(
-                itemCount: partnerList.length,
-                itemBuilder: (
-                  BuildContext context,
-                  int itemIndex,
-                  int pageViewIndex,
-                ) {
-                  return Container(
-                    child: Center(
-                      child: SizedBox(
-                        width: 200,
-                        height: 170,
-                        child: Image.asset(
-                          '${partnerList[itemIndex]}',
-                          fit: BoxFit.contain,
+              CarouselSlider.builder(
+                  itemCount: AppAssets.partnerList.length,
+                  itemBuilder: (
+                    BuildContext context,
+                    int itemIndex,
+                    int pageViewIndex,
+                  ) {
+                    return Container(
+                      child: Center(
+                        child: SizedBox(
+                          width: 200,
+                          height: 170,
+                          child: Image.asset(
+                            '${AppAssets.partnerList[itemIndex]}',
+                            fit: BoxFit.contain,
+                          ),
                         ),
                       ),
+                    );
+                  },
+                  options: CarouselOptions(
+                    height: 150,
+                    viewportFraction: 0.67,
+                    initialPage: 0,
+                    enableInfiniteScroll: true,
+                    reverse: false,
+                    autoPlay: true,
+                    autoPlayInterval: Duration(seconds: 3),
+                    autoPlayAnimationDuration: Duration(milliseconds: 800),
+                    autoPlayCurve: Curves.fastOutSlowIn,
+                    enlargeCenterPage: false,
+                    scrollDirection: Axis.horizontal,
+                  )),
+              Padding(
+                padding: const EdgeInsets.symmetric(vertical: Insets.large),
+                child: ElevatedButton(
+                  onPressed: () {},
+                  child: Text(
+                    AppTexts.partnerzyProgramuButtonText,
+                    style: TextStyle(
+                      color: Colors.white,
                     ),
-                  );
-                },
-                options: CarouselOptions(
-                  height: 150,
-                  viewportFraction: 0.67,
-                  initialPage: 0,
-                  enableInfiniteScroll: true,
-                  reverse: false,
-                  autoPlay: true,
-                  autoPlayInterval: Duration(seconds: 3),
-                  autoPlayAnimationDuration: Duration(milliseconds: 800),
-                  autoPlayCurve: Curves.fastOutSlowIn,
-                  enlargeCenterPage: false,
-                  scrollDirection: Axis.horizontal,
-                )),
-            ElevatedButton(
-              onPressed: () {},
-              child: Text(
-                'ZOBACZ WIĘCEJ',
-                style: TextStyle(
-                  color: Colors.white,
+                  ),
+                  style: ElevatedButton.styleFrom(
+                    primary: Colors.green,
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(Insets.large),
+                    ),
+                  ),
                 ),
               ),
-              style: ElevatedButton.styleFrom(
-                primary: Colors.green,
-                shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(15),
-                ),
-              ),
-            ),
-          ],
+            ],
+          ),
         ),
       ),
     );

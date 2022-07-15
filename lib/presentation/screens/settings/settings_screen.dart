@@ -1,9 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:pajacyk/presentation/application/theme.dart';
-import 'package:provider/provider.dart';
+import 'package:pajacyk/presentation/common/laucher_url.dart';
 import 'package:url_launcher/url_launcher.dart';
-
-import '../../../domain/preference_assistant/preference_assistant.dart';
 import '../../application/insets.dart';
 import '../../application/pdf_files_https.dart';
 
@@ -11,11 +9,6 @@ class SettingsScreen extends StatelessWidget {
   const SettingsScreen({Key? key}) : super(key: key);
 
   static const String routeName = '/settings';
-
-  void _launchURL(String url) async {
-    final Uri _url = Uri.parse(url);
-    if (!await launchUrl(_url)) throw 'Could not launch $url';
-  }
 
   @override
   Widget build(BuildContext context) {
@@ -63,9 +56,7 @@ class SettingsScreen extends StatelessWidget {
           ),
           TextButton(
               onPressed: () {
-                _launchURL(
-                  PdfLauncher.politykaPrywatnosci,
-                );
+                launchURL(PdfLauncher.politykaPrywatnosci);
               },
               child: Text(
                 'Polityka prywatności',
@@ -76,7 +67,7 @@ class SettingsScreen extends StatelessWidget {
               )),
           TextButton(
             onPressed: () {
-              _launchURL(PdfLauncher.regulamin);
+              launchURL(PdfLauncher.regulamin);
             },
             child: Text(
               'Regulamin',

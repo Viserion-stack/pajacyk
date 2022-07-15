@@ -18,6 +18,30 @@ class AppAssets {
   static const String naborCardImage = 'assets/nabor.png';
   static const String pajacykKontakt = 'assets/pajacykKontakt.png';
   static const String receIcon = 'assets/receIcon.png';
+  static const String pajacykOn = 'assets/pajacykOn.png';
+  static const String pajacykOff = 'assets/pajacykOff.png';
+  static const String podest = 'assets/podest.png';
+  static const String pahLogo = 'assets/pahLogo.png';
+  static const String abc = 'assets/abc.png';
+
+  static List<String> partnerList = [
+    'assets/partners/payBack.png',
+    'assets/partners/dhl.png',
+    'assets/partners/santander.png',
+    'assets/partners/ncab.png',
+    'assets/partners/internationalPaper.png',
+    'assets/partners/sodexo.png',
+    'assets/partners/languageSoulutions.png',
+    'assets/partners/fris.png',
+    'assets/partners/kaufland.png',
+    'assets/partners/bp.png',
+    'assets/partners/alternberg.png',
+    'assets/partners/amosFiorello.png',
+    'assets/partners/auchan.png',
+    'assets/partners/panTabletka.png',
+    'assets/partners/electrolux.png',
+    'assets/partners/independentTrader.png',
+  ];
 
   //svg
   static const String pajacykBackground = '$_assetPath/pajacyk_background.svg';

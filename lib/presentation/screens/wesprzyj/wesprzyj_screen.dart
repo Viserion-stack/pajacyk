@@ -1,6 +1,7 @@
 import 'dart:io';
 
 import 'package:flutter/material.dart';
+import 'package:pajacyk/presentation/application/pdf_files_https.dart';
 import 'package:webview_flutter/webview_flutter.dart';
 
 class WesprzyjScreen extends StatelessWidget {
@@ -39,7 +40,7 @@ class _WesprzyjWebviewState extends State<WesprzyjWebview> {
   @override
   Widget build(BuildContext context) {
     return WebView(
-      initialUrl: 'https://www.pajacyk.pl/wesprzyj/',
+      initialUrl: PdfLauncher.wesprzyj,
       javascriptMode: JavascriptMode.unrestricted,
     );
   }
