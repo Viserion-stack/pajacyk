@@ -13,6 +13,8 @@ abstract class Insets {
   ///large = 16
   static const double large = 16;
 
+  static const double xmlarge = 22;
+
   ///xLarge = 24
   static const double xLarge = 24;
 

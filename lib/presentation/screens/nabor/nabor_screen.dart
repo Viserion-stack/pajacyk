@@ -19,61 +19,56 @@ class NaborScree extends StatelessWidget {
     return Scaffold(
       backgroundColor: context.palette.primaryColor,
       body: Padding(
-        padding: const EdgeInsets.symmetric(horizontal: Insets.xLarge),
-        child: Column(
-          children: [
-            Card(
-              shape: RoundedRectangleBorder(
-                borderRadius: BorderRadius.circular(cardRadius),
+        padding: const EdgeInsets.only(top: Insets.xLarge),
+        child: SingleChildScrollView(
+          child: Padding(
+            padding: const EdgeInsets.symmetric(horizontal: Insets.xLarge),
+            child: Container(
+              padding: const EdgeInsets.symmetric(
+                horizontal: Insets.xLarge,
+                vertical: Insets.xxLarge,
               ),
-              child: Padding(
-                padding: const EdgeInsets.symmetric(horizontal: Insets.xLarge),
-                child: Column(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    Padding(
-                      padding:
-                          const EdgeInsets.symmetric(vertical: Insets.large),
-                      child: Text(
-                        AppTexts.cardTitle,
-                        style: TextStyle(
-                          color: Colors.amber[600],
-                          fontSize: Insets.xxLarge,
-                        ),
+              decoration: BoxDecoration(
+                color: context.palette.cardColor,
+                borderRadius: BorderRadius.circular(Insets.xLarge),
+              ),
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Text(
+                    AppTexts.cardTitle,
+                    style: TextStyle(
+                      color: Colors.amber[600],
+                      fontSize: Insets.xxLarge,
+                    ),
+                  ),
+                  const SizedBox(height: Insets.large),
+                  const Text(AppTexts.cardDescription),
+                  Padding(
+                    padding: const EdgeInsets.symmetric(vertical: Insets.large),
+                    child: Image.asset(AppAssets.naborCardImage),
+                  ),
+                  ElevatedButton(
+                    onPressed: () {
+                      launchURL(PdfLauncher.nabor);
+                    },
+                    style: ElevatedButton.styleFrom(
+                      primary: Colors.amber[600],
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(30),
                       ),
                     ),
-                    const Text(AppTexts.cardDescription),
-                    Padding(
-                      padding:
-                          const EdgeInsets.symmetric(vertical: Insets.large),
-                      child: Image.asset(AppAssets.naborCardImage),
-                    ),
-                    Padding(
-                      padding:
-                          const EdgeInsets.symmetric(vertical: Insets.large),
-                      child: ElevatedButton(
-                        onPressed: () {
-                          launchURL(PdfLauncher.nabor);
-                        },
-                        style: ElevatedButton.styleFrom(
-                          primary: Colors.amber[600],
-                          shape: RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(30),
-                          ),
-                        ),
-                        child: const Text(
-                          AppTexts.cardMore,
-                          style: TextStyle(
-                            color: Colors.white,
-                          ),
-                        ),
+                    child: const Text(
+                      AppTexts.cardMore,
+                      style: TextStyle(
+                        color: Colors.white,
                       ),
                     ),
-                  ],
-                ),
+                  ),
+                ],
               ),
             ),
-          ],
+          ),
         ),
       ),
     );

@@ -1,8 +1,10 @@
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
+import 'package:pajacyk/presentation/application/theme.dart';
 import 'package:pajacyk/presentation/controllers/navigation.dart';
 import 'package:provider/provider.dart';
 import '../../../domain/preference_assistant/preference_assistant.dart';
+import '../../application/insets.dart';
 import '../../common/launcher_url.dart';
 import '../../controllers/api_calls.dart';
 
@@ -129,106 +131,104 @@ class _SplashScreenState extends State<SplashScreen>
                     ),
                   ),
                 ]),
-
-                // IconButton(
-                //   onPressed: () async {
-                //     await Provider.of<PostDataProvider>(context, listen: false)
-                //         .getPostData(context);
-
-                //   },
-                //   icon: Icon(Icons.notification_add),
-                // ),
-                Column(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    MyCard(
-                      //url: 'https://www.pajacyk.pl/wesprzyj',
-                      headerText: 'WSPOMÓŻ \nPajacyka',
-                      bodyText:
-                          'Pomóż potrzebującym dzieciom przekazując darowiznę. Razem możemy tak wiele!',
-                      buttonText: 'ZOBACZ JAK POMÓC',
-                      buttonColor: Colors.pink[300],
-                      buttonTextColor: Colors.white,
-                      headerColor: Colors.pink[300],
-                    ),
-                    MyCard(
-                      url: 'https://www.pajacyk.pl/nabor',
-                      headerText: 'NABÓR \ndo programu',
-                      bodyText:
-                          'PW Twojej szkole, świetlicy, placówce wsparcia \ndziennego są dzieci, które potrzebują pomocy?\nZgłoś się do programu Pajacyk.',
-                      buttonText: 'DOŁĄCZ DO PAJACYKA',
-                      buttonColor: Colors.orange[500],
-                      buttonTextColor: Colors.white,
-                      headerColor: Colors.orange[500],
-                    ),
-                    const MyCard(
-                      imageIndex: 1,
-                      url: 'https://www.pajacyk.pl/swiateczny-stol-pajacyka/',
-                      headerText: 'Świąteczny Stół Pajacyka',
-                      bodyText:
-                          'Świąteczny Stół Pajacyka to ogólnopolska akcja charytatywna, podczas której właściciele lokali gastronomicznych przekazują 10% dziennego obrotu na posiłki dla potrzebujących dzieci.',
-                      buttonText: 'WIĘCEJ O AKCJI',
-                      //buttonColor: Colors.orange[500],
-                      //buttonTextColor: Colors.white,
-                      cardColor: Colors.yellow,
-                    ),
-                    const MyCard(
-                      imageIndex: 2,
-                      url: 'https://www.pajacyk.pl/pajacyk-bez-przerwy',
-                      headerText: '#PajacykBezPrzerwy!',
-                      bodyText:
-                          'To akcja, która powstała jako odpowiedź na pandemię COVID-19. Jesteśmy czujni na potrzeby dzieci i dostosowujemy program tak, by nieść pomoc nieprzerwanie bez względu na okoliczności!',
-                      buttonText: 'WIĘCEJ O AKCJI',
-                      //buttonColor: Colors.orange[500],
-                      //buttonTextColor: Colors.white,
-                      cardColor: Colors.yellow,
-                    ),
-                    MyCarousel(),
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                      children: [
-                        Row(
-                          //mainAxisAlignment: MainAxisAlignment.spaceEve,
-                          crossAxisAlignment: CrossAxisAlignment.center,
-                          children: [
-                            IconButton(
-                              padding: EdgeInsets.zero,
-                              onPressed: () {
-                                openFacebook();
-                              },
-                              icon: const Icon(
-                                Icons.facebook_outlined,
-                                size: 55,
+                Padding(
+                  padding:
+                      const EdgeInsets.symmetric(horizontal: Insets.xLarge),
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.start,
+                    children: [
+                      MyCard(
+                        //url: 'https://www.pajacyk.pl/wesprzyj',
+                        headerText: 'WSPOMÓŻ \nPajacyka',
+                        bodyText:
+                            'Pomóż potrzebującym dzieciom przekazując darowiznę. Razem możemy tak wiele!',
+                        buttonText: 'ZOBACZ JAK POMÓC',
+                        buttonColor: Colors.pink[300],
+                        buttonTextColor: Colors.white,
+                        headerColor: Colors.pink[300],
+                      ),
+                      const SizedBox(height: Insets.large),
+                      MyCard(
+                        url: 'https://www.pajacyk.pl/nabor',
+                        headerText: 'NABÓR \ndo programu',
+                        bodyText:
+                            'PW Twojej szkole, świetlicy, placówce wsparcia \ndziennego są dzieci, które potrzebują pomocy?\nZgłoś się do programu Pajacyk.',
+                        buttonText: 'DOŁĄCZ DO PAJACYKA',
+                        buttonColor: Colors.orange[500],
+                        buttonTextColor: Colors.white,
+                        headerColor: Colors.orange[500],
+                      ),
+                      const SizedBox(height: Insets.large),
+                      const MyCard(
+                        imageIndex: 1,
+                        url: 'https://www.pajacyk.pl/swiateczny-stol-pajacyka/',
+                        headerText: 'Świąteczny Stół\n Pajacyka',
+                        bodyText:
+                            'Świąteczny Stół Pajacyka to ogólnopolska akcja charytatywna, podczas której właściciele lokali gastronomicznych przekazują 10% dziennego obrotu na posiłki dla potrzebujących dzieci.',
+                        buttonText: 'WIĘCEJ O AKCJI',
+                        //buttonColor: Colors.orange[500],
+                        //buttonTextColor: Colors.white,
+                        cardColor: Colors.yellow,
+                      ),
+                      const SizedBox(height: Insets.large),
+                      const MyCard(
+                        imageIndex: 2,
+                        url: 'https://www.pajacyk.pl/pajacyk-bez-przerwy',
+                        headerText: '#PajacykBezPrzerwy!',
+                        bodyText:
+                            'To akcja, która powstała jako odpowiedź na pandemię COVID-19. Jesteśmy czujni na potrzeby dzieci i dostosowujemy program tak, by nieść pomoc nieprzerwanie bez względu na okoliczności!',
+                        buttonText: 'WIĘCEJ O AKCJI',
+                        //buttonColor: Colors.orange[500],
+                        //buttonTextColor: Colors.white,
+                        cardColor: Colors.yellow,
+                      ),
+                      const SizedBox(height: Insets.large),
+                      MyCarousel(),
+                      const SizedBox(height: Insets.large),
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                        children: [
+                          Row(
+                            //mainAxisAlignment: MainAxisAlignment.spaceEve,
+                            crossAxisAlignment: CrossAxisAlignment.center,
+                            children: [
+                              IconButton(
+                                padding: EdgeInsets.zero,
+                                onPressed: () {
+                                  openFacebook();
+                                },
+                                icon: const Icon(
+                                  Icons.facebook_outlined,
+                                  size: 55,
+                                ),
                               ),
-                            ),
-                            const SizedBox(
-                              width: 5,
-                            ),
-                            const Text('Sprawdź nasz Facebook')
-                          ],
-                        ),
-                        GestureDetector(
-                          onTap: (() {
-                            launchURL('https://www.pah.org.pl');
-                          }),
-                          child: SizedBox(
-                            width: 100,
-                            height: 70,
-                            child: Padding(
-                              padding: const EdgeInsets.only(top: 8.0),
-                              child: Image.asset(
-                                'assets/pahLogo.png',
-                                // fit: BoxFit.contain,
+                              const SizedBox(
+                                width: 5,
+                              ),
+                              const Text('Sprawdź nasz Facebook')
+                            ],
+                          ),
+                          GestureDetector(
+                            onTap: (() {
+                              launchURL('https://www.pah.org.pl');
+                            }),
+                            child: SizedBox(
+                              width: 100,
+                              height: 70,
+                              child: Padding(
+                                padding: const EdgeInsets.only(top: 8.0),
+                                child: Image.asset(
+                                  'assets/pahLogo.png',
+                                  // fit: BoxFit.contain,
+                                ),
                               ),
                             ),
                           ),
-                        ),
-                      ],
-                    ),
-                    const SizedBox(
-                      height: 20,
-                    )
-                  ],
+                        ],
+                      ),
+                      const SizedBox(height: Insets.large),
+                    ],
+                  ),
                 )
               ],
             ),
@@ -267,87 +267,81 @@ class MyCard extends StatelessWidget {
   Widget build(BuildContext context) {
     final size = MediaQuery.of(context).size;
     return Container(
-      padding: const EdgeInsets.only(bottom: 16),
-      width: size.width * 0.9,
-      height: size.height * 0.38,
-      child: Card(
-        shape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.circular(15.0),
-        ),
-        color: cardColor ?? Colors.white,
-        child: Padding(
-          padding: const EdgeInsets.all(10.0),
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-            crossAxisAlignment: CrossAxisAlignment.center,
+      padding: const EdgeInsets.symmetric(
+        horizontal: Insets.xLarge,
+        vertical: Insets.xxLarge,
+      ),
+      decoration: BoxDecoration(
+        color: cardColor ?? context.palette.cardColor,
+        borderRadius: BorderRadius.circular(Insets.xLarge),
+      ),
+      child: Column(
+        children: [
+          Row(
+            mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  imageIndex == null
-                      ? const SizedBox()
-                      : SizedBox(
-                          width: size.width * 0.15,
-                          height: size.height * 0.1,
-                          child: Padding(
-                            padding: const EdgeInsets.only(right: 8.0),
-                            child: Image.asset(
-                              'assets/$imageIndex.png',
-                              fit: BoxFit.contain,
-                            ),
-                          )),
-                  Text(
-                    headerText,
-                    textAlign: TextAlign.center,
-                    style: TextStyle(
-                        color: headerColor ?? Colors.black,
-                        fontSize: 22,
-                        fontWeight: FontWeight.bold),
-                  ),
-                ],
-              ),
-              Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 12.0),
-                child: Text(
-                  bodyText,
-                  textAlign: TextAlign.center,
-                  style: const TextStyle(
-                      fontWeight: FontWeight.w600, fontSize: 14),
-                ),
-              ),
-              SizedBox(
-                height: 40,
-                child: ElevatedButton(
-                  onPressed: () {
-                    if (url == null) {
-                      Provider.of<NavigationController>(context, listen: false)
-                          .changeScreen(2);
-                    } else {
-                      launchURL(url!);
-                    }
-                  },
-                  style: ElevatedButton.styleFrom(
-                      // side: BorderSide(
-                      //   width: 1,
-                      //   color: Colors.black,
-                      //   //style: BorderStyle.solid,
-                      // ),
-                      primary: buttonColor ?? Colors.white,
-
-                      //fixedSize: const Size(300, 100),
-                      shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(30))),
-                  child: Text(
-                    buttonText,
-                    style: TextStyle(
-                      color: buttonTextColor ?? Colors.black,
-                    ),
-                  ),
-                ),
+              imageIndex == null
+                  ? const SizedBox()
+                  : SizedBox(
+                      width: size.width * 0.15,
+                      height: size.height * 0.1,
+                      child: Padding(
+                        padding: const EdgeInsets.only(right: 8.0),
+                        child: Image.asset(
+                          'assets/$imageIndex.png',
+                          fit: BoxFit.contain,
+                        ),
+                      )),
+              Text(
+                headerText,
+                textAlign: TextAlign.center,
+                style: TextStyle(
+                    color: headerColor ?? Colors.black,
+                    fontSize: 22,
+                    fontWeight: FontWeight.bold),
               ),
             ],
           ),
-        ),
+          Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 12.0),
+            child: Text(
+              bodyText,
+              textAlign: TextAlign.center,
+              style: const TextStyle(fontWeight: FontWeight.w600, fontSize: 14),
+            ),
+          ),
+          const SizedBox(height: Insets.large),
+          SizedBox(
+            height: 40,
+            child: ElevatedButton(
+              onPressed: () {
+                if (url == null) {
+                  Provider.of<NavigationController>(context, listen: false)
+                      .changeScreen(2);
+                } else {
+                  launchURL(url!);
+                }
+              },
+              style: ElevatedButton.styleFrom(
+                  // side: BorderSide(
+                  //   width: 1,
+                  //   color: Colors.black,
+                  //   //style: BorderStyle.solid,
+                  // ),
+                  primary: buttonColor ?? Colors.white,
+
+                  //fixedSize: const Size(300, 100),
+                  shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(30))),
+              child: Text(
+                buttonText,
+                style: TextStyle(
+                  color: buttonTextColor ?? Colors.black,
+                ),
+              ),
+            ),
+          ),
+        ],
       ),
     );
   }
@@ -376,71 +370,69 @@ class MyCarousel extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final size = MediaQuery.of(context).size;
-    return Card(
-      shape: RoundedRectangleBorder(
-        borderRadius: BorderRadius.circular(15.0),
+    return Container(
+      padding: const EdgeInsets.symmetric(
+        horizontal: Insets.xLarge,
+        vertical: Insets.xxLarge,
       ),
-      color: Colors.white,
-      child: SizedBox(
-        width: size.width * 0.9,
-        height: size.height * 0.35,
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            const Padding(
-              padding: EdgeInsets.only(bottom: 10.0),
-              child: Text(
-                'Partnerzy Programu',
-                textAlign: TextAlign.center,
-                style: TextStyle(fontSize: 22, fontWeight: FontWeight.bold),
-              ),
+      decoration: BoxDecoration(
+        color: context.palette.cardColor,
+        borderRadius: BorderRadius.circular(Insets.xLarge),
+      ),
+      child: Column(
+        mainAxisAlignment: MainAxisAlignment.start,
+        children: [
+          const Padding(
+            padding: EdgeInsets.only(bottom: 10.0),
+            child: Text(
+              'Partnerzy Programu',
+              textAlign: TextAlign.center,
+              style: TextStyle(fontSize: 22, fontWeight: FontWeight.bold),
             ),
-            CarouselSlider.builder(
-                itemCount: partnerList.length,
-                itemBuilder:
-                    (BuildContext context, int itemIndex, int pageViewIndex) {
-                  //print(itemIndex);
-                  return SizedBox(
-                    child: Center(
-                      child: SizedBox(
-                        width: 200,
-                        height: 170,
-                        child: Image.asset(
-                          partnerList[itemIndex],
-                          fit: BoxFit.contain,
-                        ),
+          ),
+          CarouselSlider.builder(
+              itemCount: partnerList.length,
+              itemBuilder:
+                  (BuildContext context, int itemIndex, int pageViewIndex) {
+                //print(itemIndex);
+                return SizedBox(
+                  child: Center(
+                    child: SizedBox(
+                      width: 200,
+                      height: 170,
+                      child: Image.asset(
+                        partnerList[itemIndex],
+                        fit: BoxFit.contain,
                       ),
                     ),
-                  );
-                },
-                options: CarouselOptions(
-                  height: 150,
-                  //aspectRatio: 16 / 9,
-                  viewportFraction: 0.67,
+                  ),
+                );
+              },
+              options: CarouselOptions(
+                height: 150,
+                //aspectRatio: 16 / 9,
+                viewportFraction: 0.75,
 
-                  initialPage: 0,
-                  enableInfiniteScroll: true,
-                  reverse: false,
-                  autoPlay: true,
-                  autoPlayInterval: const Duration(seconds: 3),
-                  autoPlayAnimationDuration: const Duration(milliseconds: 800),
-                  autoPlayCurve: Curves.fastOutSlowIn,
-                  enlargeCenterPage: false,
-                  //onPageChanged: callbackFunction,
-                  scrollDirection: Axis.horizontal,
-                )),
-            ElevatedButton(
+                initialPage: 0,
+                enableInfiniteScroll: true,
+                reverse: false,
+                autoPlay: true,
+                autoPlayInterval: const Duration(seconds: 3),
+                autoPlayAnimationDuration: const Duration(milliseconds: 800),
+                autoPlayCurve: Curves.fastOutSlowIn,
+                enlargeCenterPage: false,
+                //onPageChanged: callbackFunction,
+                scrollDirection: Axis.horizontal,
+              )),
+          const SizedBox(height: Insets.large),
+          SizedBox(
+            width: double.infinity,
+            child: ElevatedButton(
               onPressed: () {
                 Provider.of<NavigationController>(context, listen: false)
                     .changeScreen(5);
               },
               style: ElevatedButton.styleFrom(
-                  // side: BorderSide(
-                  //   width: 1,
-                  //   color: Colors.black,
-                  //   //style: BorderStyle.solid,
-                  // ),
                   primary: Colors.green,
 
                   //fixedSize: const Size(300, 100),
@@ -453,8 +445,8 @@ class MyCarousel extends StatelessWidget {
                 ),
               ),
             ),
-          ],
-        ),
+          ),
+        ],
       ),
     );
   }
