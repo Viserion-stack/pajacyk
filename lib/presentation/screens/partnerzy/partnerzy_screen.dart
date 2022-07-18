@@ -109,6 +109,7 @@ class MyCard extends StatelessWidget {
               fontSize: 14,
             ),
           ),
+          SizedBox(height: Insets.large),
           SizedBox(
             height: 40,
             width: double.infinity,
