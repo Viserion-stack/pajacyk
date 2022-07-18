@@ -40,7 +40,7 @@ class PostDataProvider with ChangeNotifier {
 
   void showPopUp(context) async {
     myPopUp(
-        context, 'Dziękujemy :)', 'Dziś kliknęlo juz ${pajacyk.count} osób');
+        context, 'Dziękujemy :)', 'Dziś kliknęło juz ${pajacyk.count} osób');
   }
 
   void setNextNotification(context) async {

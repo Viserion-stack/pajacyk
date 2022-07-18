@@ -30,7 +30,7 @@ class OurActionWidget extends StatelessWidget {
             PdfLauncher.tutorialPdf,
             mode: LaunchMode.externalApplication,
           ),
-          imagePath: AppAssets.ourActionTutorial,
+          imagePath: AppAssets.navigationHeart,
         ),
         const SizedBox(height: Insets.large),
         OurActionWidgetItem(
@@ -40,7 +40,7 @@ class OurActionWidget extends StatelessWidget {
             PdfLauncher.resultsPdf,
             mode: LaunchMode.externalApplication,
           ),
-          imagePath: AppAssets.ourTutorialResult,
+          imagePath: AppAssets.personPlus,
         ),
         const SizedBox(height: Insets.large),
       ],

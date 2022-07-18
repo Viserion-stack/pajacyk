@@ -37,7 +37,7 @@ class Application extends StatelessWidget {
             ),
           ],
           child: MaterialApp(
-            debugShowCheckedModeBanner: true,
+            debugShowCheckedModeBanner: false,
             // onGenerateRoute: (settings) => appRouteFactory.route(settings),
             theme: theme,
             darkTheme: darkTheme,

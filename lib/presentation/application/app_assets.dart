@@ -13,8 +13,8 @@ class AppAssets {
   static const String pajacykNoBreak = 'assets/pajacykNoBreak.png';
   static const String pajacykPsychoHelp = 'assets/pajacykPsychoHelp.png';
   static const String pajacykVacation = 'assets/pajacykVacation.png';
-  static const String ourActionTutorial = 'assets/ourActionTutorial.png';
-  static const String ourTutorialResult = 'assets/ourTutorialResult.png';
+  static const String navigationHeart = 'assets/navigationHeart.png';
+  static const String personPlus = 'assets/personPlus.png';
   static const String naborCardImage = 'assets/nabor.png';
   static const String pajacykKontakt = 'assets/pajacykKontakt.png';
   static const String receIcon = 'assets/receIcon.png';
