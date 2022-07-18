@@ -28,19 +28,16 @@ void myPopUp(BuildContext context, String header, String message) {
       builder: (context) {
         return AlertDialog(
           elevation: 1,
-          backgroundColor: Colors.green.withOpacity(0.6),
+          backgroundColor: Colors.blue[700]!.withOpacity(0.8),
           title: Text(
             header,
-            style: TextStyle(
-              color: Colors.white.withOpacity(0.8),
+            style: const TextStyle(
+              color: Colors.white,
               fontSize: 22,
             ),
           ),
           content: Text(
             message,
-            // style: TextStyle(
-            //     color: Colors.white.withOpacity(0.8),
-            //     fontWeight: FontWeight.w100),
           ),
           contentTextStyle: TextStyle(
               color: Colors.white.withOpacity(0.8),

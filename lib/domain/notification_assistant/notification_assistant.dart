@@ -19,7 +19,7 @@ class NotificationApi {
     const styleInformation = BigPictureStyleInformation(
       DrawableResourceAndroidBitmap("ic_launcher"),
       largeIcon: DrawableResourceAndroidBitmap("ic_launcher"),
-      contentTitle: 'Demo notification ',
+      contentTitle: 'Cześć!',
     );
     return const NotificationDetails(
       android: AndroidNotificationDetails(
