@@ -50,7 +50,7 @@ class PostDataProvider with ChangeNotifier {
           title: 'Cześć!',
           body: 'Kliknij w brzuszek, aby pomóc dzieciom.',
           payload: 'PAYLOAD TEXT!!!',
-          seconds: 3,
+          seconds: 10,
         )
         .then(
           (value) => debugPrint('NOTIFI'),
