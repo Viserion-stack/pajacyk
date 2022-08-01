@@ -18,14 +18,16 @@ class ContactScreen extends StatelessWidget {
       body: Align(
         alignment: Alignment.topCenter,
         child: SingleChildScrollView(
-            child: Container(
-                child: Column(
-          children: [
-            KontaktCard(),
-            KontaktSzkolaCard(),
-            KontaktWspolpracaCard(),
-          ],
-        ))),
+          child: Container(
+            child: Column(
+              children: [
+                KontaktCard(),
+                KontaktSzkolaCard(),
+                KontaktWspolpracaCard(),
+              ],
+            ),
+          ),
+        ),
       ),
     );
   }
@@ -83,9 +85,7 @@ class KontaktCard extends StatelessWidget {
                       children: <TextSpan>[
                         TextSpan(
                           text: AppTexts.pahText,
-                          style: TextStyle(
-                            fontWeight: FontWeight.bold,
-                          ),
+                          style: TextStyle(fontWeight: FontWeight.bold),
                         ),
                         TextSpan(text: AppTexts.pahAddress),
                         TextSpan(
@@ -333,10 +333,7 @@ class KontaktWspolpracaCard extends StatelessWidget {
                   padding: const EdgeInsets.symmetric(vertical: Insets.large),
                   child: Text.rich(
                     TextSpan(
-                      style: TextStyle(
-                        //fontSize: 17,
-                        color: Colors.black,
-                      ),
+                      style: TextStyle(color: Colors.black),
                       children: <TextSpan>[
                         TextSpan(text: AppTexts.contacttextOne),
                         TextSpan(text: AppTexts.contacttextTwo),

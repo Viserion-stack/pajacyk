@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:pajacyk/presentation/application/theme.dart';
 import 'package:pajacyk/presentation/common/laucher_url.dart';
-import 'package:url_launcher/url_launcher.dart';
 import '../../application/insets.dart';
 import '../../application/pdf_files_https.dart';
 

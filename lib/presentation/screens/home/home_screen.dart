@@ -1,12 +1,14 @@
 import 'dart:io';
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:pajacyk/presentation/application/app_assets.dart';
 import 'package:pajacyk/presentation/application/insets.dart';
 import 'package:pajacyk/presentation/application/pdf_files_https.dart';
 import 'package:pajacyk/presentation/application/texts.dart';
 import 'package:pajacyk/presentation/application/theme.dart';
 import 'package:pajacyk/presentation/common/laucher_url.dart';
+import 'package:pajacyk/presentation/screens/home/bloc/home_bloc.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 class HomeScreen extends StatefulWidget {
@@ -115,33 +117,24 @@ class _HomeScreenState extends State<HomeScreen> with SingleTickerProviderStateM
                       scale: 1,
                     ),
                     GestureDetector(
-                      onTap: () async {
-                        setState(
-                          () {
-                            print('setState');
-                            isPajactkPressed = true;
-                          },
-                        );
-                        Future.delayed(
-                          const Duration(seconds: 3),
-                          () {
-                            print('FutureDelyed');
-                            setState(
-                              () {
-                                isPajactkPressed = false;
-                              },
+                      onTap: () {
+                        context.read<HomeBloc>().add(
+                              RunScheduleNotificationEvent(
+                                context: context,
+                                clicks: 1,
+                              ),
                             );
-                          },
-                        );
                       },
                       child: SizedBox(
                         width: 400,
                         height: 400,
                         child: FadeTransition(
                           opacity: _animation,
-                          child: Image.asset(
-                            isPajactkPressed ? AppAssets.pajacykOn : AppAssets.pajacykOff,
-                            fit: BoxFit.cover,
+                          child: BlocBuilder<HomeBloc, HomeState>(
+                            builder: (contex, state) => Image.asset(
+                              state.isProcessing ? AppAssets.pajacykOn : AppAssets.pajacykOff,
+                              fit: BoxFit.cover,
+                            ),
                           ),
                         ),
                       ),

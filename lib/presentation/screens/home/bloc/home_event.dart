@@ -16,6 +16,5 @@ class RunScheduleNotificationEvent extends HomeEvent {
   });
 
   @override
-  String toString() =>
-      'RunScheduleNotificationEvent(context: $context, clicks: $clicks)';
+  String toString() => 'RunScheduleNotificationEvent(context: $context, clicks: $clicks)';
 }

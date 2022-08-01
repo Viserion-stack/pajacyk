@@ -23,7 +23,7 @@ class HomeBloc extends Bloc<HomeEvent, HomeState> {
   final HomeArgument argument;
 
   Future<void> _pressNameButton(RunScheduleNotificationEvent event, Emitter<HomeState> emit) async {
-    emit(state);
+    emit(state.copyWith(isProcessing: true));
     int count;
     final newState = await clickPajacykUsecase.execute().match(
       (_) => state.copyWith(isProcessing: false),
@@ -41,8 +41,10 @@ class HomeBloc extends Bloc<HomeEvent, HomeState> {
               (value) => print('NOTIFI'),
             );
         myPopUp(event.context, 'Dziś kliknęlo juz $count osób');
-        state.copyWith(isProcessing: false);
+        return state.copyWith(isProcessing: false);
       },
     ).run();
+    Future.delayed(Duration(seconds: 5));
+    emit(newState);
   }
 }
