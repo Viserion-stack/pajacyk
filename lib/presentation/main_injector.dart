@@ -30,6 +30,7 @@ Future<void> init() async {
         argument: argument,
         notificationApi: injector.get(),
         clickPajacykUsecase: injector.get(),
+        getNotificationInfoUsecase: injector.get(),
       ),
     )
     ..registerFactoryParam<ContactBloc, ContactArgument, void>((argument, _) => ContactBloc(argument: argument))
