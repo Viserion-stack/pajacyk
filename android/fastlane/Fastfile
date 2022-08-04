@@ -1,0 +1,13 @@
+default_platform(:android)
+
+platform :android do
+  desc "Deploy a new development version to the Firebase App Distribution"
+  lane :deploy_development_to_firebase do
+    firebase_app_distribution(
+        app: "1:251902689463:android:e335be8c9f78f522c4cd32",
+        apk_path: "../build/app/outputs/flutter-apk/app-release.apk",
+        groups: "beta-testers",
+        release_notes: ""
+    )
+  end
+end

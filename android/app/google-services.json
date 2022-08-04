@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "251902689463",
+    "project_id": "pajacyk-8c105",
+    "storage_bucket": "pajacyk-8c105.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:251902689463:android:e335be8c9f78f522c4cd32",
+        "android_client_info": {
+          "package_name": "com.example.pajacyk"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "251902689463-5hrc3plmi488vk8icssj3p2cr8590cqf.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAjOoycMh7Zi_hzscg1l_bZ1ql_9lqwDOU"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "251902689463-5hrc3plmi488vk8icssj3p2cr8590cqf.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
