@@ -6,7 +6,7 @@ class SettingsState extends Equatable {
   final bool isNotifOn;
 
   factory SettingsState.initial() {
-    return SettingsState(isNotifOn: true);
+    return SettingsState(isNotifOn: false);
   }
 
   @override

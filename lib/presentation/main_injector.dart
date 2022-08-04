@@ -9,6 +9,7 @@ import 'package:pajacyk/presentation/screens/home/bloc/home_bloc.dart';
 import 'package:pajacyk/presentation/screens/home/home_argument.dart';
 import 'package:pajacyk/presentation/screens/pajacyk/bloc/pajacyk_bloc.dart';
 import 'package:pajacyk/presentation/screens/pajacyk/pajacyk_argument.dart';
+import 'package:pajacyk/presentation/screens/settings/bloc/settings_bloc.dart';
 import 'package:pajacyk/presentation/screens/wesprzyj/bloc/wesprzyj_bloc.dart';
 import 'package:pajacyk/remote/remote_injector.dart';
 
@@ -35,5 +36,11 @@ Future<void> init() async {
     )
     ..registerFactoryParam<ContactBloc, ContactArgument, void>((argument, _) => ContactBloc(argument: argument))
     ..registerFactoryParam<WesprzyjBloc, WesprzyjArgument, void>((argument, _) => WesprzyjBloc(argument: argument))
-    ..registerFactoryParam<PajacykBloc, PajacykArgument, void>((argument, _) => PajacykBloc(argument: argument));
+    ..registerFactoryParam<PajacykBloc, PajacykArgument, void>((argument, _) => PajacykBloc(argument: argument))
+    ..registerFactory<SettingsBloc>(
+      () => SettingsBloc(
+        getNotificationInfoUsecase: injector.get(),
+        putNotificationInfoUsecase: injector.get(),
+      ),
+    );
 }

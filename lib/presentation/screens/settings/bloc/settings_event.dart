@@ -8,4 +8,13 @@ abstract class SettingsEvent extends Equatable {
 
 class OnInitiatedEvent extends SettingsEvent {}
 
-class ChangeStatusNotification extends SettingsEvent {}
+class ChangeStatusNotification extends SettingsEvent {
+  final bool statusNotification;
+
+  const ChangeStatusNotification({
+    required this.statusNotification,
+  });
+
+  @override
+  String toString() => 'ChangeStatusNotification(statusNotification: $statusNotification)';
+}
