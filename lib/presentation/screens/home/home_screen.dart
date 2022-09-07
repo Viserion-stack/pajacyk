@@ -293,7 +293,7 @@ class HomeCard extends StatelessWidget {
                         textAlign: TextAlign.center,
                         style: TextStyle(
                           color: headerColor ?? Colors.black,
-                          fontSize: 22,
+                          fontSize: 17,
                           fontWeight: FontWeight.bold,
                         ),
                       ),
